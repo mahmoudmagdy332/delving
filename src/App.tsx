@@ -8,8 +8,6 @@ import routes from "./app/router";
 
 
 import { store } from "./app/store";
-import queryClient from "./app/utils/hooks/queryClient";
-import { QueryClientProvider } from '@tanstack/react-query';
 function App() {
   const [theme, colorMode] = useMode();
   return (
@@ -17,9 +15,9 @@ function App() {
       <ThemeProvider theme={theme}>
        <CssBaseline />
       <ReduxProvider store={store}>
-     <QueryClientProvider client={queryClient}>
+     
        <RouterProvider router={routes} /> 
-     </QueryClientProvider>
+     
    </ReduxProvider>
       </ThemeProvider>
       </ColorModeContext.Provider>
