@@ -1,18 +1,16 @@
-import { motion } from "framer-motion"
-const BottonPath = () => {
-  return (
-    <motion.div
-    className="box"
-    style={ { width: '200px',
-        height:' 200px',
-        backgroundColor:'red'}}
-        whileTap={{ scale: 0.9 }}
-    
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-
-  />
-        
-  )
+const BottonPath = ({ title, top, left }:{ title:string, top:number, left :number}) => {
+    return (
+        <div style={{
+            position: 'absolute',
+            top: `${top}px`,
+            left: `${left}px`,
+            textAlign: 'center',
+        }} className="relative ">
+            <img src="/images/ICONS/Button → image.svg"/>
+            <div className="w-24 mt-2">{title}</div>
+            
+        </div>
+    );
 }
 
 export default BottonPath

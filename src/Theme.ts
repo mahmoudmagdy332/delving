@@ -133,17 +133,17 @@ export const themeSettings = (mode: Mode) => {
               light: colors.yellow[100],
             },
             black: {
-              dark: colors.black[100],
+              dark: colors.black[900],
               main: colors.black[500],
-              light: colors.black[900],
+              light: colors.black[100],
             },
             background: {
               default: colors.black[500], // Use a color from tokens or a specific value
-              paper: colors.black[700], // Typically used for surfaces
+              paper: colors.grey[100], // Typically used for surfaces
             },
             text: {
               primary: colors.grey[500], // Text color
-              secondary: colors.grey[300], // Secondary text color
+              secondary: colors.grey[400], // Secondary text color
             },
             grey:{
               dark: colors.grey[900],
@@ -169,12 +169,12 @@ export const themeSettings = (mode: Mode) => {
               light: colors.black[100],
             },
             background: {
-              default: colors.grey[100], // Use a color from tokens or a specific value
+              default:'white' , //colors.grey[100] Use a color from tokens or a specific value
               paper: colors.grey[300], // Typically used for surfaces
             },
             text: {
               primary: colors.black[500], // Text color
-              secondary: colors.grey[600], // Secondary text color
+              secondary: colors.grey[700], // Secondary text color
             },
             grey:{
               dark: colors.grey[900],

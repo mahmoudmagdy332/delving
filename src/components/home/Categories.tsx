@@ -2,12 +2,12 @@ import { Box, Typography } from "@mui/material"
 
 const Categories = () => {
     const listItems=[
-        {id:1,name:"HVAC",icon:"/ICONS/1.svg"},
-        {id:2,name:"Light Current",icon:"/ICONS/2.svg"},
-        {id:3,name:"Fire Fighting",icon:"/ICONS/3.svg"},
-        {id:4,name:"Electrical Power",icon:"/ICONS/4.svg"},
-        {id:5,name:"Construction",icon:"/ICONS/5.svg"},
-        {id:6,name:"Plumbing",icon:"/ICONS/6.svg"},
+        {id:1,name:"HVAC",icon:"/images/ICONS/1.svg"},
+        {id:2,name:"Light Current",icon:"/images/ICONS/2.svg"},
+        {id:3,name:"Fire Fighting",icon:"/images/ICONS/3.svg"},
+        {id:4,name:"Electrical Power",icon:"/images/ICONS/4.svg"},
+        {id:5,name:"Construction",icon:"/images/ICONS/5.svg"},
+        {id:6,name:"Plumbing",icon:"/images/ICONS/6.svg"},
     ]
   return (
     <Box sx={{bgcolor:"background.paper"}}>

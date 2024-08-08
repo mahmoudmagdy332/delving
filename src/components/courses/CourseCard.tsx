@@ -1,4 +1,5 @@
 import { Button } from "@mui/material"
+import { Link } from "react-router-dom"
 
 type course={
     image:string,
@@ -13,7 +14,9 @@ const CourseCard = ({course}:{course:course}) => {
         </div>
         <h3 className="font-semibold text-xl">{course.title}</h3>
         <p className=" text-sm">{course.discription}</p>
-        <Button sx={{color:"text.primary",bgcolor:'background.paper',py:"10px"}}>View path</Button>
+        <Link to={`/courses/${course.title}`} >
+        <Button sx={{color:"dark.main",width:'100%',bgcolor:'grey.main',py:"12px"}}>View path</Button>
+        </Link>
     </div>
   )
 }

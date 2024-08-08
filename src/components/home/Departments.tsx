@@ -3,13 +3,13 @@ import { Box, Button, Typography  } from "@mui/material"
 const Departments = () => {
     const ListItems=["Civil Engineering","Mechanical Engineering","Electrical Engineering","Computer Engineering","Architectural Engineering"]
     const civilItems=[
-      {name:"Calculus in a Nutshell",icon:"/ICONS/image 24.png"},
-      {name:"Calculus Fundamentals",icon:"/ICONS/image 25.png"},
-      {name:"Integral Calculus",icon:"/ICONS/image 26.png"},
-      {name:"Multivariable Functions",icon:"/ICONS/image 27.png"},
-      {name:"Multivariable Calculus",icon:"/ICONS/image 28.png"},
-      {name:"Vector Calculus",icon:"/ICONS/image 29.png"},
-      {name:"Trigonometry",icon:"/ICONS/image 30.png"},
+      {name:"Calculus in a Nutshell",icon:"/images/ICONS/image 24.png"},
+      {name:"Calculus Fundamentals",icon:"/images/ICONS/image 25.png"},
+      {name:"Integral Calculus",icon:"/images/ICONS/image 26.png"},
+      {name:"Multivariable Functions",icon:"/images/ICONS/image 27.png"},
+      {name:"Multivariable Calculus",icon:"/images/ICONS/image 28.png"},
+      {name:"Vector Calculus",icon:"/images/ICONS/image 29.png"},
+      {name:"Trigonometry",icon:"/images/ICONS/image 30.png"},
     ]  
     return (
     <Box sx={{bgcolor:'background.paper'}}>
@@ -48,7 +48,7 @@ const Departments = () => {
                       </Typography>
                     </Box>
                     <Box className="flex justify-center items-cente py-10" sx={{bgcolor:'background.default',border:"2px solid white",borderColor:"text.primary"}}>
-                      <img src="/PHOTOS/9233783_4111613 1.png" className="h-80"/>
+                      <img src="/images/PHOTOS/9233783_4111613 1.png" className="h-80"/>
                     </Box>
                       
                   </Box>

@@ -20,7 +20,7 @@ const Hero = () => {
               }}>Delve Now</Button>
         </div>
         <div className="lg:w-1/2">
-             <img src="/PHOTOS/Visiting construction site.png" className="w-full"/>  
+             <img src="/images/PHOTOS/Visiting construction site.png" className="w-full"/>  
         </div>
     </div>
   )

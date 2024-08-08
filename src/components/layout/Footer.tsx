@@ -10,11 +10,11 @@ const Footer = () => {
   const pages2=["Company","About Us","Careers","FAQs"]
   const sosials=[<FaFacebookF/>,<FaXTwitter />,<FaInstagram />, <FaLinkedinIn />]
   return (
-    <Box sx={{backgroundColor:"text.primary"}}>
+    <Box sx={{backgroundColor:"black.dark"}}>
       <div className="w-11/12 lg:w-10/12 mx-auto pt-16">
             <Box className="grid lg:grid-cols-5 md:grid-cols-2 gap-8 ">
               <Box className="col-span-2 flex justify-center items-start lg:justify-start">
-              {theme.palette.mode === 'dark' ?   <img src="/LOGO/Logo (2) 1.png" className="w-56"/>:<img src="/LOGO/icon black 1.png" className="w-56"/>}
+              {theme.palette.mode === 'dark' ?   <img src="/images/LOGO/Logo (2) 1.png" className="w-56"/>:<img src="/images/LOGO/icon black 1.png" className="w-56"/>}
               </Box>
             <div className="flex flex-col gap-3 items-center">
               {pages.map((page)=>(

@@ -29,8 +29,8 @@ const drawerWidth = 240;
 const navItems = [{name:'Home',link:"/"},
   {name:'Courses',link:"courses"},
   {name:'About Us',link:"/about"},
-  {name:'Pricing',link:"/"},
-  {name:'Careers',link:"/"}];
+  {name:'Pricing',link:"/pricing"},
+  {name:'Careers',link:"/careers"}];
 
 export default function Index(props: Props) {
   const { window } = props;
@@ -70,7 +70,7 @@ export default function Index(props: Props) {
          
           <div className='w-11/12  mx-auto flex justify-between items-center'>
            <div className='w-56'>
-           {theme.palette.mode === 'dark' ?   <img src="/LOGO/icon black 1.png"/>:<img src="/LOGO/Logo (2) 1.png"/>}
+           {theme.palette.mode === 'dark' ?   <img src="/images/LOGO/icon black 1.png"/>:<img src="/images/LOGO/Logo (2) 1.png"/>}
            </div>
            <Box sx={{display: { xs: 'none', sm: 'flex' },gap:"5px",justifyContent:'center',alignItems:'center'}}>
             {navItems.map((item)=>(
@@ -78,7 +78,7 @@ export default function Index(props: Props) {
              <Typography  sx={{
                 color:'text.primary',
                 fontWeight:500,
-                px:'15px',py:"7px",
+                px:'15px',py:"10px",
                 borderRadius:"5px",
             '&:hover': {
               bgcolor:'background.paper',     
@@ -94,12 +94,14 @@ export default function Index(props: Props) {
           <Button sx={{bgcolor:'transparent',color:'background.text',
                 '&:hover': {
               backgroundColor:'transparent', 
-              color:'primary.light'       
+              color:'primary.light' ,
+              py:'10px'
            },
               }}>Sign up</Button>
-              <Button sx={{bgcolor:'primary.light',color:'background.default',
+              <Button sx={{bgcolor:'primary.light',color:'background.default',py:'10px' ,
                 '&:hover': {
-              backgroundColor:'yellow.dark',        
+              backgroundColor:'yellow.dark', 
+                   
            },
               }}>login</Button>
               <Typography onClick={colorMode.toggleColorMode} sx={{

@@ -5,22 +5,22 @@ const Works = () => {
         {
             title:"Interactive Courses",
             description:"Our courses are super interactive, making sure you’re actively involved in your learning journey. No more boring lectures!",
-            image:"/PHOTOS/Lesson-amico (1) 1.png"
+            image:"/images/PHOTOS/Lesson-amico (1) 1.png"
         },
         {
             title:"Gamified Learning",
             description:"Learning is way more fun with games! Earn badges, points, and rewards as you progress.",
-            image:"/PHOTOS/Gaming-cuate 1.png"
+            image:"/images/PHOTOS/Gaming-cuate 1.png"
         },
         {
             title:"Real-World Projects",
             description:"Put what you learn to the test with real-world projects that challenge you to solve engineering problems.",
-            image:"/PHOTOS/Lesson-amico (1) 1.png"
+            image:"/images/PHOTOS/Lesson-amico (1) 1.png"
         },
         {
             title:"Interactive Courses",
             description:"Our courses are super interactive, making sure you’re actively involved in your learning journey. No more boring lectures!",
-            image:"/PHOTOS/Construction-pana 1.png"
+            image:"/images/PHOTOS/Construction-pana 1.png"
         },
 ]
   return (
