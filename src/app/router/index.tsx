@@ -129,14 +129,14 @@ const routes = createHashRouter([{
           ),
         },
         {
-          path: "/account",
+          path: "account",
           element: <AccountLayout />,
           children: [
             {
-              path: "/", // Catch-all route for 404 pages
+              index: true,
               element: (
-                <Account/>   
-              ),
+                <Account/> 
+              )
             }
           ]
         },
