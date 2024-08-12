@@ -29,7 +29,7 @@ const Works = () => {
         <Typography sx={{color:"dark.main",fontSize:'24px',fontWeight:"bold"}}>
           How Delveng <span style={{color:"#ffce00"}}>Works</span>
         </Typography>
-        <Typography sx={{color:"grey.dark",fontSize:'16px',fontWeight:"400"}}>
+        <Typography sx={{color:"gray.dark",fontSize:'16px',fontWeight:"400"}}>
         At Delveng, we make learning engineering fun and effective. Our approach combines interactive lessons, real-world projects, and gamified elements to keep you engaged and motivated.        
         </Typography>
         </div>
@@ -39,7 +39,7 @@ const Works = () => {
                     <img src={item.image} className="w-full lg:w-1/2"/>
                     <div className="w-full lg:w-1/2 flex flex-col gap-4">
                     <Typography sx={{color:"dark.main",fontSize:'20px',fontWeight:"bold"}}>{item.title}</Typography>
-                    <Typography sx={{color:"grey.dark"}}>{item.description}</Typography>
+                    <Typography sx={{color:"gray.dark"}}>{item.description}</Typography>
                     </div>
                 </div>
                 

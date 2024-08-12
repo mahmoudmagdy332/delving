@@ -9,7 +9,7 @@ const PlaneCard = () => {
               </Box> 
               <div className="flex justify-center items-end">
                   <Typography sx={{fontSize:'60px',fontWeight:'600',color:'black.dark'}}>$0</Typography>
-                  <Typography sx={{fontSize:'16px',fontWeight:'500',color:'grey.dark',opacity:'.6'}}>/month</Typography>
+                  <Typography sx={{fontSize:'16px',fontWeight:'500',color:'gray.dark',opacity:'.6'}}>/month</Typography>
               </div>
               <Box sx={{bgcolor:'background.default',borderRadius:'20px'}} className="flex flex-col gap-4  border" >
                 <div className="p-5 flex flex-col gap-10 items-center justify-center">

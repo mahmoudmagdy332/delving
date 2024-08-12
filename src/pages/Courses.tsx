@@ -49,7 +49,7 @@ const Courses = () => {
               </form>
               <div className="flex flex-wrap gap-4">
                 {listItems.map((item)=>(
-                  <Button sx={{border:"1px solid grey",color:'text.primary',py:'8px',px:'10px',borderRadius:'5px','&:hover':{borderColor:'primary.main',bgcolor:'primary.dark'}}}>
+                  <Button sx={{border:"1px solid gray",color:'text.primary',py:'8px',px:'10px',borderRadius:'5px','&:hover':{borderColor:'primary.main',bgcolor:'primary.dark'}}}>
                     {item}
                   </Button>
                 ))}

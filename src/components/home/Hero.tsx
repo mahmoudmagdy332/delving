@@ -12,7 +12,7 @@ const Hero = () => {
             with <span style={{color:"#ffce00"}}>Delveng</span>
         </Typography>
         </HeaderLayout>
-        <Typography sx={{color:"grey.dark"}}>Where Engineering Meets Gamified Learning</Typography>
+        <Typography sx={{color:"gray.dark"}}>Where Engineering Meets Gamified Learning</Typography>
         <Button sx={{bgcolor:'primary.light',color:'background.default',p:"10px",
                 '&:hover': {
               backgroundColor:'yellow.dark',        

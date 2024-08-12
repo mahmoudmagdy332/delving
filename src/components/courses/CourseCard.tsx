@@ -15,7 +15,7 @@ const CourseCard = ({course}:{course:course}) => {
         <h3 className="font-semibold text-xl">{course.title}</h3>
         <p className=" text-sm">{course.discription}</p>
         <Link to={`/courses/${course.title}`} >
-        <Button sx={{color:"dark.main",width:'100%',bgcolor:'grey.main',py:"12px"}}>View path</Button>
+        <Button sx={{color:"dark.main",width:'100%',bgcolor:'gray.main',py:"12px"}}>View path</Button>
         </Link>
     </div>
   )

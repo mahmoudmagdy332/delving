@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material"
+import { Link } from "react-router-dom"
 
 const SingleJop = () => {
   return (
@@ -7,14 +8,14 @@ const SingleJop = () => {
               <div className="flex flex-col gap-3 lg:col-span-2">
               <Typography sx={{fontFamily:'typography',fontSize:'36px',fontWeight:'500',color:'dark.main',lineHeight:"57.6px"}}>Senior Producer (Machine
                 Learning & Artificial Intelligence)</Typography>
-                <Typography sx={{fontSize:'16px',fontWeight:'400',color:'grey.dark'}}>Americas</Typography>
+                <Typography sx={{fontSize:'16px',fontWeight:'400',color:'gray.dark'}}>Americas</Typography>
 
                 <div className="">Content / Full-time / Remote</div>
               </div>
-              <div >
+              <Link to="/jop-application" >
               <Button sx={{bgcolor:'primary.main',"&:hover":{bgcolor:'black.dark'},color:'background.default',fontWeight:'600',px:'30px',py:"15px",borderRadius:'5px'}} >Apply for this job</Button>
 
-              </div>
+              </Link>
 
            </div>
            <Box sx={{bgcolor:'background.paper'}} >
@@ -25,7 +26,9 @@ and apps. Our courses teach you what you need to know, while skipping the stuff 
 more about solving equations, statistical analysis, logical deduction, neural networks, and generative AI, and
 less about abstract theorems and integrating complicated trig functions.
                 <div className="flex justify-center my-10">
-                <Button sx={{bgcolor:'primary.main',"&:hover":{bgcolor:'black.dark'},color:'background.default',fontWeight:'600',px:'30px',py:"15px",borderRadius:'5px'}} >Apply for this job</Button>
+                  <Link to="/jop-application">
+                  <Button sx={{bgcolor:'primary.main',"&:hover":{bgcolor:'black.dark'},color:'background.default',fontWeight:'600',px:'30px',py:"15px",borderRadius:'5px'}} >Apply for this job</Button>
+                  </Link>
 
                 </div>
               </div>

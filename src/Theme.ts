@@ -1,10 +1,10 @@
 import { createContext, useState, useMemo } from "react";
-import { createTheme, Theme } from "@mui/material/styles";
+import { createTheme, Theme, ThemeOptions } from "@mui/material/styles";
 
 type Mode = "light" | "dark";
 
 interface Tokens {
-  grey: Record<number, string>;
+  gray: Record<number, string>;
   primary: Record<number, string>;
   yellow:Record<number, string>;
   black:Record<number, string>;
@@ -16,7 +16,7 @@ interface Tokens {
 export const tokens = (mode: Mode): Tokens => ({
   ...(mode === "light"
     ? {
-        grey: {
+        gray: {
           100: "#fcfcfd",
           200: "#f9f9fa",
           300: "#f7f7f8",
@@ -64,7 +64,7 @@ export const tokens = (mode: Mode): Tokens => ({
       
       }
     : {
-        grey: {
+        gray: {
           100: "#303031",
           200: "#606061",
           300: "#919192",
@@ -114,7 +114,7 @@ export const tokens = (mode: Mode): Tokens => ({
 });
 
 // MUI theme settings
-export const themeSettings = (mode: Mode) => {
+export const themeSettings = (mode: Mode):ThemeOptions  => {
   const colors = tokens(mode);
   return {
     palette: {
@@ -137,19 +137,20 @@ export const themeSettings = (mode: Mode) => {
               main: colors.black[500],
               light: colors.black[100],
             },
+            gray:{
+              dark: colors.gray[900],
+              main: colors.gray[500],
+              light: colors.gray[100],
+            },
             background: {
               default: colors.black[500], // Use a color from tokens or a specific value
-              paper: colors.grey[100], // Typically used for surfaces
+              paper: colors.gray[100], // Typically used for surfaces
             },
             text: {
-              primary: colors.grey[500], // Text color
-              secondary: colors.grey[400], // Secondary text color
+              primary: colors.gray[500], // Text color
+              secondary: colors.gray[400], // Secondary text color
             },
-            grey:{
-              dark: colors.grey[900],
-              main: colors.grey[500],
-              light: colors.grey[100],
-            }
+          
           }
         : {
             // palette values for light mode
@@ -169,17 +170,17 @@ export const themeSettings = (mode: Mode) => {
               light: colors.black[100],
             },
             background: {
-              default:'white' , //colors.grey[100] Use a color from tokens or a specific value
-              paper: colors.grey[300], // Typically used for surfaces
+              default:'white' , //colors.gray[100] Use a color from tokens or a specific value
+              paper: colors.gray[300], // Typically used for surfaces
             },
             text: {
               primary: colors.black[500], // Text color
-              secondary: colors.grey[700], // Secondary text color
+              secondary: colors.gray[700], // Secondary text color
             },
-            grey:{
-              dark: colors.grey[900],
-              main: colors.grey[500],
-              light: colors.grey[100],
+            gray:{
+              dark: colors.gray[900],
+              main: colors.gray[500],
+              light: colors.gray[100],
             }
           }),
     },
