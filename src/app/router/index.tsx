@@ -15,6 +15,8 @@ import Terms from "../../pages/Terms";
 import Privacy from "../../pages/Privacy";
 import Welcome from "../../pages/Welcome";
 import MainLayout from "../../components/layout/MainLayout";
+import AccountLayout from "../../components/layout/AccountLayout";
+import Account from "../../pages/account/Account";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -86,8 +88,6 @@ const routes = createHashRouter([{
             </Suspense>
           ),
         },
-        
-       
         {
           path: "/privacy",
           element:(
@@ -127,6 +127,18 @@ const routes = createHashRouter([{
                <Testimonials/>
             </Suspense>
           ),
+        },
+        {
+          path: "/account",
+          element: <AccountLayout />,
+          children: [
+            {
+              path: "/", // Catch-all route for 404 pages
+              element: (
+                <Account/>   
+              ),
+            }
+          ]
         },
              
         {

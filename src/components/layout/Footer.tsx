@@ -11,10 +11,12 @@ const Footer = () => {
     {name:'Testimonials',link:"/testimonials"},
   ];
     const pages2=[
-      {name:'Company',link:"/company"},
+      
       {name:'About Us',link:"/about"},
       {name:'Careers',link:"/careers"},
-      {name:'FAQs',link:"/faq"}
+      {name:'FAQs',link:"/faq"},
+      {name:'Terms and condition',link:"/terms"},
+      {name:'Privacy policy',link:"/privacy"},
     ];
 
   const sosials=[<FaFacebookF/>,<FaXTwitter />,<FaInstagram />, <FaLinkedinIn />]
