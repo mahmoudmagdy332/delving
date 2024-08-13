@@ -15,7 +15,19 @@ function Avatar() {
         },
       }}
     >
-    
+      <Typography
+        className=""
+        variant="h3"
+        sx={{
+          color: "dark.main",
+          borderBottom: "2px solid",
+          borderBottomColor: "dark.main",
+          p: "0 0 20px 0 ",
+        }}
+      >
+        Avatar
+      </Typography>
+
       <Stack
         direction={{ xs: "column", sm: "row" }}
         justifyContent="space-between"

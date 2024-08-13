@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
-import React from "react";
 import Input from "../common/Input";
+import CountrySelect from "./CountryInput";
 
 function PersonalInfo() {
   return (
@@ -12,17 +12,18 @@ function PersonalInfo() {
           color: "dark.main",
           borderBottom: "2px solid",
           borderBottomColor: "dark.main",
+          p: "0 0 20px 0 ",
         }}
       >
         Personal Info
       </Typography>
 
-      <form className="py-2 grid grid-cols-2 gap-6">
+      <form className="py-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-6">
         <div>
           <Input
             type="text"
             label="First name *"
-            focusColor="red"
+            focusColor="black.dark"
             color="black"
           />
         </div>
@@ -30,21 +31,31 @@ function PersonalInfo() {
           <Input
             type="text"
             label="Last name *"
-            focusColor="red"
+            focusColor="black.dark"
             color="black"
           />
         </div>
         <div>
-          <Input type="text" label="Address" focusColor="red" color="black" />
+          <Input
+            type="text"
+            label="Address"
+            focusColor="black.dark"
+            color="black"
+          />
         </div>
         <div>
-          <Input type="text" label="City *" focusColor="red" color="black" />
+          <Input
+            type="text"
+            label="City *"
+            focusColor="black.dark"
+            color="black"
+          />
         </div>
         <div>
           <Input
             type="text"
             label="State/province/region"
-            focusColor="red"
+            focusColor="black.dark"
             color="black"
           />
         </div>
@@ -52,26 +63,26 @@ function PersonalInfo() {
           <Input
             type="text"
             label="Zip/postal code"
-            focusColor="red"
+            focusColor="black.dark"
             color="black"
           />
+        </div>
+        <div>
+          <CountrySelect />
         </div>
         <div>
           <Input
-            type="select"
-            label="Country *"
-            focusColor="red"
+            type="text"
+            label="Age *"
+            focusColor="black.dark"
             color="black"
           />
-        </div>
-        <div>
-          <Input type="text" label="Age *" focusColor="red" color="black" />
         </div>
         <div>
           <Input
             type="text"
             label="Name of your current school"
-            focusColor="red"
+            focusColor="black.dark"
             color="black"
           />
         </div>
