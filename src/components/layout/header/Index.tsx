@@ -15,7 +15,11 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../../../Theme';
 import { useTheme } from '@mui/material/styles';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import Popup from '../../auth/Popup';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../app/store';
+import { changePopup } from '../../../app/slices/UserSlice';
 
 interface Props {
   /**
@@ -38,6 +42,10 @@ export default function Index(props: Props) {
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+  const dispatch = useDispatch<AppDispatch>();
+  const handleClickOpen = () => {
+    dispatch(changePopup(true));
   };
 
   const drawer = (
@@ -65,6 +73,7 @@ export default function Index(props: Props) {
   const colorMode = React.useContext(ColorModeContext);
   return (
     <Box sx={{ display: 'flex', }}>
+      <Popup/>
       <AppBar component="nav" sx={{ bgcolor: 'background.default',py:'10px' }}>
         <Toolbar>
          
@@ -91,19 +100,22 @@ export default function Index(props: Props) {
             ))}
            </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' },gap:'20px' ,alignItems:'center' }}>
-          <Button sx={{bgcolor:'transparent',color:'background.text',
+          <Link to="/welcome">
+          <Button
+          sx={{bgcolor:'transparent',color:'primary.main', 
+            '&:hover': {
+          backgroundColor:'transparent', 
+          color:'primary.main' ,
+          py:'10px'
+       },
+          }}
+          > Sign up</Button></Link>
+              <Button sx={{bgcolor:'primary.main',color:'white',py:'10px',px:'20px' ,borderRadius:'7px',
                 '&:hover': {
-              backgroundColor:'transparent', 
-              color:'primary.light' ,
-              py:'10px'
+              backgroundColor:'yellow.main', 
+                             
            },
-              }}>Sign up</Button>
-              <Button sx={{bgcolor:'primary.light',color:'background.default',py:'10px' ,
-                '&:hover': {
-              backgroundColor:'yellow.dark', 
-                   
-           },
-              }}>login</Button>
+              }} onClick={handleClickOpen}>login</Button>
               <Typography onClick={colorMode.toggleColorMode} sx={{
                 color:'text.primary',
             '&:hover': {
