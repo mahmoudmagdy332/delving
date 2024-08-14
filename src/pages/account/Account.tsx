@@ -1,12 +1,5 @@
-import Avatar from "../../components/Account/Avatar";
-
 const Account = () => {
-  return (
-    <div >
-      <Avatar />
-      jkjhhgjghjg
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Account;
