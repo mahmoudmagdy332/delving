@@ -23,7 +23,7 @@ function Supercharge() {
     },
   ];
   return (
-    <div className="flex flex-col-reverse my-4 md:flex-row items-center justify-center">
+    <div className="flex flex-col-reverse my-4 md:flex-row items-center lg:w-3/4 w-10/12 mx-auto">
       <div className="flex flex-col gap-6">
         <h1 className="text-[18px] font-bold text-black">
           Supercharge your learning
