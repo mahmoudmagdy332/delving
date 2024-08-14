@@ -17,10 +17,16 @@ const CourseCard = ({ course }: { course: course }) => {
       <Link to={`/courses/${course.title}`}>
         <Button
           sx={{
-            color: "dark.main",
+            color: "black.light",
+            fontSize:'14px',
+            fontWeight:'600',
             width: "100%",
-            bgcolor: "gray.main",
-            py: "12px",
+            bgcolor: "gray.dark",
+            py: "8px",
+            my:'10px',
+            '&:hover':{
+              bgcolor: "primary.light",
+            }
           }}
         >
           View path

@@ -21,6 +21,9 @@ import PersonalInfo from "../../components/Account/PersonalInfo";
 import ChangePassword from "../../components/Account/ChangePassword";
 import MyCourses from "../../components/Account/MyCourses";
 import Premium from "../../pages/Premium";
+import Signup from "../../pages/Signup";
+import Login from "../../pages/Login";
+import LoginWith from "../../pages/LoginWith";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -137,6 +140,30 @@ const routes = createHashRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <Testimonials />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/signup",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Signup/>
+              </Suspense>
+            ),
+          },
+          {
+            path: "/Login-with-email",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <LoginWith/>
+              </Suspense>
+            ),
+          },
+          {
+            path: "/login",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Login/>
               </Suspense>
             ),
           },

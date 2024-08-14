@@ -179,7 +179,7 @@ export const themeSettings = (mode: Mode):ThemeOptions  => {
             },
             gray:{
               dark: colors.gray[900],
-              main: colors.gray[500],
+              main: colors.gray[600],
               light: colors.gray[100],
             }
           }),

@@ -81,7 +81,7 @@ export default function Index(props: Props) {
            <div className='w-56'>
            {theme.palette.mode === 'dark' ?   <img src="/images/LOGO/icon black 1.png"/>:<img src="/images/LOGO/Logo (2) 1.png"/>}
            </div>
-           <Box sx={{display: { xs: 'none', sm: 'flex' },gap:"5px",justifyContent:'center',alignItems:'center'}}>
+           <Box sx={{display: { xs: 'none', lg: 'flex' },gap:"5px",justifyContent:'center',alignItems:'center'}}>
             {navItems.map((item)=>(
               <NavLink to={item.link}>
              <Typography  sx={{
@@ -126,16 +126,17 @@ export default function Index(props: Props) {
           }} >
           {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </Typography>
-          </Box>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{  display: { sm: 'none' }, color:"text.primary" }}
+            sx={{  display: { lg: 'none' }, color:"text.primary",ml:'10px' }}
           >
             <MenuIcon />
           </IconButton>
+          </Box>
+          
           </div>
           
         
@@ -151,7 +152,7 @@ export default function Index(props: Props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { lg: 'block', xl: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
