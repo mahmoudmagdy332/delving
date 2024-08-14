@@ -11,7 +11,7 @@ export type settingInitialState = {
   languageLoading: boolean;
 };
 
-export type user = {
+export type User = {
   name: string;
   email: string;
   phone: string;
@@ -20,6 +20,10 @@ export type user = {
   status: string;
   wallet: number;
   points: number;
+};
+export type UserState = {
+  user: User | null;
+  isPopup: boolean;
 };
 export type userInitialState = {
   user: user | null;

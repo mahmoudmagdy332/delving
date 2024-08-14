@@ -22,5 +22,14 @@
   }
 }
 
+button {
+  font-size: 1.25rem;
+  background-color: #0f75ae;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  color: #fafbfc;
+}
 
 
