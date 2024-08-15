@@ -9,19 +9,19 @@ const CoursePath = () => {
   const [imageIndex, setImageIndex] = useState(0);
 
 const images = [
-  'https://via.placeholder.com/400x200.png?text=Image+1',
-  'https://via.placeholder.com/400x200.png?text=Image+2',
-  'https://via.placeholder.com/400x200.png?text=Image+3'
+  '/images/ICONS/image 36.png',
+  '',
+  '/images/ICONS/image 30.png'
 ];
 const handleClick = () => {
   setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
 };
   return (
-    <div className="w-11/12 lg:w-3/4 mx-auto gap-10 flex flex-col md:flex-row">
-         <div className="w-2/5 relative">
+    <div className="w-11/12 lg:w-3/4 mx-auto gap-10 flex flex-col lg:flex-row">
+         <div className="w-full lg:w-2/5 relative">
            <ExploreCource/> 
          </div>
-         <div className="w-3/5">
+         <div className="lg:w-3/5 ">
          <Path/>
           <div>
       

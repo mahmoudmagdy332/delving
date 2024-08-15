@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 const BottonPath = ({ title, top, left }:{ title:string, top:number, left :number}) => {
     return (
-        <div style={{
+        <Link to="/Courses/dasdsa/adsasd">
+         <div style={{
             position: 'absolute',
             top: `${top}px`,
             left: `${left}px`,
@@ -10,6 +13,8 @@ const BottonPath = ({ title, top, left }:{ title:string, top:number, left :numbe
             <div className="w-24 mt-2">{title}</div>
             
         </div>
+        </Link>
+       
     );
 }
 
