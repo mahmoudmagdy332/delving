@@ -24,6 +24,7 @@ import Premium from "../../pages/Premium";
 import Signup from "../../pages/Signup";
 import Login from "../../pages/Login";
 import LoginWith from "../../pages/LoginWith";
+import Scorm from "../../pages/Scorm";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -68,6 +69,14 @@ const routes = createHashRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <CoursePath />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/Courses/:CourseId/:ScormId",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Scorm />
               </Suspense>
             ),
           },

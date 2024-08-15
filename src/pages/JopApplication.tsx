@@ -25,11 +25,26 @@ export const JopApplication = () => {
           <Typography sx={{fontFamily:'Typography',fontSize:'22px',fontWeight:'500'}}>Submit Your Application</Typography>
           <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-start gap-y-8 gap-x-4">
             <Typography sx={{fontSize:'18px',display:'flex',alignItems:'center'}}>Resume/CV <span className="ms-2 text-red-600">*</span></Typography>
-            <Box className="flex gap-6 p-4 col-span-2 max-w-64 items-start bg-gray-200 justify-center border rounded-sm border-gray-300" >
-                <img src="/images/ICONS/ATTACH.svg"/>
-                 <Typography sx={{color:'black.main'}}>ATTACH RESUME/CV</Typography>
-            </Box>
-
+          <div>
+          <label
+            htmlFor="avatar-upload"
+            role="button"
+            className="flex gap-6 p-4 col-span-2 max-w-64 items-start bg-gray-200 justify-center border rounded-sm border-gray-300"
+          >
+            <img src="/images/ICONS/ATTACH.svg"/>
+            <Typography sx={{color:'black.main'}}>ATTACH RESUME/CV</Typography>
+          </label>
+          <input
+            type="file"
+            id="avatar-upload"
+            className="hidden"
+       
+          />
+          </div>
+            <div>
+         
+         
+        </div>
             <Typography sx={{fontSize:'18px',display:'flex',alignItems:'center'}}>Full name <span className="ms-2 text-red-600">*</span></Typography>
              <JopInput/>
              <Typography sx={{fontSize:'18px',display:'flex',alignItems:'center'}}>Pronouns </Typography>

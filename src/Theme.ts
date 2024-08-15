@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo, useEffect } from "react";
 import { createTheme, Theme, ThemeOptions } from "@mui/material/styles";
 
 type Mode = "light" | "dark";
@@ -222,20 +222,45 @@ interface ColorModeContextProps {
 }
 
 export const ColorModeContext = createContext<ColorModeContextProps>({
-  toggleColorMode: () => {},
+  toggleColorMode: () => {
+  
+  },
 });
 
 export const useMode = (): [Theme, ColorModeContextProps] => {
-  const [mode, setMode] = useState<Mode>("light");
+  const [mode, setMode] = useState<Mode>('light');
 
   const colorMode = useMemo<ColorModeContextProps>(
     () => ({
-      toggleColorMode: () =>
-        setMode((prev) => (prev === "light" ? "dark" : "light")),
+      toggleColorMode: () =>{
+        setMode((prev) => {
+          if(prev === "light") {
+          window.localStorage.setItem("mode",JSON.stringify("dark"))
+          return "dark"
+         } else {
+          window.localStorage.setItem("mode",JSON.stringify("light"))
+          return "light"
+      }
+    })
+      }
+        ,
     }),
     []
   );
+ 
+  useEffect(()=>{
+    const localMode=window.localStorage.getItem("mode")
+    let modeSelected=mode
+    if(localMode)
+      modeSelected=JSON.parse(localMode)
+    setMode(modeSelected)
+  },[])
+  
 
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const theme = useMemo(() =>{
+    
+
+    return createTheme(themeSettings(mode))
+  }, [mode]);
   return [theme, colorMode];
 };
