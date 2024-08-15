@@ -213,7 +213,7 @@ function Engineering() {
           Build quantitative + technical problem-solving skills
         </h1>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col ">
           <div className="border-y">
             <Swiper
               spaceBetween={5}
@@ -252,14 +252,14 @@ function Engineering() {
             </Swiper>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row items-center gap-10 mt-4">
-            <div className="w-1/3 md:w-2/5">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 mt-4">
+            <div className="flex flex-col">
               <h1>
                 course in
                 <span className="font-bold">{Category[activeIndex].name}</span>
               </h1>
 
-              <div className="flex flex-row flex-wrap gap-4 lg:flex-col">
+              <div className="flex flex-row flex-wrap gap-4 md:w-2/5 lg:flex-col">
                 {Category[activeIndex].course.map((items, index) => (
                   <div className="flex items-center gap-2" key={index}>
                     <img src={items.icon} className="flex-shrink-0" alt="" />
@@ -270,7 +270,7 @@ function Engineering() {
             </div>
 
             <div
-              className=" relative p-10 border-2 rounded-md  border-black lg:w-2/3 h-[75vh] md:w-3/5"
+              className=" relative p-10 border-2 rounded-md  border-black lg:w-2/3  h-[75vh]    md:w-3/5"
               style={{ boxShadow: "10px 5px 5px black" }}
             >
               <video

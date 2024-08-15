@@ -6,7 +6,7 @@ function Gift() {
       </h1>
 
       <div className="flex flex-col md:flex-row items-center w-10/12   my-10  gap-4 justify-center">
-        <div className="flex flex-col md:flex-row items-center p-6 rounded-2xl border-2">
+        <div className="flex flex-col lg:flex-row items-center p-6 rounded-2xl border-2">
           <img src="../../../public/images/PHOTOS/gift-plan.svg.svg" alt="" />
           <div className="flex flex-col gap-2 ">
             <h1 className="text-md font-bold">gift plan</h1>
@@ -19,7 +19,7 @@ function Gift() {
             </button>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center p-6 rounded-2xl border-2">
+        <div className="flex flex-col lg:flex-row items-center p-6 rounded-2xl border-2">
           <img src="../../../public/images/PHOTOS/gift-plan.svg.svg" alt="" />
           <div className="flex flex-col gap-2 ">
             <h1 className="text-md font-bold">gift plan</h1>
