@@ -14,7 +14,7 @@ function Gift() {
               Share your love of math and science — give a subscription to
               Brilliant Premium.
             </p>
-            <button className=" py-2 border-black border-2  rounded-full text-lg text-black">
+            <button className=" py-4 border-2 border-[#000]  rounded-full text-lg text-black">
               subscribe now
             </button>
           </div>

@@ -21,6 +21,7 @@ import PersonalInfo from "../../components/Account/PersonalInfo";
 import ChangePassword from "../../components/Account/ChangePassword";
 import MyCourses from "../../components/Account/MyCourses";
 import Premium from "../../pages/Premium";
+import Beginning from "../../pages/Beginning";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -57,6 +58,14 @@ const routes = createHashRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <Premium />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/start",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Beginning />
               </Suspense>
             ),
           },

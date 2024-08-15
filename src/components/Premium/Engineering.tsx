@@ -49,7 +49,7 @@ function Engineering() {
     },
     {
       name: "Civil Engineering",
-      video: "../../../public/images/Videos/electives.mp4",
+      video: "/images/Videos/electives.mp4",
       course: [
         {
           title: "Calculus in a Nutshell",
@@ -79,7 +79,7 @@ function Engineering() {
     },
     {
       name: "Civil Engineering",
-      video: "../../../public/images/Videos/electives.mp4",
+      video: "/images/Videos/science.mp4",
       course: [
         {
           title: "Calculus in a Nutshell",
@@ -109,7 +109,7 @@ function Engineering() {
     },
     {
       name: "Civil Engineering",
-      video: "../../../public/images/Videos/electives.mp4",
+      video: "/images/Videos/electives.mp4",
       course: [
         {
           title: "Calculus in a Nutshell",
@@ -139,7 +139,7 @@ function Engineering() {
     },
     {
       name: "Civil Engineering",
-      video: "../../../public/images/Videos/electives.mp4",
+      video: "/images/Videos/science.mp4",
       course: [
         {
           title: "Calculus in a Nutshell",
@@ -169,7 +169,7 @@ function Engineering() {
     },
     {
       name: "Civil Engineering",
-      video: "../../../public/images/Videos/electives.mp4",
+      video: "/images/Videos/electives.mp4",
       course: [
         {
           title: "Calculus in a Nutshell",
@@ -209,11 +209,11 @@ function Engineering() {
   return (
     <div className="py-8 bg-[#f2f2f2]">
       <div className="lg:w-3/4 w-10/12 mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">
+        <h1 className="lg:text-3xl md:text-2xl sm:text-2xl font-bold mb-8 text-center">
           Build quantitative + technical problem-solving skills
         </h1>
 
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <div className="border-y">
             <Swiper
               spaceBetween={5}
@@ -243,7 +243,7 @@ function Engineering() {
                     } `}
                     onClick={() => handleSetActiveIndex(index)}
                   >
-                    <p className="text-center text-lg font-bold text-gray-600 hover:text-black">
+                    <p className="text-center text-nowrap text-lg font-bold text-gray-600 hover:text-black">
                       {item.name}
                     </p>
                   </div>
@@ -252,29 +252,34 @@ function Engineering() {
             </Swiper>
           </div>
 
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 mt-4">
-            <div className="flex flex-col">
+          <div className="flex flex-col-reverse lg:flex-row items-center lg:justify-between justify-center  gap-5 mt-4">
+            <div className="flex flex-col text-center md:w-full lg:w-2/5">
               <h1>
-                course in
+                Course in{" "}
                 <span className="font-bold">{Category[activeIndex].name}</span>
               </h1>
 
-              <div className="flex flex-row flex-wrap gap-4 md:w-2/5 lg:flex-col">
+              <div className="flex flex-row lg:flex-col lg:justify-between md:items-center justify-center flex-wrap gap-4">
                 {Category[activeIndex].course.map((items, index) => (
                   <div className="flex items-center gap-2" key={index}>
-                    <img src={items.icon} className="flex-shrink-0" alt="" />
-                    <p>{items.title}</p>
+                    <img
+                      src={items.icon}
+                      className="flex-shrink-0 w-8 h-8"
+                      alt={items.title}
+                    />
+                    <p className="text-md text-nowrap">{items.title}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div
-              className=" relative p-10 border-2 rounded-md  border-black lg:w-2/3  h-[75vh]    md:w-3/5"
+              className="relative p-4 border-2 rounded-md border-black lg:w-2/3 h-[50vh] lg:h-[60vh] md:3/4 sm:w-full"
               style={{ boxShadow: "10px 5px 5px black" }}
             >
               <video
                 autoPlay={true}
+                loop
                 className="h-full w-full object-cover"
                 src={Category[activeIndex].video}
               ></video>
