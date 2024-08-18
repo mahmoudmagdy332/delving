@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import useSetting from "../../app/utils/hooks/useSetting";
 import { useDispatch } from "react-redux";
 import { useSettingSliceSelector } from "../../app/slices/settingSlice";
 import { updateUser } from "../../app/slices/UserSlice";
 import Loader from "../common/Loader";
 
 const MainLayout = () => {
-  const { error } = useSetting();
+  // const { error } = useSetting();
   const { loading } = useSettingSliceSelector((state) => state.settingReducer);
   const { pathname } = useLocation();
   const dispatch = useDispatch();

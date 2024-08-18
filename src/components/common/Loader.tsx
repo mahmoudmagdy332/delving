@@ -1,14 +1,14 @@
 
-import { useTheme } from "@emotion/react";
 import PropagateLoader from "react-spinners/ClipLoader";
-import { ColorModeContext, tokens, useMode } from "../../Theme";
-import { useContext } from "react";
+import {  tokens, useMode } from "../../Theme";
 const Loader = () => {
   const [theme, colorMode,mode] = useMode();
+  console.log(theme, colorMode)
   const colors = tokens(mode);
   return (
     <PropagateLoader 
      color={colors.gray[900]}
+     size={100}
     />
      
   )

@@ -26,7 +26,7 @@ export type UserState = {
   isPopup: boolean;
 };
 export type userInitialState = {
-  user: user | null;
+  user: User | null;
   courses: course[];
   Packages: Package[];
   books: book[];

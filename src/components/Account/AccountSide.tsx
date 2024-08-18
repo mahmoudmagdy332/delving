@@ -5,7 +5,7 @@ import { useMode } from "../../Theme";
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
-  color: theme.palette.black.dark,
+  color: theme.palette.background.default,
 
   transition: "color 0.2s ease-in-out",
   "&:hover": {
@@ -13,7 +13,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
   },
   "&.active": {
     fontWeight: "bold",
-    color: theme.palette.yellow.main,
+    color: theme.palette.primary.dark,
   },
 }));
 
