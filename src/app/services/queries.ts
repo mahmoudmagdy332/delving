@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   allBooksAPI,
-  AllCoursesAPI,
+  coursesAPI,
   getHomeAPI,
   getSettingAPI,
   instructorsAPI,
@@ -10,6 +10,7 @@ import {
   PackagesAPIPagination,
 } from "../utils/api";
 import { getLogoutAPI, getStudentProfileAPI } from "../utils/apiAuth";
+import { CoursesParams } from "../utils/types/types";
 
 export function settingQuery() {
   return useQuery({
@@ -58,10 +59,10 @@ export function logoutQuery() {
   });
 }
 
-export function AllCoursesQuery() {
+export function CoursesQuery({ name, id }: CoursesParams) {
   return useQuery({
-    queryKey: ["AllCourses"],
-    queryFn: async () => await AllCoursesAPI(),
+    queryKey: ["Courses", { name, id }],
+    queryFn: async () => await coursesAPI({ name, id }),
   });
 }
 export function AllInstructorQuery() {

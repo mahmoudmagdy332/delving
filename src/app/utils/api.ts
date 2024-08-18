@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   confrimCode,
   confrimPassword,
+  CoursesParams,
   filterType,
   IFormContuctInput,
   userData,
@@ -44,7 +45,13 @@ export const confrimPasswordAPI = (data: confrimPassword) =>
   });
 export const CategoryCoursesAPI = (id: string) =>
   api.post("courses/filter/bycaregory", { category_id: id });
-export const AllCoursesAPI = () => api.get("courses");
+export const coursesAPI = ({ name, id }: CoursesParams) =>
+  api.get(`courses`, {
+    params: {
+      category_id: id,
+      search: name,
+    },
+  });
 
 export const CoursesAPI = (filter: filterType, currentPage: number) =>
   api.post(`courses/filter?page=${currentPage}`, filter);

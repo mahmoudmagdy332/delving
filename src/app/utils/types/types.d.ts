@@ -179,10 +179,8 @@ export type filterType = {
 };
 export type coursesSliceType = {
   courses: course[] | null;
-  currentPage: number;
-  last_page: number;
-  top: boolean;
-  filter: filterType;
+  category_id: number | undefined;
+  search: string | undefined;
 };
 export type booksSliceType = {
   books: book[] | null;
@@ -248,7 +246,7 @@ export type CourseDetailsType = {
   requirements: string | null;
   instructor?: instructors | null;
   courses: course[] | null;
-  coursesDetails:course|null;
+  coursesDetails: course | null;
 };
 
 export type BuyType = {
@@ -263,6 +261,13 @@ export interface IFormContuctInput {
   message: string;
 }
 
-export type OrderType ={books :number[] |undefined,
-  courses:  number[] |undefined , 
-  packages: number[] |undefined}
+export type OrderType = {
+  books: number[] | undefined;
+  courses: number[] | undefined;
+  packages: number[] | undefined;
+};
+
+export type CoursesParams = {
+  name: string | undefined;
+  id: number | undefined;
+};
