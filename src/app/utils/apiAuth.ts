@@ -4,7 +4,7 @@ import { baseUrl } from "../config";
 import { OrderType, password, userData } from "./types/types";
 
 const api = axios.create({
-  baseURL: baseUrl(),
+  baseURL: baseUrl,
   headers: {
     "Content-Type": "application/json",
   },
