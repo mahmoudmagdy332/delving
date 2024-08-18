@@ -227,7 +227,7 @@ export const ColorModeContext = createContext<ColorModeContextProps>({
   },
 });
 
-export const useMode = (): [Theme, ColorModeContextProps] => {
+export const useMode = (): [Theme, ColorModeContextProps,Mode] => {
   const [mode, setMode] = useState<Mode>('light');
 
   const colorMode = useMemo<ColorModeContextProps>(
@@ -262,5 +262,5 @@ export const useMode = (): [Theme, ColorModeContextProps] => {
 
     return createTheme(themeSettings(mode))
   }, [mode]);
-  return [theme, colorMode];
+  return [theme, colorMode,mode];
 };
