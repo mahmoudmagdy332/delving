@@ -1,7 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
 import HeaderLayout from "../components/common/HeaderLayout";
 import SearchTwoToneIcon from "@mui/icons-material/SearchTwoTone";
-import CourseCard from "../components/courses/CourseCard";
+import { useAllCourses } from "../app/utils/hooks/useCourse";
+// import CourseCard from "../components/courses/CourseCard";
 const Courses = () => {
   const listItems = [
     "All",
@@ -11,23 +12,10 @@ const Courses = () => {
     "Electrical Power",
     "Construction",
   ];
-  const cources = [
-    {
-      image: "/images/PHOTOS/Frame.svg",
-      title: "Fire Fighting",
-      description: "Master key scientific ideas & technologies of the future",
-    },
-    {
-      image: "/images/PHOTOS/Frame (1).svg",
-      title: "Electrical Power",
-      description: "Master key scientific ideas & technologies of the future",
-    },
-    {
-      image: "/images/PHOTOS/Group (1).svg",
-      title: "Fire Fighting",
-      description: "Master key scientific ideas & technologies of the future",
-    },
-  ];
+  const { isSuccess, data } = useAllCourses();
+  if (isSuccess) {
+    console.log(data?.data);
+  }
   return (
     <div className="py-10 w-10/12 mx-auto">
       <div className="flex flex-col gap-10">
@@ -84,11 +72,11 @@ const Courses = () => {
           ))}
         </div>
 
-        <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cources.map((course) => (
             <CourseCard course={course} />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
