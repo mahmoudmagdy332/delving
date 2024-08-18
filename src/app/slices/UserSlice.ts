@@ -18,11 +18,15 @@ const UserSlice = createSlice({
     changePopup: (state, action) => {
       state.isPopup = action.payload;
     },
+    updateUser: (state, action) => {
+      state.user = action.payload;
+      localStorage.setItem("student", JSON.stringify(action.payload));
+    },
   },
 });
 
 export const {
-  changePopup,
+  changePopup,updateUser
 } = UserSlice.actions;
 
 
