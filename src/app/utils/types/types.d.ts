@@ -34,7 +34,7 @@ export type categoryType = {
   image: string;
   courses_count: number;
   title: string;
-  video: string,
+  video: string;
 };
 
 export type settingType = {
@@ -280,11 +280,11 @@ export type Benefits = {
 };
 
 export type AboutUs = {
-  title: string | null;
-  description: string | null;
-  meta_title: string | null;
-  meta_description: string | null;
-  meta_keywords: string | null;
+  title: string;
+  description: string;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
   meta_image: string;
 };
 

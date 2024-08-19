@@ -3,15 +3,12 @@ import Hero from "../components/careers/Hero";
 import Openings from "../components/careers/Openings";
 
 const Careers = () => {
-  const { isLoading } = useCareers();
-  if (isLoading) {
-    return <div>Loading ...........</div>
-    
-  }
+  const { isLoading, isSuccess } = useCareers();
+
   return (
     <div>
       <Hero />
-      <Openings />
+      <Openings loading={isLoading} success={isSuccess} />
     </div>
   );
 };

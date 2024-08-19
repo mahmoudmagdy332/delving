@@ -2,8 +2,14 @@ import { Button, Typography } from "@mui/material";
 import OpeningCard from "./OpeningCard";
 import { useCareerSliceSelector } from "../../app/slices/CareersSlice";
 import { useCategoriesSliceSelector } from "../../app/slices/categoriesSlice";
+import React from "react";
+import CareerLoader from "../common/CareerLoader";
 
-const Openings = () => {
+interface opening {
+  loading: boolean;
+  success: boolean;
+}
+const Openings: React.FC<opening> = ({ loading, success }) => {
   const { careers } = useCareerSliceSelector((state) => state.CareersReducer);
 
   const { categories } = useCategoriesSliceSelector(
@@ -38,9 +44,8 @@ const Openings = () => {
         ))}
       </div>
       <div className="flex flex-col gap-5">
-        {careers?.map((career) => (
-          <OpeningCard item={career} />
-        ))}
+        {loading && [...Array(6)].map(() => <CareerLoader />)}
+        {success && careers?.map((career) => <OpeningCard item={career} />)}
       </div>
     </div>
   );

@@ -31,6 +31,7 @@ import Scorm from "../../pages/Scorm";
 import ConfirmSignCode from "../../pages/ConfirmSignCode";
 import NotFound from "../../pages/NotFound";
 import ResetPassword from "../../pages/ResetPassword";
+import Help from "../../pages/Help";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -245,6 +246,14 @@ const routes = createHashRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <Welcome />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/Help",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Help />
               </Suspense>
             ),
           },

@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useCategoriesSliceSelector } from "../app/slices/categoriesSlice";
+import CoursesLoading from "../components/common/CoursesLoading";
 // import { useState } from "react";
 type FormValues = {
   search: string;
@@ -48,7 +49,7 @@ const Courses = () => {
     dispatch(setSearch(undefined));
     reset();
   };
-  const { isLoading } = useCourses({
+  const { isLoading, isSuccess } = useCourses({
     name: search,
     id: category_id,
   });
@@ -56,10 +57,6 @@ const Courses = () => {
   const handleSelectCategory = (id: number | undefined) => {
     dispatch(setCategory(id));
   };
-
-  if (isLoading) {
-    return <div>loading........</div>;
-  }
 
   return (
     <div className="py-10 w-10/12 mx-auto">
@@ -87,7 +84,6 @@ const Courses = () => {
           <div className="relative flex grow">
             <input
               {...register("search", {
-                required: true,
                 onChange: (e) => handleInputChange(e.target.value),
               })}
               type="text"
@@ -144,7 +140,13 @@ const Courses = () => {
         </div>
 
         <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses && courses?.map((item) => <CourseCard course={item} />)}
+          {isLoading ? (
+            [...Array(6)].map(() => <CoursesLoading />)
+          ) : isSuccess ? (
+            courses && courses?.map((item) => <CourseCard course={item} />)
+          ) : (
+            <div>Error</div>
+          )}
         </div>
       </div>
     </div>

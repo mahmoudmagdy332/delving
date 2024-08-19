@@ -14,9 +14,9 @@ const OpeningCard: React.FC<careerProps> = ({ item }) => {
         >
           {item.title}
         </Typography>
-        <Typography sx={{ fontSize: "18px", fontWeight: "400" }}>
+        <Typography sx={{ fontSize: "18px", fontWeight: "400",color:'primary.light' }}>
           {item.description && (
-            <p dangerouslySetInnerHTML={{ __html: item?.description }} />
+            <Typography dangerouslySetInnerHTML={{ __html: item?.description }} />
           )}
         </Typography>
         <Link to="/jop/1" className="flex justify-start">
