@@ -5,7 +5,7 @@ import { useLogin } from "../app/utils/hooks/useAuth";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { SubmitHandler, useForm } from "react-hook-form";
-const inputStyle={ bgcolor:'gray.light',
+export const inputStyle={ bgcolor:'gray.light',
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       borderColor: 'gray', // Default border color
@@ -130,8 +130,12 @@ const LoginWith = () => {
              )}
            
             </form>
+             <div className="w-3/4 flex  justify-between items-center">
+             <Link to="/reset-password" className="border-b-2 border-blue-400 pb-1 text-gray-500 hover:text-blue-500 ">Reset password</Link>
+             <div className="flex gap-2">New user? <Link to="/signup">Sign up</Link></div>
 
-            <div className="flex gap-2">New user? <Link to="/signup">Sign up</Link></div>
+             </div>
+
 
           </div>
        </div>

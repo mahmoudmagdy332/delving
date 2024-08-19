@@ -1,10 +1,9 @@
-import { Button, CircularProgress, TextField } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CustomError } from "../../app/services/mutation";
 import { forgetPassword } from "../../app/utils/types/types";
 import { useLanguageSelector } from "../../app/slices/languageSlice";
-import { inputStyle } from "../../pages/LoginWith";
 
 type EmailInputProps = {
   mutate: (data: forgetPassword) => void;
@@ -37,18 +36,19 @@ const EmailInput = ({ mutate, isPending, isError, error }: EmailInputProps) => {
         className=" flex flex-col gap-4 w-full"
         onSubmit={handleSubmit(onSubmit)}
       >
-         <TextField className="col-span-2 w-full"
-                placeholder="Password"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: "Invalid email address",
-                  },
-                })}
-                sx={inputStyle} 
-            id="outlined-basic"  />
-        
+        <input
+          type="text"
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: "Invalid email address",
+            },
+          })}
+          className="w-full border border-gray-300 p-2.5 focus:border-Secondary"
+          style={{ outline: "none" }}
+          placeholder={translations.UsernameOrEmail}
+        />
         {errors.email && (
           <p role="alert" className="text-red-500 mt-1">
             {errors.email.message}
@@ -60,18 +60,19 @@ const EmailInput = ({ mutate, isPending, isError, error }: EmailInputProps) => {
           </p>
         )}
 
+        <button className='flex justify-center bg-primary   duration-400 items-center gap-3 rounded-sm py-3" py-2.5   text-white hover:bg-Secondary transition-all duration-300'>
           {isPending ? (
-           
-              <Button  disabled sx={{backgroundColor:'gray.dark',color:'gray.light',borderRadius:'100px',borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark',py:'12px', mt:'30px',"&:hover":{color:'gray.dark'}}}  className='transition-all ease-in-out  font-semibold hover:shadow-lg flex justify-center gap-3   w-full '>
-                Send
+            <>
+              {translations.loading}
               <CircularProgress size={20} color="inherit" />
-            </Button>
+            </>
           ) : (
-             <Button   type="submit" sx={{backgroundColor:'gray.dark',color:'gray.light',borderRadius:'100px',borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark',py:'12px', mt:'30px',"&:hover":{color:'gray.dark'}}}  className='transition-all ease-in-out  font-semibold hover:shadow-lg flex   w-full '>
-                Send
-              </Button>
+            <>
+              {translations.send}
+              <img src="/images/icons/Vector2.svg" alt="Icon" />
+            </>
           )}
-      
+        </button>
       </form>
     </div>
   );
