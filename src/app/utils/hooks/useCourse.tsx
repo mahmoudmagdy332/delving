@@ -1,17 +1,29 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setCourses, setLastPage } from "../../slices/coursesSlice";
-import { AllCoursesQuery } from "../../services/queries";
+import { setCourses } from "../../slices/coursesSlice";
+import { CoursesQuery } from "../../services/queries";
+import { CoursesParams } from "../types/types";
 
-export const useAllCourses = () => {
+export const useCourses = ({ name, id }: CoursesParams) => {
+  console.log(id);
+
   const dispatch = useDispatch();
-  const { isSuccess, data, isLoading, isError, error } = AllCoursesQuery();
+  const { isSuccess, data, isLoading, isError, error } = CoursesQuery({
+    name,
+    id,
+  });
+
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(setCourses(data.data.courses.data));
-      dispatch(setLastPage(data.data.courses.last_page));
+    if (data) {
+      console.log(data?.data);
+
+      dispatch(setCourses(data.data.data.courses.data));
     }
-  }, [data, isSuccess]);
+  }, [data]);
+
+  if (isError) {
+    console.error("Error fetching courses:", error);
+  }
 
   return { data, isSuccess, isLoading, isError, error };
 };

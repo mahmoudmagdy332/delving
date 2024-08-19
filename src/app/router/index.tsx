@@ -29,7 +29,7 @@ import Login from "../../pages/Login";
 import LoginWith from "../../pages/LoginWith";
 import Scorm from "../../pages/Scorm";
 import ConfirmSignCode from "../../pages/ConfirmSignCode";
-
+import NotFound from "../../pages/NotFound";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -169,7 +169,7 @@ const routes = createHashRouter([
             path: "/signup",
             element: (
               <Suspense fallback={<Loading />}>
-                <Signup/>
+                <Signup />
               </Suspense>
             ),
           },
@@ -179,7 +179,7 @@ const routes = createHashRouter([
             path: "/Login-with-email",
             element: (
               <Suspense fallback={<Loading />}>
-                <LoginWith/>
+                <LoginWith />
               </Suspense>
             ),
           },
@@ -187,7 +187,7 @@ const routes = createHashRouter([
             path: "/login",
             element: (
               <Suspense fallback={<Loading />}>
-                <Login/>
+                <Login />
               </Suspense>
             ),
           },
@@ -230,7 +230,7 @@ const routes = createHashRouter([
             path: "*", // Catch-all route for 404 pages
             element: (
               <Suspense fallback={<Loading />}>
-                <div>NotFound</div>
+                <NotFound />
               </Suspense>
             ),
           },
