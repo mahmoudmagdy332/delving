@@ -34,6 +34,7 @@ export type categoryType = {
   image: string;
   courses_count: number;
   title: string;
+  video: string,
 };
 
 export type settingType = {

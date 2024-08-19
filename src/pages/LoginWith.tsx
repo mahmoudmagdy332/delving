@@ -34,7 +34,7 @@ const LoginWith = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [eyes, setEyes] = useState(false);
-  const { mutate, isSuccess, isPending, isError, error, ErrorCheck } =useLogin();
+  const { mutate, isSuccess, isPending, isError, error } =useLogin();
   const {
     register,
     formState: { errors },
@@ -88,7 +88,7 @@ const LoginWith = () => {
                 sx={inputStyle} 
             id="outlined-basic"  />
            
-            <div className="absolute top-3 end-1">
+            <div className="absolute top-3 end-2">
               
                   {eyes ? (
                     <div
@@ -115,9 +115,8 @@ const LoginWith = () => {
             </div>
             {isError && (
               <p className="text-red-500">
-                {ErrorCheck
-                  ? "user name or password in correct"
-                  : error?.response?.data?.message}
+               
+              {error?.response?.data?.message}
               </p>
             )}
              {isPending ? (

@@ -6,9 +6,9 @@ import { changeLoading, createSetting } from "../../slices/settingSlice";
 
 const useSetting = () => {
     const dispatch = useDispatch<AppDispatch>();
-  const { isLoading, isSuccess, data,error } = settingQuery();
+  const { isLoading, data,error } = settingQuery();
   useEffect(() => {
-    if (isSuccess && data) 
+    if (data) 
       dispatch(createSetting(data.data));
       
   }, [data]);

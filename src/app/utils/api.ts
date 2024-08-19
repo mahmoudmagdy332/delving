@@ -27,6 +27,8 @@ export const SingleInstructorAPI = (id: string) =>
 
 export const postSignupUserApi = (data: userData) => api.post("signup", data);
 export const getSettingAPI = () => api.get("settings");
+export const getCategoriesQueryAPI = () => api.get("categories");
+
 export const getHomeAPI = () => api.get("home");
 export const getAboutAPI = () => api.get("about-us");
 export const getTermsAPI = () => api.get("terms");

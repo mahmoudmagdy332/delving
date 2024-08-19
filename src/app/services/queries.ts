@@ -6,6 +6,7 @@ import {
   getAboutAPI,
   getCareersAPI,
   getFQsAPI,
+  getCategoriesQueryAPI,
   getHomeAPI,
   getSettingAPI,
   getTermsAPI,
@@ -15,6 +16,10 @@ import {
 } from "../utils/api";
 import { getLogoutAPI, getStudentProfileAPI } from "../utils/apiAuth";
 import { CoursesParams } from "../utils/types/types";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
+import { changeLoading } from "../slices/settingSlice";
+import { removeUser } from "../slices/UserSlice";
 
 export function settingQuery() {
   return useQuery({
@@ -50,6 +55,14 @@ queryFn: async () => await getCareersAPI(),
   });
 }
 
+export function categoriesQuery() {
+  return useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => await getCategoriesQueryAPI(),
+    refetchOnMount: false,
+    retry: 1,
+  });
+}
 export const UseInstructorsQuery = (currentPage: number) => {
   return useQuery({
     queryKey: ["instructors", currentPage],
@@ -82,9 +95,16 @@ export function authUserQuery() {
 }
 
 export function logoutQuery() {
+  const dispatch = useDispatch<AppDispatch>();
   return useQuery({
     queryKey: ["logout"],
-    queryFn: async () => await getLogoutAPI(),
+    queryFn: async () => {
+      dispatch(changeLoading(true))
+      const l= await getLogoutAPI()
+      await dispatch(removeUser())
+      dispatch(changeLoading(false))
+      return l;
+    },
     enabled: false,
   });
 }

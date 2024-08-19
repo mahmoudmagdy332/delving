@@ -16,10 +16,9 @@ const settingSlice = createSlice({
   initialState,
   reducers: {
     createSetting: (state, action) => {
-      console.log('action.payload',action.payload)
-      state.setting = action.payload.settings;
-      state.categories = action.payload.categories;
-      state.instructors = action.payload.instructors;
+
+      state.setting = action.payload.data;
+
     },
     changeLoading: (state, action) => {
       console.log('action.payload',action.payload)
