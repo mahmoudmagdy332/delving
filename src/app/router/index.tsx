@@ -30,6 +30,7 @@ import LoginWith from "../../pages/LoginWith";
 import Scorm from "../../pages/Scorm";
 import ConfirmSignCode from "../../pages/ConfirmSignCode";
 import NotFound from "../../pages/NotFound";
+import ResetPassword from "../../pages/ResetPassword";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -183,6 +184,7 @@ const routes = createHashRouter([
               </Suspense>
             ),
           },
+          { path: "/reset-password", element: <ResetPassword /> },
           {
             path: "/login",
             element: (

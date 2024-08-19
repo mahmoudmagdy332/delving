@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {  Button } from '@mui/material';
 import { Input as BaseInput } from '@mui/base/Input';
 import { Box, styled } from '@mui/system';
 import { CircularProgress } from '@mui/material';
@@ -194,11 +193,10 @@ export const OTPInput = ({mutate,isPending,isError,error}:OTPInputProps) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 3,
-        my:'100px'
+        gap: 2,
       }}
     >
-      <div className='flex justify-center mt-4'>
+      <div className='flex justify-center mt-10'>
       <OTP separator={<span> </span>} value={otp} onChange={setOtp} length={6} />
       </div>
       {isError && (
@@ -207,14 +205,13 @@ export const OTPInput = ({mutate,isPending,isError,error}:OTPInputProps) => {
                 </p>
               )}
             {isPending ? (
-              <Button   onClick={handleSubmit} sx={{backgroundColor:'gray.dark',color:'gray.light',borderRadius:'100px',borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark',py:'12px', mt:'30px',"&:hover":{color:'gray.dark'}}}  className='transition-all ease-in-out  font-semibold hover:shadow-lg flex   w-full '>
-              Logging In... <CircularProgress size={20} color="inherit" />
-              </Button>
+                   <button  className='flex justify-center  bg-primary my-10  duration-400 items-center gap-3 rounded-sm py-3" py-2.5  text-white hover:bg-Secondary transition-all duration-300'>
+                     Logging In... <CircularProgress size={20} color="inherit" />
+                  </button>
               ) : (
-                
-                <Button   onClick={handleSubmit} sx={{backgroundColor:'gray.dark',color:'gray.light',borderRadius:'100px',borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark',py:'12px', mt:'30px',"&:hover":{color:'gray.dark'}}}  className='transition-all ease-in-out  font-semibold hover:shadow-lg flex   w-full '>
-                Confirm
-              </Button>
+                <button onClick={handleSubmit} className='flex justify-center   bg-primary my-10  duration-400 items-center gap-3 rounded-sm py-3" py-2.5  text-white hover:bg-Secondary transition-all duration-300'>
+                  Confirm <img src="/images/icons/Vector2.svg" alt="Icon" />
+                </button>
               )}
             
     </Box>
