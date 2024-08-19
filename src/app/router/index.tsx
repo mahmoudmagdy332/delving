@@ -28,6 +28,7 @@ import Signup from "../../pages/Signup";
 import Login from "../../pages/Login";
 import LoginWith from "../../pages/LoginWith";
 import Scorm from "../../pages/Scorm";
+import ConfirmSignCode from "../../pages/ConfirmSignCode";
 
 
 // Lazy load components
@@ -172,6 +173,8 @@ const routes = createHashRouter([
               </Suspense>
             ),
           },
+          { path: "/signup/confirm-code", element: <ConfirmSignCode /> },
+
           {
             path: "/Login-with-email",
             element: (
