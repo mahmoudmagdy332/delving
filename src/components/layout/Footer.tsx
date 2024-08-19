@@ -4,7 +4,10 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useSettingSliceSelector } from "../../app/slices/settingSlice";
 const Footer = () => {
+  const { setting } = useSettingSliceSelector((state) => state.settingReducer);
+
   const pages=[{name:'Home',link:"/"},
     {name:'Courses',link:"courses"},
     {name:'Pricing',link:"/pricing"},
@@ -24,9 +27,13 @@ const Footer = () => {
     <Box sx={{backgroundColor:"#010203"}}>
       <div className="w-11/12 lg:w-10/12 mx-auto pt-16">
             <Box className="grid lg:grid-cols-5 md:grid-cols-2 gap-8 ">
-              <Box className="col-span-2 flex justify-center items-start lg:justify-start">
+              <Box className="col-span-2 flex flex-col gap-8 justify-center items-start lg:justify-start">
               {/* {theme.palette.mode === 'dark' ?   <img src="/images/LOGO/Logo (2) 1.png" className="w-56"/>:<img src="/images/LOGO/icon black 1.png" className="w-56"/>} */}
-              <img src="/images/LOGO/icon black 1.png" className="w-56"/>
+              <img src={setting?.footer_logo} className="w-56"/>
+              
+              <Typography sx={{color:"#fcfcfd"}}>
+              {setting?.footer_description}
+              </Typography>
               </Box>
             <div className="flex flex-col gap-3 items-center">
               {pages.map((page)=>(

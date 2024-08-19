@@ -4,9 +4,12 @@ import { useDispatch } from "react-redux";
 import { useSettingSliceSelector } from "../../app/slices/settingSlice";
 import { updateUser } from "../../app/slices/UserSlice";
 import Loader from "../common/Loader";
+import useSetting from "../../app/utils/hooks/useSetting";
+import useCategories from "../../app/utils/hooks/useCategories";
 
 const MainLayout = () => {
-  // const { error } = useSetting();
+  useCategories();
+  const { error } = useSetting();
   const { loading } = useSettingSliceSelector((state) => state.settingReducer);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -27,12 +30,12 @@ const MainLayout = () => {
             <Loader />
           </div>
         );
-      // if (error)
-      //   return (
-      //     <div className="h-screen flex justify-center items-center">
-      //       Error: {error.message}
-      //     </div>
-      //   );
+      if (error)
+        return (
+          <div className="h-screen flex justify-center items-center">
+            Error: {error.message}
+          </div>
+        );
   return (
     <Outlet />
   )

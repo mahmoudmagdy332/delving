@@ -12,7 +12,8 @@ export type settingInitialState = {
 };
 
 export type User = {
-  name: string;
+  fname: string;
+  lname: string;
   email: string;
   phone: string;
   image: string;

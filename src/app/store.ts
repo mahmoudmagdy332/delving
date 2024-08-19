@@ -3,6 +3,7 @@ import languageSlice from "./slices/languageSlice";
 import UserSlice from "./slices/UserSlice";
 import settingSlice from "./slices/settingSlice";
 import coursesSlice from "./slices/coursesSlice";
+import categoriesSlice from "./slices/categoriesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     UserReducer: UserSlice,
     settingReducer: settingSlice,
     CoursesReducer: coursesSlice,
+    categoriesReducer:categoriesSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

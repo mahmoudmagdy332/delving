@@ -15,14 +15,11 @@ const UserSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      console.log("print user login info from state");
       console.log(action.payload);
       const { Student, data } = action.payload;
       if (data.token) {
         state.user = Student;
-
         Cookies.set("access_token", data.token);
-
         localStorage.setItem("student", JSON.stringify(Student));
       }
     },
@@ -33,11 +30,16 @@ const UserSlice = createSlice({
       state.user = action.payload;
       localStorage.setItem("student", JSON.stringify(action.payload));
     },
+    removeUser: (state) => {
+      state.user = null;
+      Cookies.remove("access_token");
+      localStorage.setItem("student", "");
+    },
   },
 });
 
 export const {
-  changePopup,updateUser,setUser
+  changePopup,updateUser,setUser,removeUser
 } = UserSlice.actions;
 
 

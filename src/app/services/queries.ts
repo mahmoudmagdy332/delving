@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   allBooksAPI,
   coursesAPI,
+  getCategoriesQueryAPI,
   getHomeAPI,
   getSettingAPI,
   instructorsAPI,
@@ -11,11 +12,23 @@ import {
 } from "../utils/api";
 import { getLogoutAPI, getStudentProfileAPI } from "../utils/apiAuth";
 import { CoursesParams } from "../utils/types/types";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
+import { changeLoading } from "../slices/settingSlice";
+import { removeUser } from "../slices/UserSlice";
 
 export function settingQuery() {
   return useQuery({
     queryKey: ["setting"],
     queryFn: async () => await getSettingAPI(),
+    refetchOnMount: false,
+    retry: 1,
+  });
+}
+export function categoriesQuery() {
+  return useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => await getCategoriesQueryAPI(),
     refetchOnMount: false,
     retry: 1,
   });
@@ -52,9 +65,16 @@ export function authUserQuery() {
 }
 
 export function logoutQuery() {
+  const dispatch = useDispatch<AppDispatch>();
   return useQuery({
     queryKey: ["logout"],
-    queryFn: async () => await getLogoutAPI(),
+    queryFn: async () => {
+      dispatch(changeLoading(true))
+      const l= await getLogoutAPI()
+      await dispatch(removeUser())
+      dispatch(changeLoading(false))
+      return l;
+    },
     enabled: false,
   });
 }

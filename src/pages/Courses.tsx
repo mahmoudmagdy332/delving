@@ -13,7 +13,8 @@ import { useCourses } from "../app/utils/hooks/useCourse";
 import { useDispatch } from "react-redux";
 // import CourseCard from "../components/courses/CourseCard";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCategoriesSliceSelector } from "../app/slices/categoriesSlice";
 // import { useState } from "react";
 type FormValues = {
   search: string;
@@ -23,8 +24,11 @@ const Courses = () => {
   const { courses, search, category_id } = useCoursesSliceSelector(
     (state) => state.CoursesReducer
   );
+  const {categories}=useCategoriesSliceSelector((state) => state.categoriesReducer);
   const dispatch = useDispatch();
-
+  useEffect(()=>{
+    console.log('categories',categories)
+  },[categories])
   const { register, handleSubmit, reset } = useForm<FormValues>();
 
   const [isInputEmpty, setIsInputEmpty] = useState(true);
@@ -51,17 +55,7 @@ const Courses = () => {
     dispatch(setCategory(id));
   };
 
-  const listItems: {
-    name: string;
-    id?: number;
-  }[] = [
-    { name: "All" },
-    { name: "HVAC", id: 1 },
-    { name: "Light Current", id: 2 },
-    { name: "Fire Fighting", id: 3 },
-    { name: "Electrical Power", id: 4 },
-    { name: "Construction", id: 5 },
-  ];
+ 
 
   if (isLoading) {
     return <div>loading........</div>;
@@ -113,7 +107,23 @@ const Courses = () => {
           </div>
         </form>
         <div className="flex flex-wrap gap-4">
-          {listItems.map((item) => (
+        <Button
+              onClick={() => handleSelectCategory(undefined)}
+              sx={{
+                border: "1px solid gray",
+                color: "text.primary",
+                py: "8px",
+                px: "10px",
+                borderRadius: "5px",
+                "&:hover": {
+                  borderColor: "primary.main",
+                  bgcolor: "primary.dark",
+                },
+              }}
+            >
+              All
+            </Button>
+          {categories?.map((item) => (
             <Button
               onClick={() => handleSelectCategory(item.id)}
               sx={{
@@ -128,7 +138,7 @@ const Courses = () => {
                 },
               }}
             >
-              {item.name}
+              {item.title}
             </Button>
           ))}
         </div>

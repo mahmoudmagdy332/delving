@@ -19,8 +19,10 @@ import { Link, NavLink } from 'react-router-dom';
 import Popup from '../../auth/Popup';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../app/store';
-import { changePopup } from '../../../app/slices/UserSlice';
+import { changePopup, useUserSelector } from '../../../app/slices/UserSlice';
 
+import { useSettingSliceSelector } from '../../../app/slices/settingSlice';
+import UserProfile from './UserProfile';
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -37,6 +39,18 @@ const navItems = [{name:'Home',link:"/"},
   {name:'Careers',link:"/careers"}];
 
 export default function Index(props: Props) {
+  const { setting } = useSettingSliceSelector((state) => state.settingReducer);
+  const { user } = useUserSelector((state) => state.UserReducer);
+
+  const [isLogin,setIsLogin]=React.useState(false)
+  React.useEffect(()=>{
+    if(user){
+      setIsLogin(true)
+    }else{
+      setIsLogin(false)
+    }
+    
+  },[user])
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -51,7 +65,7 @@ export default function Index(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Box  sx={{ my: 2,width:'90%',mx:"auto" }}>
-        <img src="/Logo.svg" />
+        <img src={setting?.logo}/>
       </Box>
       <Divider />
       <List>
@@ -79,7 +93,8 @@ export default function Index(props: Props) {
          
           <div className='w-11/12  mx-auto flex justify-between items-center'>
            <div className='w-56'>
-           {theme.palette.mode === 'dark' ?   <img src="/images/LOGO/icon black 1.png"/>:<img src="/images/LOGO/Logo (2) 1.png"/>}
+          
+           {theme.palette.mode === 'dark' ?   <img src={setting?.footer_logo}/>:<img src={setting?.logo}/>}
            </div>
            <Box sx={{display: { xs: 'none', lg: 'flex' },gap:"5px",justifyContent:'center',alignItems:'center'}}>
             {navItems.map((item)=>(
@@ -99,43 +114,53 @@ export default function Index(props: Props) {
              </NavLink>
             ))}
            </Box>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' },gap:'20px' ,alignItems:'center' }}>
-          <Link to="/welcome">
-          <Button
-          sx={{bgcolor:'transparent',color:'primary.main', 
-            '&:hover': {
-          backgroundColor:'transparent', 
-          color:'primary.main' ,
-          py:'10px'
-       },
-          }}
-          > Sign up</Button></Link>
-              <Button sx={{bgcolor:'primary.main',color:'white',py:'10px',px:'20px' ,borderRadius:'7px',
-                '&:hover': {
-              backgroundColor:'yellow.main', 
-                             
-           },
-              }} onClick={handleClickOpen}>login</Button>
-              <Typography onClick={colorMode.toggleColorMode} sx={{
-                color:'text.primary',
-            '&:hover': {
-              color:'text.primary',
-              cursor:'pointer',          
-           },
-           
-          }} >
-          {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-          </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{  display: { lg: 'none' }, color:"text.primary",ml:'10px' }}
-          >
-            <MenuIcon />
-          </IconButton>
-          </Box>
+          <div className='flex gap-4 items-center'>
+          {isLogin ? (
+                 <>
+                 <UserProfile />
+                 </>
+              ) : (
+                <Box sx={{ display: { xs: 'none', sm: 'flex' },gap:'20px' ,alignItems:'center' }}>
+                <Link to="/welcome">
+                <Button
+                sx={{bgcolor:'transparent',color:'primary.main', 
+                  '&:hover': {
+                backgroundColor:'transparent', 
+                color:'primary.main' ,
+                py:'10px'
+             },
+                }}
+                > Sign up</Button></Link>
+                    <Button sx={{bgcolor:'primary.main',color:'white',py:'10px',px:'20px' ,borderRadius:'7px',
+                      '&:hover': {
+                    backgroundColor:'yellow.main', 
+                                   
+                 },
+                    }} onClick={handleClickOpen}>login</Button>
+                    
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                  sx={{  display: { lg: 'none' }, color:"text.primary",ml:'10px' }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                </Box>
+              )}
+        <Typography onClick={colorMode.toggleColorMode} sx={{
+                      color:'text.primary',
+                  '&:hover': {
+                    color:'text.primary',
+                    cursor:'pointer',          
+                 },
+                 
+                }} >
+                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                </Typography>
+          </div>
+          
           
           </div>
           
