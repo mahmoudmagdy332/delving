@@ -272,3 +272,43 @@ export type CoursesParams = {
   name: string | undefined;
   id: number | undefined;
 };
+
+export type Benefits = {
+  id: number | null;
+  title: string | null;
+  description: string | null;
+};
+
+export type AboutUs = {
+  title: string | null;
+  description: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  meta_keywords: string | null;
+  meta_image: string;
+};
+
+export type AboutSliceType = {
+  About: AboutUs[] | null;
+  Benefits: Benefits[] | null;
+};
+
+export type Question = {
+  id: number | null;
+  title: string | null;
+  description: string | null;
+};
+
+export type career = {
+  id: number | null;
+  type: string | null;
+  level: string | null;
+  title: string | null;
+  description: string | null;
+};
+export type FQsSliceType = {
+  Questions: Question[] | null;
+};
+export type CareersSliceType = {
+  careers: career[] | null;
+};
