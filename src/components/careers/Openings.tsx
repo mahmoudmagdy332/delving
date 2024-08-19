@@ -1,17 +1,14 @@
 import { Button, Typography } from "@mui/material";
 import OpeningCard from "./OpeningCard";
 import { useCareerSliceSelector } from "../../app/slices/CareersSlice";
+import { useCategoriesSliceSelector } from "../../app/slices/categoriesSlice";
 
 const Openings = () => {
-  const listItems = [
-    "All",
-    "HVAC",
-    "Light Current",
-    "Fire Fighting",
-    "Electrical Power",
-    "Construction",
-  ];
   const { careers } = useCareerSliceSelector((state) => state.CareersReducer);
+
+  const { categories } = useCategoriesSliceSelector(
+    (store) => store.categoriesReducer
+  );
 
   return (
     <div className="my-10 w-11/12 lg:w-10/12 mx-auto">
@@ -22,7 +19,7 @@ const Openings = () => {
       </Typography>
 
       <div className="flex flex-wrap gap-4 my-10">
-        {listItems.map((item) => (
+        {categories?.map((item) => (
           <Button
             sx={{
               border: "1px solid gray",
@@ -36,7 +33,7 @@ const Openings = () => {
               },
             }}
           >
-            {item}
+            {item.title}
           </Button>
         ))}
       </div>
