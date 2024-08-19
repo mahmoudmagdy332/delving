@@ -3,6 +3,9 @@ import languageSlice from "./slices/languageSlice";
 import UserSlice from "./slices/UserSlice";
 import settingSlice from "./slices/settingSlice";
 import coursesSlice from "./slices/coursesSlice";
+import AboutusSlice from "./slices/AboutusSlice";
+import FQsSlice from "./slices/FQsSlice";
+import CareersSlice from "./slices/CareersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +13,9 @@ export const store = configureStore({
     UserReducer: UserSlice,
     settingReducer: settingSlice,
     CoursesReducer: coursesSlice,
+    AboutAsReducer: AboutusSlice,
+    QuestionReducer: FQsSlice,
+    CareersReducer: CareersSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

@@ -3,8 +3,12 @@ import { useQuery } from "@tanstack/react-query";
 import {
   allBooksAPI,
   coursesAPI,
+  getAboutAPI,
+  getCareersAPI,
+  getFQsAPI,
   getHomeAPI,
   getSettingAPI,
+  getTermsAPI,
   instructorsAPI,
   instructorsAPIPagination,
   PackagesAPIPagination,
@@ -20,6 +24,32 @@ export function settingQuery() {
     retry: 1,
   });
 }
+
+export function AboutUsQuery() {
+  return useQuery({
+    queryKey: ["About"],
+    queryFn: async () => await getAboutAPI(),
+  });
+}
+export function TermsQuery() {
+  return useQuery({
+    queryKey: ["Terms"],
+    queryFn: async () => await getTermsAPI(),
+  });
+}
+export function FQsQuery() {
+  return useQuery({
+    queryKey: ["FQs"],
+queryFn: async () => await getFQsAPI(),
+  });
+}
+export function CareerQuery() {
+  return useQuery({
+    queryKey: ["career"],
+queryFn: async () => await getCareersAPI(),
+  });
+}
+
 export const UseInstructorsQuery = (currentPage: number) => {
   return useQuery({
     queryKey: ["instructors", currentPage],
