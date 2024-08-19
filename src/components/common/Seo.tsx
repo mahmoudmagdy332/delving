@@ -1,6 +1,7 @@
-import { FC } from "react";
 
-import { Helmet } from "react-helmet";
+import { FC } from 'react';
+import { Helmet } from 'react-helmet';
+
 
 interface SeoProps {
   title: string;
