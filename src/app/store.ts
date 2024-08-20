@@ -7,6 +7,7 @@ import AboutusSlice from "./slices/AboutusSlice";
 import FQsSlice from "./slices/FQsSlice";
 import CareersSlice from "./slices/CareersSlice";
 import categoriesSlice from "./slices/categoriesSlice";
+import ArticleCatSlice from "./slices/ArticleCatSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,8 +17,9 @@ export const store = configureStore({
     CoursesReducer: coursesSlice,
     AboutAsReducer: AboutusSlice,
     QuestionReducer: FQsSlice,
+    ArticleCategoryReducer: ArticleCatSlice,
     CareersReducer: CareersSlice,
-    categoriesReducer:categoriesSlice,
+    categoriesReducer: categoriesSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

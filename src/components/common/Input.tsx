@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import { forwardRef } from "react";
 
 interface InputProps {
+  disableUnderline?: boolean;
   label: string;
   color: string;
   focusColor: string;
@@ -15,6 +16,7 @@ interface InputProps {
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      
       label,
       value,
       color,
@@ -31,6 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className="w-full">
         {" "}
         <TextField
+        
           label={label}
           type={type}
           error={error ? true : false}

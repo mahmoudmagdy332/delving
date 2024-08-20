@@ -34,8 +34,9 @@ import ResetPassword from "../../pages/ResetPassword";
 import Help from "../../pages/Help";
 import Articales from "../../pages/Articales";
 import Loader from "../../components/common/Loader";
+import CategoryArticles from "../../pages/CategoryArticles";
+import ArticleDetails from "../../pages/ArticleDetails";
 
-// Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
 
 const Loading = () => (
@@ -268,6 +269,22 @@ const routes = createHashRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <Help />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/article/:id",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <CategoryArticles />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/articleDetails/:name",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <ArticleDetails />
               </Suspense>
             ),
           },

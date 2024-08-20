@@ -1,21 +1,36 @@
-function DelveCard() {
+import React from "react";
+import { ArticleCategory } from "../../app/utils/types/types";
+import { Link } from "react-router-dom";
+
+interface DelveProps {
+  item: ArticleCategory;
+}
+
+const DelveCard: React.FC<DelveProps> = ({ item }) => {
   return (
-    <div>
-      <img src="/images/ICONS/CommentIcon.svg" alt="" />
-      <div>
-        <p>aboutDelve</p>
-        <p>Get to know us and our company.</p>
-        <div>
-          <div className="flex items-center justify-between">
+    <Link
+      to={`/article/${item.id}`}
+      className="flex sm:flex-row flex-col items-center gap-8 border rounded-lg p-4 "
+    >
+      <div className="w-10 h-10 ">
+        <img src={item.image} alt="" />
+      </div>
+      <div className="flex flex-col gap-2">
+        <p className="font-semibold text-black">{item.title}</p>
+        <p className="text-md font-medium text-gray-900 ">{item.description}</p>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 ">
             <img src="/images/ICONS/BYName.svg" alt="" />
-            <p>by Omnia</p>
+            <p className="text-sm text-gray-400 ">by Mona</p>
           </div>
-          <p>.</p>
-          <p>7 article</p>
+          <p className="text-sm text-gray-400 ">.</p>
+          <p className="text-sm text-gray-400 ">
+            {item.articles_count} article
+          </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
-}
+};
 
 export default DelveCard;
