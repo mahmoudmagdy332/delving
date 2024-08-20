@@ -33,6 +33,7 @@ import NotFound from "../../pages/NotFound";
 import ResetPassword from "../../pages/ResetPassword";
 import Articales from "../../pages/Articales";
 import Loader from "../../components/common/Loader";
+import Intro from "../../pages/Intro";
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
@@ -253,6 +254,14 @@ const routes = createHashRouter([
       },
       {
         children: [
+          {
+            path: "/intro",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Intro />
+              </Suspense>
+            ),
+          },
           {
             path: "/welcome",
             element: (

@@ -92,9 +92,9 @@ export default function Index(props: Props) {
         <Toolbar>
          
           <div className='w-11/12  mx-auto flex justify-between items-center'>
-           <div className='w-56'>
+           <div className='w-56 h-20'>
           
-           {theme.palette.mode === 'dark' ?   <img src={setting?.footer_logo}/>:<img src={setting?.logo}/>}
+           {theme.palette.mode === 'dark' ?   <img src={setting?.footer_logo} className='w-56 h-20'/>:<img src={setting?.logo} className='w-56 h-20'/>}
            </div>
            <Box sx={{display: { xs: 'none', lg: 'flex' },gap:"5px",justifyContent:'center',alignItems:'center'}}>
             {navItems.map((item)=>(
@@ -121,7 +121,7 @@ export default function Index(props: Props) {
                  </>
               ) : (
                 <Box sx={{ display: { xs: 'none', sm: 'flex' },gap:'20px' ,alignItems:'center' }}>
-                <Link to="/welcome">
+                <Link to="/intro">
                 <Button
                 sx={{bgcolor:'transparent',color:'primary.main', 
                   '&:hover': {

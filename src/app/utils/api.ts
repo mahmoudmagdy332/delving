@@ -33,6 +33,8 @@ export const getHomeAPI = () => api.get("home");
 export const getAboutAPI = () => api.get("about-us");
 export const getTermsAPI = () => api.get("terms");
 export const getFQsAPI = () => api.get("questions");
+export const getIntroAPI = () => api.get("intro");
+
 export const getCareersAPI = () => api.get("careers");
 export const postLoginUserAPI = (data: userData) => api.post("login", data);
 export const ForgetPasswordAPI = (data: userData) =>

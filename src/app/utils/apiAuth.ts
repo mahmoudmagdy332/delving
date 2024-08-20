@@ -14,17 +14,17 @@ api.interceptors.request.use(
   async (config) => {
     const token = Cookies.get("access_token");
     token
-      ? (config.headers["Authorization"] = `Bearer ${token}`)
-      : (location.href = "/login");
+      && (config.headers["Authorization"] = `Bearer ${token}`)
+    
     return config;
   },
-  (error) => {
-    location.href = "/login";
-    return Promise.reject(error);
-  }
+
 );
 
 export const getLogoutAPI = () => api.get("logout");
+
+export const getsurveyAPI = () => api.get("survey");
+
 export const getStudentProfileAPI = () => api.get("profile");
 export const UpdateProfileAPI = (data: userData) => api.post("profile", data,{
   headers: {

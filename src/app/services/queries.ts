@@ -13,8 +13,9 @@ import {
   instructorsAPI,
   instructorsAPIPagination,
   PackagesAPIPagination,
+  getIntroAPI,
 } from "../utils/api";
-import { getLogoutAPI, getStudentProfileAPI } from "../utils/apiAuth";
+import { getLogoutAPI, getStudentProfileAPI, getsurveyAPI } from "../utils/apiAuth";
 import { CoursesParams } from "../utils/types/types";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
@@ -40,6 +41,18 @@ export function TermsQuery() {
   return useQuery({
     queryKey: ["Terms"],
     queryFn: async () => await getTermsAPI(),
+  });
+}
+export function surveyQuery() {
+  return useQuery({
+    queryKey: ["survey"],
+    queryFn: async () => await getsurveyAPI(),
+  });
+}
+export function IntroQuery() {
+  return useQuery({
+    queryKey: ["FQs"],
+    queryFn: async () => await getIntroAPI(),
   });
 }
 export function FQsQuery() {

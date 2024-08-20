@@ -146,12 +146,11 @@ export type HeroType = {
 };
 export type homeType = {
   newCourses: course[] | null;
-  mostPopular: course[] | null;
-  instructors: instructors[] | null;
-  packages: Package[] | null;
-  questions: Questions[] | null;
-  books: book[] | null;
-  hero: HeroType | null;
+  categories: categoryType[]|null,
+  content: null,
+  student_count: number,
+  course_count: number,
+  lesson_count: number
 };
 export type filterType = {
   rating: number | undefined;

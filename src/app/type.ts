@@ -21,6 +21,7 @@ export type User = {
   status: string;
   wallet: number;
   points: number;
+  survey_submited:boolean;
 };
 export type UserState = {
   user: User | null;

@@ -5,6 +5,7 @@ import { useLogin } from "../app/utils/hooks/useAuth";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useUserSelector } from "../app/slices/UserSlice";
 export const inputStyle={ bgcolor:'gray.light',
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
@@ -34,6 +35,8 @@ const LoginWith = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [eyes, setEyes] = useState(false);
+  const { user } = useUserSelector((state) => state.UserReducer);
+
   const { mutate, isSuccess, isPending, isError, error } =useLogin();
   const {
     register,
@@ -46,7 +49,12 @@ const LoginWith = () => {
   };
   useEffect(()=>{
     if (isSuccess) {
-      navigate(from);
+      if(!(user?.survey_submited)){
+        navigate('/welcome');
+      }else{
+        navigate(from);
+      }
+      
     }
   },[isSuccess])
   return (
