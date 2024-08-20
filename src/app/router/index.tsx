@@ -31,20 +31,18 @@ import Scorm from "../../pages/Scorm";
 import ConfirmSignCode from "../../pages/ConfirmSignCode";
 import NotFound from "../../pages/NotFound";
 import ResetPassword from "../../pages/ResetPassword";
-<<<<<<< HEAD
 import Help from "../../pages/Help";
-=======
 import Articales from "../../pages/Articales";
 import Loader from "../../components/common/Loader";
->>>>>>> 83d77770ec63cb540fd2214b94aeffe88af1936b
 
 // Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
 
-const Loading = () => 
-(<div className="flex h-96 justify-center items-center">
-<Loader />
-</div>);
+const Loading = () => (
+  <div className="flex h-96 justify-center items-center">
+    <Loader />
+  </div>
+);
 
 const routes = createHashRouter([
   {
@@ -206,7 +204,7 @@ const routes = createHashRouter([
             path: "/articales",
             element: (
               <Suspense fallback={<Loading />}>
-                <Articales/>
+                <Articales />
               </Suspense>
             ),
           },
