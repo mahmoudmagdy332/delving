@@ -14,6 +14,8 @@ import {
   instructorsAPIPagination,
   PackagesAPIPagination,
   getIntroAPI,
+  ArticleCategoryAPI,
+  ArticlesByIdAPI,
 } from "../utils/api";
 import { getLogoutAPI, getStudentProfileAPI, getsurveyAPI } from "../utils/apiAuth";
 import { CoursesParams } from "../utils/types/types";
@@ -58,13 +60,13 @@ export function IntroQuery() {
 export function FQsQuery() {
   return useQuery({
     queryKey: ["FQs"],
-queryFn: async () => await getFQsAPI(),
+    queryFn: async () => await getFQsAPI(),
   });
 }
 export function CareerQuery() {
   return useQuery({
     queryKey: ["career"],
-queryFn: async () => await getCareersAPI(),
+    queryFn: async () => await getCareersAPI(),
   });
 }
 
@@ -112,10 +114,10 @@ export function logoutQuery() {
   return useQuery({
     queryKey: ["logout"],
     queryFn: async () => {
-      dispatch(changeLoading(true))
-      const l= await getLogoutAPI()
-      await dispatch(removeUser())
-      dispatch(changeLoading(false))
+      dispatch(changeLoading(true));
+      const l = await getLogoutAPI();
+      await dispatch(removeUser());
+      dispatch(changeLoading(false));
       return l;
     },
     enabled: false,
@@ -126,6 +128,18 @@ export function CoursesQuery({ name, id }: CoursesParams) {
   return useQuery({
     queryKey: ["Courses", { name, id }],
     queryFn: async () => await coursesAPI({ name, id }),
+  });
+}
+export function ArticleCategoryQuery({ name }: { name: string | undefined }) {
+  return useQuery({
+    queryKey: ["Article-category", { name }],
+    queryFn: async () => await ArticleCategoryAPI({ name }),
+  });
+}
+export function Articles(id: string | undefined) {
+  return useQuery({
+    queryKey: ["Articles", { id }],
+    queryFn: async () => await ArticlesByIdAPI(id),
   });
 }
 export function AllInstructorQuery() {

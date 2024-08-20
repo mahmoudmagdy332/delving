@@ -31,17 +31,20 @@ import Scorm from "../../pages/Scorm";
 import ConfirmSignCode from "../../pages/ConfirmSignCode";
 import NotFound from "../../pages/NotFound";
 import ResetPassword from "../../pages/ResetPassword";
+import Help from "../../pages/Help";
 import Articales from "../../pages/Articales";
 import Loader from "../../components/common/Loader";
 import Intro from "../../pages/Intro";
+import CategoryArticles from "../../pages/CategoryArticles";
+import ArticleDetails from "../../pages/ArticleDetails";
 
-// Lazy load components
 const Home = lazy(() => import("../../pages/Home"));
 
-const Loading = () => 
-(<div className="flex h-96 justify-center items-center">
-<Loader />
-</div>);
+const Loading = () => (
+  <div className="flex h-96 justify-center items-center">
+    <Loader />
+  </div>
+);
 
 const routes = createHashRouter([
   {
@@ -203,7 +206,7 @@ const routes = createHashRouter([
             path: "/articales",
             element: (
               <Suspense fallback={<Loading />}>
-                <Articales/>
+                <Articales />
               </Suspense>
             ),
           },
@@ -267,6 +270,30 @@ const routes = createHashRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <Welcome />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/Help",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Help />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/article/:id",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <CategoryArticles />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/articleDetails/:name",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <ArticleDetails />
               </Suspense>
             ),
           },

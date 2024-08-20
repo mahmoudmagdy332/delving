@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useCategoriesSliceSelector } from "../app/slices/categoriesSlice";
+import CoursesLoading from "../components/common/CoursesLoading";
 // import { useState } from "react";
 type FormValues = {
   search: string;
@@ -24,11 +25,13 @@ const Courses = () => {
   const { courses, search, category_id } = useCoursesSliceSelector(
     (state) => state.CoursesReducer
   );
-  const {categories}=useCategoriesSliceSelector((state) => state.categoriesReducer);
+  const { categories } = useCategoriesSliceSelector(
+    (state) => state.categoriesReducer
+  );
   const dispatch = useDispatch();
-  useEffect(()=>{
-    console.log('categories',categories)
-  },[categories])
+  useEffect(() => {
+    console.log("categories", categories);
+  }, [categories]);
   const { register, handleSubmit, reset } = useForm<FormValues>();
 
   const [isInputEmpty, setIsInputEmpty] = useState(true);
@@ -46,7 +49,7 @@ const Courses = () => {
     dispatch(setSearch(undefined));
     reset();
   };
-  const { isLoading } = useCourses({
+  const { isLoading, isSuccess } = useCourses({
     name: search,
     id: category_id,
   });
@@ -54,12 +57,6 @@ const Courses = () => {
   const handleSelectCategory = (id: number | undefined) => {
     dispatch(setCategory(id));
   };
-
- 
-
-  if (isLoading) {
-    return <div>loading........</div>;
-  }
 
   return (
     <div className="py-10 w-10/12 mx-auto">
@@ -87,7 +84,6 @@ const Courses = () => {
           <div className="relative flex grow">
             <input
               {...register("search", {
-                required: true,
                 onChange: (e) => handleInputChange(e.target.value),
               })}
               type="text"
@@ -100,29 +96,29 @@ const Courses = () => {
               <SearchTwoToneIcon />
             </div>
             {!isInputEmpty && (
-              <div className="absolute inset-y-0 end-2 flex items-center pointer-events-none cursor-pointer">
+              <div className="absolute inset-y-0 end-2  flex items-center cursor-pointer ">
                 <IoMdClose className="cursor-pointer" onClick={clearInput} />
               </div>
             )}
           </div>
         </form>
         <div className="flex flex-wrap gap-4">
-        <Button
-              onClick={() => handleSelectCategory(undefined)}
-              sx={{
-                border: "1px solid gray",
-                color: "text.primary",
-                py: "8px",
-                px: "10px",
-                borderRadius: "5px",
-                "&:hover": {
-                  borderColor: "primary.main",
-                  bgcolor: "primary.dark",
-                },
-              }}
-            >
-              All
-            </Button>
+          <Button
+            onClick={() => handleSelectCategory(undefined)}
+            sx={{
+              border: "1px solid gray",
+              color: "text.primary",
+              py: "8px",
+              px: "10px",
+              borderRadius: "5px",
+              "&:hover": {
+                borderColor: "primary.main",
+                bgcolor: "primary.dark",
+              },
+            }}
+          >
+            All
+          </Button>
           {categories?.map((item) => (
             <Button
               onClick={() => handleSelectCategory(item.id)}
@@ -144,7 +140,13 @@ const Courses = () => {
         </div>
 
         <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses && courses?.map((item) => <CourseCard course={item} />)}
+          {isLoading ? (
+            [...Array(6)].map(() => <CoursesLoading />)
+          ) : isSuccess ? (
+            courses && courses?.map((item) => <CourseCard course={item} />)
+          ) : (
+            <div>Error</div>
+          )}
         </div>
       </div>
     </div>

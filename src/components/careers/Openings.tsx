@@ -1,17 +1,20 @@
 import { Button, Typography } from "@mui/material";
 import OpeningCard from "./OpeningCard";
 import { useCareerSliceSelector } from "../../app/slices/CareersSlice";
+import { useCategoriesSliceSelector } from "../../app/slices/categoriesSlice";
+import React from "react";
+import CareerLoader from "../common/CareerLoader";
 
-const Openings = () => {
-  const listItems = [
-    "All",
-    "HVAC",
-    "Light Current",
-    "Fire Fighting",
-    "Electrical Power",
-    "Construction",
-  ];
+interface opening {
+  loading: boolean;
+  success: boolean;
+}
+const Openings: React.FC<opening> = ({ loading, success }) => {
   const { careers } = useCareerSliceSelector((state) => state.CareersReducer);
+
+  const { categories } = useCategoriesSliceSelector(
+    (store) => store.categoriesReducer
+  );
 
   return (
     <div className="my-10 w-11/12 lg:w-10/12 mx-auto">
@@ -22,7 +25,7 @@ const Openings = () => {
       </Typography>
 
       <div className="flex flex-wrap gap-4 my-10">
-        {listItems.map((item) => (
+        {categories?.map((item) => (
           <Button
             sx={{
               border: "1px solid gray",
@@ -36,14 +39,13 @@ const Openings = () => {
               },
             }}
           >
-            {item}
+            {item.title}
           </Button>
         ))}
       </div>
       <div className="flex flex-col gap-5">
-        {careers?.map((career) => (
-          <OpeningCard item={career} />
-        ))}
+        {loading && [...Array(6)].map(() => <CareerLoader />)}
+        {success && careers?.map((career) => <OpeningCard item={career} />)}
       </div>
     </div>
   );

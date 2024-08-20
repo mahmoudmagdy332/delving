@@ -34,7 +34,7 @@ export type categoryType = {
   image: string;
   courses_count: number;
   title: string;
-  video: string,
+  video: string;
 };
 
 export type settingType = {
@@ -182,6 +182,29 @@ export type coursesSliceType = {
   category_id: number | undefined;
   search: string | undefined;
 };
+
+export type ArticleCategory = {
+  id: number;
+  image: string;
+  description: string;
+  title: string;
+  articles_count: number;
+};
+export type ArticleCatSliceType = {
+  ArticleCategory: ArticleCategory[] | null;
+  name: string | undefined;
+};
+export type Article = {
+  id: number;
+  category_article_id: number;
+  updated_at: string;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  meta_image: string;
+  title: string;
+  description: string;
+};
 export type booksSliceType = {
   books: book[] | null;
   currentPage: number;
@@ -279,11 +302,11 @@ export type Benefits = {
 };
 
 export type AboutUs = {
-  title: string | null;
-  description: string | null;
-  meta_title: string | null;
-  meta_description: string | null;
-  meta_keywords: string | null;
+  title: string;
+  description: string;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
   meta_image: string;
 };
 

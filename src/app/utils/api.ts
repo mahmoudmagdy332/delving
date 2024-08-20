@@ -60,7 +60,15 @@ export const coursesAPI = ({ name, id }: CoursesParams) =>
       search: name,
     },
   });
+export const ArticleCategoryAPI = ({ name }: { name: string | undefined }) =>
+  api.get(`search`, {
+    params: {
+      name: name,
+    },
+  });
 
+export const ArticlesByIdAPI = (id: string | undefined) =>
+  api.get(`category-articles?category_id=${id}`);
 export const CoursesAPI = (filter: filterType, currentPage: number) =>
   api.post(`courses/filter?page=${currentPage}`, filter);
 

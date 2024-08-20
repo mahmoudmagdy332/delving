@@ -1,3 +1,4 @@
+
 import { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -9,10 +10,12 @@ interface SeoProps{
   image?:string
 
 }
-const Seo: FC<SeoProps> = ({title,description,keywords,image}) => {
 
 
-  return(
+
+
+const Seo: FC<SeoProps> = ({ title, description, keywords,image }) => {
+  return (
     <div>
       <Helmet>
         <title>{title}</title>
@@ -27,7 +30,6 @@ const Seo: FC<SeoProps> = ({title,description,keywords,image}) => {
       </Helmet>
     </div>
   );
-}
-
+};
 
 export default Seo;
