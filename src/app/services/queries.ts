@@ -19,11 +19,13 @@ import {
   getTestimonialsAPI,
   getPrivaciesAPI,
   getPackagesAPI,
+  courseIdAPI,
 } from "../utils/api";
 import {
   getLogoutAPI,
   getStudentProfileAPI,
   getsurveyAPI,
+  myLearningIdAPI,
   SubscribePackageAPI,
 } from "../utils/apiAuth";
 import { CoursesParams } from "../utils/types/types";
@@ -187,5 +189,20 @@ export function UseBooksQuery() {
   return useQuery({
     queryKey: ["BooksPagenation"],
     queryFn: async () => await allBooksAPI(1),
+  });
+}
+
+export function CourseIdQuery(id:string|undefined){
+  return useQuery({
+    queryKey: ["CourseId"],
+    queryFn: async () => await courseIdAPI(id),
+    enabled:false
+  });
+}
+export function MyLearningIdQuery(id:string|undefined){
+  return useQuery({
+    queryKey: ["MyLearningId"],
+    queryFn: async () => await myLearningIdAPI(id),
+    enabled:false
   });
 }

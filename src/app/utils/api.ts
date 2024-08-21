@@ -37,6 +37,7 @@ export const getTestimonialsAPI = () => api.get("testimonials");
 export const getPrivaciesAPI = () => api.get("privacies");
 export const getPackagesAPI = () => api.get("packages");
 export const getIntroAPI = () => api.get("intro");
+export const courseIdAPI = (id: string | undefined) => api.get(`course/${id}`);
 
 export const getCareersAPI = () => api.get("careers");
 export const postLoginUserAPI = (data: userData) => api.post("login", data);

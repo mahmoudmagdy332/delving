@@ -21,6 +21,7 @@ api.interceptors.request.use(async (config) => {
 export const getLogoutAPI = () => api.get("logout");
 
 export const getsurveyAPI = () => api.get("survey");
+export const myLearningIdAPI = (id: string | undefined) => api.get(`my-learnings/${id}`);
 
 export const getStudentProfileAPI = () => api.get("profile");
 export const UpdateProfileAPI = (data: userData) =>

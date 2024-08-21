@@ -1,11 +1,24 @@
 import BottonPath from "./BottonPath";
 
 const Path = () => {
+    
+
     const steps = [
         { title: 'Understanding Variables'},
         { title: 'Practice Understanding Variables' },
         { title: 'Using Variables' },
         { title: 'Practice Using Variables'},
+        { title: 'Understanding Variables'},
+        { title: 'Practice Understanding Variables' },
+        { title: 'Using Variables' },
+        { title: 'Practice Using Variables'},
+        { title: 'Understanding Variables'},
+        { title: 'Practice Understanding Variables' },
+        { title: 'Using Variables' },
+        { title: 'Practice Using Variables'},
+        { title: 'Understanding Variables'},
+
+
        
     ];
   return (
@@ -17,25 +30,25 @@ const Path = () => {
         {steps.slice(2).map((step, index) => (
            <>
             {index%4===0&&(<>
-                <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+350} left={230} />
+                <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+370} left={240} />
                 <img src="/images/ICONS/Vector(3).svg" className={`${steps.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+400, left: 300, zIndex: -1 }} />
             </>
             )}
             {index%4===1&&(
                 <>
-                    <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+470} left={350} />
+                    <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+490} left={350} />
                     <img src="/images/ICONS/Vector(4).svg" className={`${steps.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+580, left: 220, zIndex: -1 }} />
                 </>
             )}
             {index%4===2&&(
                 <>
-                    <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+620} left={250} />
+                    <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+650} left={250} />
                     <img src="/images/ICONS/Vector(5).svg" className={`${steps.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+730, left: 200, zIndex: -1 }} />
                 </>
             )}
             {index%4===3&&(
                 <>
-                    <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+750} left={150} />
+                    <BottonPath key={index}  title={step.title} top={(Math.floor(index/4)*540)+780} left={150} />
                     <img src="/images/ICONS/Vector(6).svg" className={`${steps.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+850, left: 50, zIndex: -1 }} />
                 </>
             )}

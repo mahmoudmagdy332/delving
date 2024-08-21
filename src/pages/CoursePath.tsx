@@ -1,21 +1,22 @@
-import { useState } from "react";
 import CourseDiscrption from "../components/CoursePath/CourseDiscrption"
 import ExploreCource from "../components/CoursePath/ExploreCource"
 import Path from "../components/CoursePath/Path"
-import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
+import { useCourseById } from "../app/utils/hooks/useCourse";
+import { useEffect } from "react";
 
   
 const CoursePath = () => {
-  const [imageIndex, setImageIndex] = useState(0);
-
-const images = [
-  '/images/ICONS/image 36.png',
-  '',
-  '/images/ICONS/image 30.png'
-];
-const handleClick = () => {
-  setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-};
+  const { CourseId } = useParams();
+    console.log('CourseIdCourseId',CourseId)
+    
+    const { data ,refetch} = useCourseById({id:CourseId});   
+    useEffect(()=>{
+     if(CourseId){
+      refetch()
+     }
+    },[CourseId])
+    console.log('datadatadatadata',data)
   return (
     <div className="w-11/12 lg:w-3/4 mx-auto gap-10 flex flex-col lg:flex-row">
          <div className="w-full lg:w-2/5 relative">
@@ -26,24 +27,7 @@ const handleClick = () => {
         <div>
       
       <br />
-      <motion.button
       
-        onTapStart={handleClick} // Change the image on tap
-        onTapCancel={handleClick} // Reset the image if the tap is canceled
-        onTap={handleClick} // Reset the image when the tap is completed
-      >
-        <motion.img
-        key={imageIndex} // key helps in transitioning between different images
-        src={images[imageIndex]}
-        alt="Switchable"
-        initial={{ opacity: 0 }} // start of animation
-        animate={{ opacity: 1 }} // end of animation
-        exit={{ opacity: 0 }} // exit animation
-        transition={{ duration: 0.5 }} // animation duration
-        onTapStart={()=>setImageIndex(1)} // Change the image on tap
-        onTapCancel={()=>setImageIndex(0)} 
-      />
-      </motion.button>
    
     </div>
 

@@ -129,7 +129,7 @@ export type content={
 export type homeType = {
   newCourses: course[] | null;
   categories: categoryType[] | null;
-  content: null;
+  content: content[]|null;
   student_count: number;
   course_count: number;
   lesson_count: number;
