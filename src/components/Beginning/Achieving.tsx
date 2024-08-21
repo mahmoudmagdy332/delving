@@ -1,3 +1,6 @@
+import { MdRadioButtonChecked } from "react-icons/md";
+import { IoMdRadioButtonOff } from "react-icons/io";
+
 function Achieving() {
   const week: string[] = ["Su", "M", "T", "W", "Th"];
   return (
@@ -46,36 +49,31 @@ function Achieving() {
             />
 
             <div className="p-4 bg-gray-100 rounded-lg">
-              <label className="flex items-center space-x-2 mb-2">
-                <input
-                  type="radio"
-                  name="task"
-                  className="form-radio text-blue-600"
-                />
+              <div className="flex items-center space-x-2 mb-2">
+                <div className="text-green-600">
+                  <MdRadioButtonChecked />
+                </div>
+
                 <span className="text-black font-semibold">
                   Start your first course
                 </span>
-              </label>
-              <label className="flex items-center space-x-4 mb-2">
-                <input
-                  type="radio"
-                  name="task"
-                  className="form-radio text-blue-600"
-                />
+              </div>
+              <div className="flex items-center space-x-2 mb-2">
+                <div className="text-gray-400">
+                  <IoMdRadioButtonOff />
+                </div>
                 <span className="text-black font-semibold">
                   Finish your first lesson
                 </span>
-              </label>
-              <label className="flex items-center space-x-2">
-                <input
-                  type="radio"
-                  name="task"
-                  className="form-radio text-blue-600"
-                />
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="text-gray-400">
+                  <IoMdRadioButtonOff />
+                </div>
                 <span className="text-black font-semibold">
                   Continue your streak tomorrow
                 </span>
-              </label>
+              </div>
             </div>
           </div>
         </div>
