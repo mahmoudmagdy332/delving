@@ -35,6 +35,7 @@ export type categoryType = {
   courses_count: number;
   title: string;
   video: string;
+  courses:course[]
 };
 
 export type settingType = {
@@ -51,22 +52,20 @@ export type password = {
 };
 
 export type course = {
-  id: number;
-  image: string;
-  price: number;
-  free_video: string;
-  category_id: number;
-  user_id: number;
-  average_rate: number;
-  hours: number;
-  count_reviews: number;
-  count: number;
-  lessons_count: number;
-  name: string;
-  description: string;
-  will_learn: string;
-  requirements: string;
-  instructor?: instructors;
+      id: number,
+      image: string,
+      free_video:string,
+      category_id: number,
+      meta_title: string,
+      meta_description: string,
+      meta_keywords: string,
+      meta_image: string,
+      subscribed: boolean,
+      progress: number,
+      name: string,
+      description: string,
+      will_learn:string,
+      requirements:string,
 };
 
 export type singleBookSliceType = {
@@ -144,10 +143,17 @@ export type HeroType = {
   image: string;
   description: string;
 };
+export type content={
+  id: number,
+  image: string,
+  dir: string,
+  title: string,
+  description:string
+}
 export type homeType = {
   newCourses: course[] | null;
   categories: categoryType[]|null,
-  content: null,
+  content: null|content[],
   student_count: number,
   course_count: number,
   lesson_count: number

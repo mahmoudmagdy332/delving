@@ -14,12 +14,10 @@ const Footer = () => {
     {name:'Testimonials',link:"/testimonials"},
   ];
     const pages2=[
-      
       {name:'About Us',link:"/about"},
       {name:'Careers',link:"/careers"},
       {name:'FAQs',link:"/faq"},
-      {name:'Terms and condition',link:"/terms"},
-      {name:'Privacy policy',link:"/privacy"},
+      {name:'Help',link:"/help"},
     ];
 
   const sosials=[<FaFacebookF/>,<FaXTwitter />,<FaInstagram />, <FaLinkedinIn />]

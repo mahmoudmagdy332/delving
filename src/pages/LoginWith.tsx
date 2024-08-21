@@ -48,7 +48,7 @@ const LoginWith = () => {
     mutate(data);
   };
   useEffect(()=>{
-    if (isSuccess) {
+    if (isSuccess&&user) {
       if(!(user?.survey_submited)){
         navigate('/welcome');
       }else{
@@ -56,7 +56,7 @@ const LoginWith = () => {
       }
       
     }
-  },[isSuccess])
+  },[isSuccess,user])
   return (
     <div className="w-10/12 lg:w-9/12 mx-auto grid lg:grid-cols-2 items-center gap-y-5 gap-x-20 my-10">
        <img src="/images/PHOTOS/signup.svg"/>
