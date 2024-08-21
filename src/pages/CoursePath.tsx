@@ -23,7 +23,7 @@ const handleClick = () => {
          </div>
          <div className="lg:w-3/5 ">
          <Path/>
-          <div>
+        <div>
       
       <br />
       <motion.button

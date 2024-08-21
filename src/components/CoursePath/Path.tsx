@@ -6,15 +6,7 @@ const Path = () => {
         { title: 'Practice Understanding Variables' },
         { title: 'Using Variables' },
         { title: 'Practice Using Variables'},
-        { title: 'Understanding Expressions'},
-        { title: 'Practice Understanding Expressions'},
-        { title: 'Evaluating Expressions' },
-        { title: 'Practice Evaluating Expressions' },
-        { title: 'Understanding Equations'},
-        { title: 'Understanding Equations'},
-        { title: 'Practice Evaluating Expressions'},
-        { title: 'Understanding Equations'},
-        { title: 'Understanding Equations' },
+       
     ];
   return (
     <div className="relative pb-20 " >

@@ -1,28 +1,10 @@
 import { Typography } from "@mui/material"
+import { useHomeSliceSelector } from "../../app/slices/homeSlice"
 
 const Works = () => {
-    const ListItems=[
-        {
-            title:"Interactive Courses",
-            description:"Our courses are super interactive, making sure you’re actively involved in your learning journey. No more boring lectures!",
-            image:"/images/PHOTOS/Lesson-amico (1) 1.png"
-        },
-        {
-            title:"Gamified Learning",
-            description:"Learning is way more fun with games! Earn badges, points, and rewards as you progress.",
-            image:"/images/PHOTOS/Gaming-cuate 1.png"
-        },
-        {
-            title:"Real-World Projects",
-            description:"Put what you learn to the test with real-world projects that challenge you to solve engineering problems.",
-            image:"/images/PHOTOS/Lesson-amico (1) 1.png"
-        },
-        {
-            title:"Interactive Courses",
-            description:"Our courses are super interactive, making sure you’re actively involved in your learning journey. No more boring lectures!",
-            image:"/images/PHOTOS/Construction-pana 1.png"
-        },
-]
+    const {content}=useHomeSliceSelector((state=>state.homeReducer))
+
+  
   return (
     <div className="w-3/4 lg:w-3/5 mx-auto my-20">
         <div className="flex flex-col gap-5 items-center text-center">
@@ -34,7 +16,7 @@ const Works = () => {
         </Typography>
         </div>
         <div className="flex flex-col ">
-            {ListItems.map((item,idx)=>(
+            {content?.map((item,idx)=>(
                 <div className={`flex flex-col-reverse items-center my-10 gap-x-32 ${idx%2===0?"lg:flex-row":"lg:flex-row-reverse"}`}>
                     <img src={item.image} className="w-full lg:w-1/2"/>
                     <div className="w-full lg:w-1/2 flex flex-col gap-4">

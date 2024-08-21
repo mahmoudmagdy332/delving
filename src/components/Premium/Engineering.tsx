@@ -1,221 +1,38 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useEffect, useState } from "react";
+import { useHomeSliceSelector } from "../../app/slices/homeSlice";
+import { Box, Button, Typography } from "@mui/material";
 
-type category = {
-  name: string;
-  video: string;
-  course: {
-    title: string;
-    icon: string;
-  }[];
-};
+
 function Engineering() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const handleSetActiveIndex = (index: number) => {
     setActiveIndex(index);
   };
-
-  const Category: category[] = [
-    {
-      name: "Civil Engineering",
-      video: "../../../public/images/Videos/electives.mp4",
-      course: [
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-      ],
-    },
-    {
-      name: "Civil Engineering",
-      video: "/images/Videos/electives.mp4",
-      course: [
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-      ],
-    },
-    {
-      name: "Civil Engineering",
-      video: "/images/Videos/science.mp4",
-      course: [
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-      ],
-    },
-    {
-      name: "Civil Engineering",
-      video: "/images/Videos/electives.mp4",
-      course: [
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-      ],
-    },
-    {
-      name: "Civil Engineering",
-      video: "/images/Videos/science.mp4",
-      course: [
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-      ],
-    },
-    {
-      name: "Civil Engineering",
-      video: "/images/Videos/electives.mp4",
-      course: [
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-        {
-          title: "Calculus in a Nutshell",
-          icon: "/images/ICONS/culcus.svg",
-        },
-      ],
-    },
-  ];
-
+  const {categories}=useHomeSliceSelector((state=>state.homeReducer))
+ 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % Category.length);
-    }, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [Category.length]);
+    if(categories){
+      const intervalId = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % categories.length);
+      }, 5000);
+  
+      return () => clearInterval(intervalId);
+    }
+  
+  }, [categories]);
   return (
-    <div className="py-8 bg-[#f2f2f2]">
+    <Box sx={{bgcolor:'background.paper'}} className="py-8">
       <div className="lg:w-3/4 w-10/12 mx-auto">
-        <h1 className="lg:text-3xl md:text-2xl sm:text-2xl font-bold mb-8 text-center">
-          Build quantitative + technical problem-solving skills
-        </h1>
-
-        <div className="flex flex-col">
-          <div className="border-y">
-            <Swiper
+           <Box  className="flex flex-col gap-5 items-center text-center   pb-4">
+            <Typography sx={{color:"dark.main",fontSize:'24px',fontWeight:"bold"}}>
+             Engineering  <span style={{color:"#ffce00"}}>Disciplines</span>
+            </Typography>
+            </Box>
+            <Box sx={{borderWidth:"1px 0px",borderColor:'text.secondary'}} className="flex justify-between flex-wrap gap-2  justify-center items-center text-center  py-4">
+               
+                  <Swiper
               spaceBetween={5}
               slidesPerView={2}
               pagination={{ clickable: true }}
@@ -235,42 +52,37 @@ function Engineering() {
                 },
               }}
             >
-              {Category.map((item, index) => (
+              {categories?.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div
-                    className={`p-4 cursor-pointer ${
-                      activeIndex == index && "bg-white"
-                    } `}
-                    onClick={() => handleSetActiveIndex(index)}
-                  >
-                    <p className="text-center text-nowrap text-lg font-bold text-gray-600 hover:text-black">
-                      {item.name}
-                    </p>
-                  </div>
+              
+                  <Button  onClick={() => handleSetActiveIndex(index)} 
+                  sx={{color:"text.primary",fontWeight:"600",bgcolor:activeIndex == index?'background.default':"",'&:hover':{bgcolor:'background.default'},padding:'10px',borderRadius:'5px'}} >
+                  {item.title}
+                  </Button>
                 </SwiperSlide>
               ))}
             </Swiper>
+             </Box>
+        <div className="flex flex-col">
+          <div className="border-y">
+          
           </div>
 
-          <div className="flex flex-col-reverse lg:flex-row items-center lg:justify-between justify-center  gap-5 mt-4">
-            <div className="flex flex-col text-center md:w-full lg:w-2/5">
-              <h1>
-                Course in{" "}
-                <span className="font-bold">{Category[activeIndex].name}</span>
-              </h1>
-
-              <div className="flex flex-row lg:flex-col lg:justify-between md:items-center justify-center flex-wrap gap-4">
-                {Category[activeIndex].course.map((items, index) => (
-                  <div className="flex items-center gap-2" key={index}>
-                    <img
-                      src={items.icon}
-                      className="flex-shrink-0 w-8 h-8"
-                      alt={items.title}
-                    />
-                    <p className="text-md text-nowrap">{items.title}</p>
-                  </div>
-                ))}
-              </div>
+          <div className="flex flex-col-reverse lg:flex-row  lg:justify-between justify-center  gap-5 mt-4">
+            <div className="flex flex-col  md:w-full lg:w-2/5">
+              <Box className="flex flex-col gap-1">
+                          <Typography sx={{fontFamily:"typography",fontSize:'20px',fontWeight:400}}>Courses in </Typography>
+                          <Typography sx={{fontFamily:"typography",fontSize:'20px',fontWeight:700}}> {categories&&categories[activeIndex].title} </Typography> 
+                      </Box>
+              <Box className="flex flex-col gap-4">
+                    {categories&&categories[activeIndex].courses.map((item) =>(
+                      <div className="flex gap-2 items-center">
+                          <img src={item.image} className="w-8"/>
+                          <Typography sx={{fontWeight:'500',fontSize:'18px'}}>{item.name}</Typography>
+                      </div>
+                    ))}
+              </Box>
+             
             </div>
 
             <div
@@ -281,13 +93,13 @@ function Engineering() {
                 autoPlay={true}
                 loop
                 className="h-full w-full object-cover"
-                src={Category[activeIndex].video}
+                src={categories?categories[activeIndex].video:"asdsadsad"}
               ></video>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
 

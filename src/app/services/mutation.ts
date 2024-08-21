@@ -27,7 +27,8 @@ import {
 } from "../utils/types/types";
 import { AxiosError } from "axios";
 import Cookies from "js-cookie";
-import { changePasswordAPI, orderAPI, UpdateProfileAPI } from "../utils/apiAuth";
+import { changePasswordAPI, orderAPI, postSurveyAPI, UpdateProfileAPI } from "../utils/apiAuth";
+import { answerType } from "../type";
 
 export interface CustomError {
   message: string;
@@ -68,6 +69,20 @@ export function useSingleInstructorMutation() {
     },
   });
 }
+export function useSurveyMutation() {
+  return useMutation({
+    mutationFn: (data: {answers:answerType[]}) => {
+      return postSurveyAPI(data);
+    },
+
+    onError: (err: AxiosError<CustomError>) => {
+      console.error("Login error", err);
+
+      return err;
+    },
+  });
+}
+
 export function useLoginMutation() {
   return useMutation({
     mutationFn: (data: userData) => {

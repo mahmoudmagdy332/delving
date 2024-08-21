@@ -33,3 +33,9 @@ export type userInitialState = {
   Packages: Package[];
   books: book[];
 };
+export type answerType={survey_id:null|number,answer_id:null|number}
+export type quesions={
+id: number,
+title: string,
+answers:{id:number,image:string,title:string}[]
+}
