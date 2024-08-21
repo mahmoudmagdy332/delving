@@ -10,31 +10,28 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use(
-  async (config) => {
-    const token = Cookies.get("access_token");
-    token
-      && (config.headers["Authorization"] = `Bearer ${token}`)
-    
-    return config;
-  },
+api.interceptors.request.use(async (config) => {
+  const token = Cookies.get("access_token");
+  token && (config.headers["Authorization"] = `Bearer ${token}`);
 
-);
+  return config;
+});
 
 export const getLogoutAPI = () => api.get("logout");
 
 export const getsurveyAPI = () => api.get("survey");
 
 export const getStudentProfileAPI = () => api.get("profile");
-export const UpdateProfileAPI = (data: userData) => api.post("profile", data,{
-  headers: {
-    'Content-Type':'multipart/form-data'
-},
-  
-});
+export const UpdateProfileAPI = (data: userData) =>
+  api.post("profile", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+export const SubscribePackageAPI = (id: number | undefined) =>
+  api.get(`subscribe/package/${id}`);
 export const changePasswordAPI = (data: password) =>
   api.post("change-password", data);
 
-
-export const orderAPI = (data:OrderType ) =>
-  api.post("order", data);
+export const orderAPI = (data: OrderType) => api.post("order", data);

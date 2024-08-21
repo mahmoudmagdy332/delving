@@ -1,22 +1,21 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Skeleton } from "@mui/material";
 import RateStar from "../common/RateStar";
-import { testimonial } from "../../app/utils/types/types";
-import React from "react";
 
-interface testimonialProp {
-  item: testimonial;
-}
-const CardTestimonial: React.FC<testimonialProp> = ({ item }) => {
+const TestimonialLoader = () => {
   return (
     <Box className="flex flex-col gap-4 rounded-md border">
-      <div className="p-8 ">{item.description}</div>
+      <div className="p-8">
+        <Skeleton variant="text" width="80%" height={60} />
+        <Skeleton variant="text" width="90%" height={20} />
+        <Skeleton variant="text" width="70%" height={20} />
+      </div>
       <Box
         sx={{ bgcolor: "gray.light" }}
-        className="flex flex-col rounded-es-lg rounded-ee-lg "
+        className="flex flex-col rounded-es-lg rounded-ee-lg"
       >
         <div className="p-8 flex items-center justify-between">
           <div className="flex flex-col gap-3">
-            <Typography sx={{ fontWeight: "600" }}>Salma Abbas</Typography>
+            <Skeleton variant="text" width="40%" height={20} />
             <RateStar starNumber={4} />
           </div>
           <Button
@@ -32,7 +31,7 @@ const CardTestimonial: React.FC<testimonialProp> = ({ item }) => {
               },
             }}
           >
-            students
+            <Skeleton variant="text" width={60} height={20} />
           </Button>
         </div>
       </Box>
@@ -40,4 +39,4 @@ const CardTestimonial: React.FC<testimonialProp> = ({ item }) => {
   );
 };
 
-export default CardTestimonial;
+export default TestimonialLoader;

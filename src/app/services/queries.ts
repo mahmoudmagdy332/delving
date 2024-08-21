@@ -16,8 +16,16 @@ import {
   getIntroAPI,
   ArticleCategoryAPI,
   ArticlesByIdAPI,
+  getTestimonialsAPI,
+  getPrivaciesAPI,
+  getPackagesAPI,
 } from "../utils/api";
-import { getLogoutAPI, getStudentProfileAPI, getsurveyAPI } from "../utils/apiAuth";
+import {
+  getLogoutAPI,
+  getStudentProfileAPI,
+  getsurveyAPI,
+  SubscribePackageAPI,
+} from "../utils/apiAuth";
 import { CoursesParams } from "../utils/types/types";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
@@ -140,6 +148,32 @@ export function Articles(id: string | undefined) {
   return useQuery({
     queryKey: ["Articles", { id }],
     queryFn: async () => await ArticlesByIdAPI(id),
+  });
+}
+
+export function TestimonialQuery() {
+  return useQuery({
+    queryKey: ["testimonials"],
+    queryFn: async () => await getTestimonialsAPI(),
+  });
+}
+export function privaciesQuery() {
+  return useQuery({
+    queryKey: ["privacies"],
+    queryFn: async () => await getPrivaciesAPI(),
+  });
+}
+export function packagesQuery() {
+  return useQuery({
+    queryKey: ["packages"],
+    queryFn: async () => await getPackagesAPI(),
+  });
+}
+export function SubscribePackageQuery(id:number|undefined) {
+  return useQuery({
+    queryKey: ["packages-subscription",id],
+    queryFn: async () => await SubscribePackageAPI(id),
+    enabled:false
   });
 }
 export function AllInstructorQuery() {

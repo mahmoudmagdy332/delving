@@ -108,35 +108,11 @@ export type instructors = {
   courses?: course[];
   average_rate?: number;
 };
-export type Package = {
-  id: number;
-  image: string;
-  price: number;
-  courses_count: number;
-  name: string;
-  description: string;
-};
 
 export type Questions = {
   id: number;
   title: string;
   description: string;
-};
-export type book = {
-  id: number;
-  image: string;
-  document: string;
-  price: number;
-  chapters: number;
-  publish: string;
-  average_rate: number;
-  count: number;
-  user_id: number;
-  created_at: string;
-  updated_at: string;
-  name: string;
-  description: string;
-  learning: string;
 };
 
 export type HeroType = {
@@ -146,11 +122,11 @@ export type HeroType = {
 };
 export type homeType = {
   newCourses: course[] | null;
-  categories: categoryType[]|null,
-  content: null,
-  student_count: number,
-  course_count: number,
-  lesson_count: number
+  categories: categoryType[] | null;
+  content: null;
+  student_count: number;
+  course_count: number;
+  lesson_count: number;
 };
 export type filterType = {
   rating: number | undefined;
@@ -158,16 +134,6 @@ export type filterType = {
   min_price: number | undefined;
   max_price: number | undefined;
   category_ids: number[] | undefined;
-};
-
-export type cartType = {
-  courses: course[] | null;
-  courseCount: number;
-  Packages: Package[] | null;
-  PackageCount: number;
-  bookCount: number;
-  totalCount: number;
-  books: book[] | null;
 };
 
 export type filterType = {
@@ -214,11 +180,6 @@ export type booksSliceType = {
 
 export type instructorSliceType = {
   instructors: instructors[] | null;
-  currentPage: number;
-  last_page: number;
-};
-export type PackagesSliceType = {
-  Packages: Package[] | null;
   currentPage: number;
   last_page: number;
 };
@@ -328,9 +289,33 @@ export type career = {
   title: string | null;
   description: string | null;
 };
+
+export type Package = {
+  id: number;
+  duration: number;
+  price: number;
+  name: string;
+  features: Features[] | null;
+};
+export type Features = {
+  id: number;
+  package_id: number;
+  title: string;
+  is_active: number;
+};
+export type PackageSliceType = {
+  month_package: Package[] | null;
+  year_package: Package[] | null;
+};
+
 export type FQsSliceType = {
   Questions: Question[] | null;
 };
 export type CareersSliceType = {
   careers: career[] | null;
+};
+export type testimonial = {
+  id: number;
+  title: string;
+  description: string;
 };
