@@ -55,6 +55,7 @@ export const confrimPasswordAPI = (data: confrimPassword) =>
       Authorization: `Bearer ${data.token}`,
     },
   });
+
 export const CategoryCoursesAPI = (id: string) =>
   api.post("courses/filter/bycaregory", { category_id: id });
 export const coursesAPI = ({ name, id }: CoursesParams) =>

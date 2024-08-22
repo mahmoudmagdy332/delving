@@ -19,7 +19,7 @@ import AccountLayout from "../../components/layout/AccountLayout";
 import Avatar from "../../components/Account/Avatar";
 import PersonalInfo from "../../components/Account/PersonalInfo";
 import ChangePassword from "../../components/Account/ChangePassword";
-import MyCourses from "../../components/Account/MyCourses";
+// import MyCourses from "../../components/Account/MyCourses";
 import Premium from "../../pages/Premium";
 
 import Beginning from "../../pages/Beginning";
@@ -112,7 +112,7 @@ const routes = createHashRouter([
             ),
           },
           {
-            path: "/jop/:jopId",
+            path: "/jop/:id",
             element: (
               <Suspense fallback={<Loading />}>
                 <SingleJop />
@@ -128,7 +128,7 @@ const routes = createHashRouter([
             ),
           },
           {
-            path: "/jop-application",
+            path: "/jop-application/:id",
             element: (
               <Suspense fallback={<Loading />}>
                 <JopApplication />
@@ -234,14 +234,14 @@ const routes = createHashRouter([
                   </Suspense>
                 ),
               },
-              {
-                path: "MyCourses",
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <MyCourses />
-                  </Suspense>
-                ),
-              },
+              // {
+              //   path: "MyCourses",
+              //   element: (
+              //     <Suspense fallback={<Loading />}>
+              //       <MyCourses />
+              //     </Suspense>
+              //   ),
+              // },
             ],
           },
 

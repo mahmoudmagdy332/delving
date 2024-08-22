@@ -1,6 +1,9 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import PlaneCard from "./PlaneCard";
 import { usePackagesSliceSelector } from "../../app/slices/PackageSLice";
+import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 
 const Planes = () => {
   const { month_package } = usePackagesSliceSelector(
@@ -9,7 +12,7 @@ const Planes = () => {
 
   return (
     <div className="w-11/12 lg:w-10/12 mx-auto flex flex-col my-10 gap-20">
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <Box
           sx={{ bgcolor: "background.paper" }}
           className="p-2 flex rounded-xl"
@@ -31,14 +34,51 @@ const Planes = () => {
             Yearly
           </Button>
         </Box>
-      </div>
+      </div> */}
       <Box
-        sx={{ bgcolor: "background.paper" }}
-        className="p-10 rounded-xl grid lg:grid-cols-2 gap-4"
+        sx={{ bgcolor: "background.paper", position: "relative" }}
+        className="p-10 rounded-xl  gap-4"
       >
-        {month_package?.map((item) => (
-          <PlaneCard key={item?.id} item={item} />
-        ))}
+        <Swiper
+          modules={[Navigation, Pagination]}
+          slidesPerView={3}
+          spaceBetween={40}
+          navigation={{
+            prevEl: ".custom-prev",
+            nextEl: ".custom-next",
+          }}
+          breakpoints={{
+            500: {
+              slidesPerView: 1,
+              spaceBetween: 15,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 25,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
+        >
+          {month_package?.map((item) => (
+            <SwiperSlide key={item?.id}>
+              <PlaneCard item={item} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <button className="custom-prev">
+          <ArrowBack sx={{ fontSize: 30, color: "dark.main" }} />
+        </button>
+        <button className="custom-next">
+          <ArrowForward sx={{ fontSize: 30, color: "dark.main" }} />
+        </button>
       </Box>
     </div>
   );

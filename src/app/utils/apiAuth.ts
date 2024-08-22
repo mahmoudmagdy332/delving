@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { baseUrl } from "../config";
-import { OrderType, password, userData } from "./types/types";
+import { ApplyJop, OrderType, password, userUpdateData } from "./types/types";
 import { answerType } from "../type";
 
 const api = axios.create({
@@ -21,11 +21,19 @@ api.interceptors.request.use(async (config) => {
 export const getLogoutAPI = () => api.get("logout");
 
 export const getsurveyAPI = () => api.get("survey");
-export const myLearningIdAPI = (id: string | undefined) => api.get(`my-learnings/${id}`);
+export const myLearningIdAPI = (id: string | undefined) =>
+  api.get(`my-learnings/${id}`);
 
 export const getStudentProfileAPI = () => api.get("profile");
-export const UpdateProfileAPI = (data: userData) =>
+export const UpdateProfileAPI = (data: userUpdateData) =>
   api.post("profile", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+
+export const ApplyJopAPI = (data: ApplyJop) =>
+  api.post("submit-applications", data, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -38,6 +46,5 @@ export const changePasswordAPI = (data: password) =>
 
 export const orderAPI = (data: OrderType) => api.post("order", data);
 
-
-export const postSurveyAPI = (data:{answers:answerType[]}) =>
+export const postSurveyAPI = (data: { answers: answerType[] }) =>
   api.post("submit-survey", data);

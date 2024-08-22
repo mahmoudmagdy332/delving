@@ -1,61 +1,50 @@
 import { Box } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
-import { styled } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
 import { useMode } from "../../Theme";
-
-const StyledLink = styled(Link)(({ theme }) => ({
-  textDecoration: "none",
-  color: theme.palette.background.default,
-
-  transition: "color 0.2s ease-in-out",
-  "&:hover": {
-    color: theme.palette.primary.main,
-  },
-  "&.active": {
-    fontWeight: "bold",
-    color: theme.palette.primary.dark,
-  },
-}));
 
 const AccountSide = () => {
   const [theme] = useMode();
   console.log(theme.palette);
 
-  const location = useLocation();
-
   return (
     <Box
       className="w-11/12 lg:w-3/4 mt-12 pt-8 pb-4 mx-auto flex flex-col gap-4"
       sx={{
-        color: theme.palette.text.primary,
+        color: "black.dark",
         borderBottom: `2px solid ${theme.palette.divider}`,
         borderTop: `2px solid ${theme.palette.divider}`,
       }}
     >
-      <StyledLink
+      <NavLink
         to="/account"
-        className={location.pathname === "/account" ? "active" : ""}
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "text-gray-500" : ""
+        }
       >
         Avatar
-      </StyledLink>
-      <StyledLink
+      </NavLink>
+      <NavLink
         to="/account/personal"
-        className={location.pathname === "/account/personal" ? "active" : ""}
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "text-gray-500" : ""
+        }
       >
         Personal Info
-      </StyledLink>
-      <StyledLink
+      </NavLink>
+      <NavLink
         to="/account/password"
-        className={location.pathname === "/account/password" ? "active" : ""}
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "text-gray-500" : ""
+        }
       >
         Password
-      </StyledLink>
-      <StyledLink
+      </NavLink>
+      {/* <NavLink
         to="/account/myCourses"
         className={location.pathname === "/account/myCourses" ? "active" : ""}
       >
         Courses
-      </StyledLink>
+      </NavLink> */}
     </Box>
   );
 };

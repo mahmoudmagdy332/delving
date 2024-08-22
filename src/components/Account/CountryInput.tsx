@@ -5,6 +5,22 @@ import Autocomplete from "@mui/material/Autocomplete";
 import InputAdornment from "@mui/material/InputAdornment";
 import { countries } from "../../app/local/countries";
 
+const commonStyles = {
+  bgcolor: "gray.light",
+  p: 1.5,
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "gray",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "black.dark",
+    },
+    "& input": {
+      color: "black",
+    },
+  },
+};
+
 export interface Country {
   code: string;
   label: string;
@@ -54,11 +70,10 @@ export default function CountrySelect() {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Choose a country"
           variant="standard"
           inputProps={{
             ...params.inputProps,
-            autoComplete: "new-password", // Disable autocomplete and autofill
+            autoComplete: "new-password",
           }}
           InputProps={{
             ...params.InputProps,
@@ -74,29 +89,8 @@ export default function CountrySelect() {
               </InputAdornment>
             ) : null,
           }}
-          sx={{
-            width: "100%",
-            color: "black.dark",
-            "& .MuiInputBase-root": {
-              height: "40px",
-              color: "black",
-            },
-            "& .MuiInput-underline:before": {
-              borderBottomColor: "black.dark",
-            },
-            "& label": {
-              color: "black",
-            },
-            "& label.Mui-focused": {
-              color: "black.dark",
-            },
-            "& .MuiInput-underline:hover:before": {
-              borderBottomColor: "black.dark",
-            },
-            "& .MuiInput-underline:after": {
-              borderBottomColor: "black.dark",
-            },
-          }}
+          sx={commonStyles} // Applying the common styles here
+          className="col-span-2 bg-white"
         />
       )}
     />

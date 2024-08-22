@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import { forwardRef } from "react";
 
-const JopInput = forwardRef<
+const PasswordInput = forwardRef<
   HTMLInputElement,
   {
     error?: string;
@@ -10,6 +10,7 @@ const JopInput = forwardRef<
   return (
     <div className="col-span-2 flex flex-col">
       <TextField
+        type="password"
         inputRef={ref}
         {...rest}
         sx={{
@@ -40,4 +41,4 @@ const JopInput = forwardRef<
   );
 });
 
-export default JopInput;
+export default PasswordInput;

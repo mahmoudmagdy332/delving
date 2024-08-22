@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
-import Input from "../common/Input";
+import PasswordInput from "./PasswordInput";
 
 function ChangePassword() {
   return (
-    <div className="w-11/12 lg:w-3/4 mx-auto">
+    <div className="w-11/12 lg:w-3/4 mx-auto my-6">
       <Typography
         className=""
         variant="h3"
@@ -17,32 +17,50 @@ function ChangePassword() {
         Change Password
       </Typography>
 
-      <div className="flex flex-col gap-4">
-        <div>
-          <Input
-            type="password"
-            label="current password"
-            focusColor="black.dark"
-            color="black"
-          />
+      <form className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <Typography
+            sx={{
+              fontSize: "18px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            current Password: <span className="ms-2 text-red-600">*</span>
+          </Typography>
+          <PasswordInput />
         </div>
-        <div>
-          <Input
-            type="password"
-            label="new password"
-            focusColor="black.dark"
-            color="black"
-          />
+        <div className="flex flex-col gap-2">
+          <Typography
+            sx={{
+              fontSize: "18px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            New Password <span className="ms-2 text-red-600">*</span>
+          </Typography>
+          <PasswordInput />
         </div>
-        <div>
-          <Input
-            type="password"
-            label="confirm new password"
-            focusColor="black.dark"
-            color="black"
-          />
+        <div className="flex flex-col gap-2">
+          <Typography
+            sx={{
+              fontSize: "18px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            confirm current Password{" "}
+            <span className="ms-2 text-red-600">*</span>
+          </Typography>
+          <PasswordInput />
         </div>
-      </div>
+        <div className="p-4 border-2 rounded-full">
+          <button className="w-full whitespace-nowrap">
+            Update personal info
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

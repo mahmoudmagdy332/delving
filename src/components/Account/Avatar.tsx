@@ -4,6 +4,7 @@ function Avatar() {
   const theme = useTheme();
   return (
     <Box
+      className="my-10"
       sx={{
         width: "92%",
         maxWidth: "75%",

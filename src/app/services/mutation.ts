@@ -27,8 +27,16 @@ import {
 } from "../utils/types/types";
 import { AxiosError } from "axios";
 import Cookies from "js-cookie";
-import { changePasswordAPI, orderAPI, postSurveyAPI, UpdateProfileAPI } from "../utils/apiAuth";
+import {
+  ApplyJopAPI,
+  changePasswordAPI,
+  orderAPI,
+  postSurveyAPI,
+  UpdateProfileAPI,
+} from "../utils/apiAuth";
 import { answerType } from "../type";
+import { FormValues } from "../../pages/JopApplication";
+import { UpdateForm } from "../../components/Account/PersonalInfo";
 
 export interface CustomError {
   message: string;
@@ -71,7 +79,7 @@ export function useSingleInstructorMutation() {
 }
 export function useSurveyMutation() {
   return useMutation({
-    mutationFn: (data: {answers:answerType[]}) => {
+    mutationFn: (data: { answers: answerType[] }) => {
       return postSurveyAPI(data);
     },
 
@@ -133,13 +141,13 @@ export const useChangePasswordMutation = () => {
   });
 };
 
-export const useUpdateUserMutation = () => {
-  return useMutation({
-    mutationFn: (data: userData) => {
-      return UpdateProfileAPI(data);
-    },
-  });
-};
+// export const useUpdateUserMutation = () => {
+//   return useMutation({
+//     mutationFn: (data: userData) => {
+//       return UpdateProfileAPI(data);
+//     },
+//   });
+// };
 export const useForgetPasswordMutation = () => {
   return useMutation({
     mutationFn: (data: forgetPassword) => {
@@ -167,6 +175,23 @@ export const useConfrimPasswordMutation = () => {
     },
     onError: (err: AxiosError<CustomError>) => {
       return err;
+    },
+  });
+};
+
+export const useJopApplicationMutation = () => {
+  return useMutation({
+    mutationFn: (data: FormValues) => {
+      console.log(data);
+      return ApplyJopAPI(data);
+    },
+  });
+};
+
+export const useUpdateProfile = () => {
+  return useMutation({
+    mutationFn: (data: UpdateForm) => {
+      return UpdateProfileAPI(data);
     },
   });
 };

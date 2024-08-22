@@ -35,7 +35,7 @@ export type categoryType = {
   courses_count: number;
   title: string;
   video: string;
-  courses:course[]
+  courses: course[];
 };
 
 export type settingType = {
@@ -52,20 +52,20 @@ export type password = {
 };
 
 export type course = {
-      id: number,
-      image: string,
-      free_video:string,
-      category_id: number,
-      meta_title: string,
-      meta_description: string,
-      meta_keywords: string,
-      meta_image: string,
-      subscribed: boolean,
-      progress: number,
-      name: string,
-      description: string,
-      will_learn:string,
-      requirements:string,
+  id: number;
+  image: string;
+  free_video: string;
+  category_id: number;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  meta_image: string;
+  subscribed: boolean;
+  progress: number;
+  name: string;
+  description: string;
+  will_learn: string;
+  requirements: string;
 };
 
 export type singleBookSliceType = {
@@ -97,6 +97,34 @@ export type singleInstructorSliceType = {
   reviews: null;
 };
 
+export type ApplyJop = {
+  resume: File;
+  email: string;
+  pronouns: string;
+  full_name: string;
+  phone?: string;
+  current_location?: string;
+  current_company?: string;
+  linkedin_url?: string;
+  github_url?: string;
+  portfolio_url?: string;
+  other_website?: string;
+  interest_note?: string;
+  teaching_sample?: string;
+  teaching_experience?: string;
+  additional_information?: string;
+  career_id: string | undefined;
+};
+export type userUpdateData = {
+  fname: string;
+  lname: string;
+  zip: string;
+  city: string;
+  school: string;
+  region: string;
+  age: number;
+  Address: string;
+};
 export type instructors = {
   id: number;
   name: string;
@@ -119,21 +147,20 @@ export type HeroType = {
   image: string;
   description: string;
 };
-export type content={
-  id: number,
-  image: string,
-  dir: string,
-  title: string,
-  description:string
-}
+export type content = {
+  id: number;
+  image: string;
+  dir: string;
+  title: string;
+  description: string;
+};
 export type homeType = {
   newCourses: course[] | null;
   categories: categoryType[] | null;
-  content: content[]|null;
+  content: content[] | null;
   student_count: number;
   course_count: number;
   lesson_count: number;
- 
 };
 export type filterType = {
   rating: number | undefined;
