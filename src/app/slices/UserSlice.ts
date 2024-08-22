@@ -35,6 +35,7 @@ const UserSlice = createSlice({
       Cookies.remove("access_token");
       localStorage.setItem("student", "");
     },
+    
   },
 });
 

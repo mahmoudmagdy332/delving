@@ -1,7 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { baseUrl } from "../config";
-import { ApplyJop, OrderType, password, userUpdateData } from "./types/types";
+import { ApplyJop, password, userUpdateData } from "./types/types";
+
 import { answerType } from "../type";
 
 const api = axios.create({
@@ -43,8 +44,6 @@ export const SubscribePackageAPI = (id: number | undefined) =>
   api.get(`subscribe/package/${id}`);
 export const changePasswordAPI = (data: password) =>
   api.post("change-password", data);
-
-export const orderAPI = (data: OrderType) => api.post("order", data);
 
 export const postSurveyAPI = (data: { answers: answerType[] }) =>
   api.post("submit-survey", data);

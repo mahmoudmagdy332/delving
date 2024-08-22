@@ -74,7 +74,7 @@ function Engineering() {
                           <Typography sx={{fontFamily:"typography",fontSize:'20px',fontWeight:400}}>Courses in </Typography>
                           <Typography sx={{fontFamily:"typography",fontSize:'20px',fontWeight:700}}> {categories&&categories[activeIndex].title} </Typography> 
                       </Box>
-              <Box className="flex flex-col gap-4">
+              <Box className="flex flex-col gap-4 mt-4">
                     {categories&&categories[activeIndex].courses.map((item) =>(
                       <div className="flex gap-2 items-center">
                           <img src={item.image} className="w-8"/>

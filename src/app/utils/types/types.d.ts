@@ -67,22 +67,42 @@ export type course = {
   will_learn: string;
   requirements: string;
 };
-
-export type singleBookSliceType = {
-  id: number | null;
-  name: string;
-  image: string;
-  document: string;
-  chapters: number | null;
-  publish: string;
-  price: number | null;
-  average_rate: number;
-  count_reviews: number;
-  name: string;
-  description: string;
-  learning: string;
-  reviews: null;
+export type lesson = {
+  level_id: number,
+  id: number,
+  course_id: number,
+  scorm_url: string,
+  started: boolean,
+  name: string,
+  short_description: string,
+  };
+export type level = {
+course_id:number,
+id:number,
+lessons:lesson[]
+lessons_count:number,
+name:string
 };
+
+export type singleCourse = {
+  id: number,
+  image: string,
+  free_video:string,
+  category_id: number,
+  meta_title: string,
+  meta_description: string,
+  meta_keywords: string,
+  meta_image: string,
+  subscribed: boolean,
+  progress: number,
+  name: string,
+  description: string,
+  will_learn:string,
+  requirements:string,
+  levels:level[]
+};
+
+
 export type singleInstructorSliceType = {
   id: number | null;
   name: string | null;
@@ -179,8 +199,10 @@ export type filterType = {
 };
 export type coursesSliceType = {
   courses: course[] | null;
+  singleCourse:singleCourse|null;
   category_id: number | undefined;
   search: string | undefined;
+  level:number
 };
 
 export type ArticleCategory = {
@@ -205,12 +227,7 @@ export type Article = {
   title: string;
   description: string;
 };
-export type booksSliceType = {
-  books: book[] | null;
-  currentPage: number;
-  last_page: number;
-  top: boolean;
-};
+
 
 export type instructorSliceType = {
   instructors: instructors[] | null;
@@ -267,11 +284,7 @@ export type CourseDetailsType = {
   coursesDetails: course | null;
 };
 
-export type BuyType = {
-  courses: course[] | null;
-  packages: Package[] | null;
-  books: book[] | null;
-};
+
 export interface IFormContuctInput {
   name: string;
   email: string;
@@ -279,11 +292,7 @@ export interface IFormContuctInput {
   message: string;
 }
 
-export type OrderType = {
-  books: number[] | undefined;
-  courses: number[] | undefined;
-  packages: number[] | undefined;
-};
+
 
 export type CoursesParams = {
   name: string | undefined;

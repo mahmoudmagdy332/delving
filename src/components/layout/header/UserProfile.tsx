@@ -87,7 +87,7 @@ const UserProfile = () => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <Link to="/profile" className="flex gap-2 items-center">
+          <Link to="/account" className="flex gap-2 items-center">
             <Avatar />
             <div className="flex flex-col gap-1">
               <h3 className="text-lg font-semibold hover:text-Secondary transition-all ease-in-out">
