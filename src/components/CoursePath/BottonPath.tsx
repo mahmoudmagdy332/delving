@@ -1,20 +1,55 @@
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
+import { useUserSelector } from "../../app/slices/UserSlice";
 const BottonPath = ({ title, top, left }:{ title:string, top:number, left :number}) => {
     const [imageIndex, setImageIndex] = useState(0);
-
-    const images = [
-      '/images/default on.svg',
+    const navigator = useNavigate();
+    const {user}=useUserSelector(state=>state.UserReducer)
+    const [images,setImages]=useState<string[]>([ '/images/default on.svg',
       '',
-      '/images/pressed on.svg'
-    ];
-    const handleClick = () => {
+      '/images/pressed on.svg'])
+    useEffect(()=>{
+      if(user){
+        if(!user.is_premium){
+          setImages([
+            '/images/locked on.svg',
+          ])
+        }else if(!user.survey_submited){
+          setImages([
+            '/images/locked on.svg',
+          ])
+        }else{
+          navigator("/courses/3/dsa");
+        }
+      }else{
+        setImages([
+          '/images/locked on.svg',
+        ])
+      }
+    },[user])
+    const handleTap = () => {
       setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
+    const handleClick=()=>{
+      setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      if(user){
+        if(!user.is_premium){
+          navigator("/pricing");
+        }else if(!user.survey_submited){
+          navigator("/welcome");
+        }else{
+          navigator("/courses/3/dsa");
+        }
+      }else{
+        navigator("/login");
+      }
+        
+     
+    }
     return (
-        <Link to="/Courses/dasdsa/adsasd">
+        <>
          <div style={{
             position: 'absolute',
             top: `${top}px`,
@@ -22,9 +57,9 @@ const BottonPath = ({ title, top, left }:{ title:string, top:number, left :numbe
             textAlign: 'center',
         }} >
           <motion.button
-      onTapStart={handleClick} // Change the image on tap
-      onTapCancel={handleClick} // Reset the image if the tap is canceled
+      onTapStart={handleTap} // Change the image on tap
       onTap={handleClick} // Reset the image when the tap is completed
+      onClick={handleClick}
     >
       <motion.img
       className="absolute w-24 right-3  z-9"
@@ -32,19 +67,18 @@ const BottonPath = ({ title, top, left }:{ title:string, top:number, left :numbe
       key={imageIndex} // key helps in transitioning between different images
       src={images[imageIndex]}
       alt="Switchable"
-      initial={{ opacity: 0 }} // start of animation
       animate={{ opacity: 1 }} // end of animation
-      exit={{ opacity: 0 }} // exit animation
-      transition={{ duration: 0 }} // animation duration
-      onTapStart={()=>setImageIndex(1)} // Change the image on tap
-      onTapCancel={()=>setImageIndex(0)} 
+    
+      onTapStart={handleTap} // Change the image on tap
+
+      onClick={handleClick}
     />
              </motion.button>
          
             <Typography sx={{mt:"100px",color:"primary.light"}} className="w-24">{title}</Typography>
             
         </div>
-        </Link>
+        </>
        
     );
 }

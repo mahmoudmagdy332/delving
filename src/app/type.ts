@@ -1,4 +1,3 @@
-import { book, course, Package } from "./utils/types/types";
 
 export type langInitialState = {
   lang: string;
@@ -22,6 +21,7 @@ export type User = {
   wallet: number;
   points: number;
   survey_submited:boolean;
+  is_premium:boolean;
 };
 export type UserState = {
   user: User | null;
@@ -29,9 +29,6 @@ export type UserState = {
 };
 export type userInitialState = {
   user: User | null;
-  courses: course[];
-  Packages: Package[];
-  books: book[];
 };
 export type answerType={survey_id:null|number,answer_id:null|number}
 export type quesions={

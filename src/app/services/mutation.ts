@@ -21,13 +21,12 @@ import {
   filterType,
   forgetPassword,
   IFormContuctInput,
-  OrderType,
   password,
   userData,
 } from "../utils/types/types";
 import { AxiosError } from "axios";
 import Cookies from "js-cookie";
-import { changePasswordAPI, orderAPI, postSurveyAPI, UpdateProfileAPI } from "../utils/apiAuth";
+import { changePasswordAPI, postSurveyAPI, UpdateProfileAPI } from "../utils/apiAuth";
 import { answerType } from "../type";
 
 export interface CustomError {
@@ -228,17 +227,3 @@ export const useContuctMutation = () => {
     },
   });
 };
-
-export function useOrderMutation() {
-  return useMutation({
-    mutationFn: (data: OrderType) => {
-      return orderAPI(data);
-    },
-
-    onError: (err: AxiosError<CustomError>) => {
-      console.error("Login error", err);
-
-      return err;
-    },
-  });
-}

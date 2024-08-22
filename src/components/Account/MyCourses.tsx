@@ -1,31 +1,31 @@
 import { Typography } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import MyCourseCard from "./MyCourseCard";
+// import MyCourseCard from "./MyCourseCard";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import "./MyCourses.css";
-import CourseCard from "./CourseCard";
+// import CourseCard from "./CourseCard";
 function MyCourses() {
-  const courses = [
-    {
-      image: "/images/PHOTOS/Frame.svg",
-      title: "Fire Fighting",
-      description: "Master key scientific ideas & technologies of the future",
-    },
-    {
-      image: "/images/PHOTOS/Frame (1).svg",
-      title: "Electrical Power",
-      description: "Master key scientific ideas & technologies of the future",
-    },
-    {
-      image: "/images/PHOTOS/Group (1).svg",
-      title: "Fire Fighting",
-      description: "Master key scientific ideas & technologies of the future",
-    },
-  ];
+  // const courses = [
+  //   {
+  //     image: "/images/PHOTOS/Frame.svg",
+  //     title: "Fire Fighting",
+  //     description: "Master key scientific ideas & technologies of the future",
+  //   },
+  //   {
+  //     image: "/images/PHOTOS/Frame (1).svg",
+  //     title: "Electrical Power",
+  //     description: "Master key scientific ideas & technologies of the future",
+  //   },
+  //   {
+  //     image: "/images/PHOTOS/Group (1).svg",
+  //     title: "Fire Fighting",
+  //     description: "Master key scientific ideas & technologies of the future",
+  //   },
+  // ];
 
   return (
     <div className="flex flex-col gap-4 w-11/12 lg:w-3/4 mx-auto">
@@ -69,11 +69,11 @@ function MyCourses() {
             },
           }}
         >
-          {courses.map((course, index) => (
+          {/* {courses.map((course, index) => (
             <SwiperSlide key={index}>
               <MyCourseCard course={course} />
             </SwiperSlide>
-          ))}
+          ))} */}
         </Swiper>
 
         <button className="custom-prev">
@@ -94,9 +94,9 @@ function MyCourses() {
         Recommended for you
       </Typography>
       <div className="grid  grid-cols-1  sm:grid-cols-2  gap-4">
-        {courses.map((course) => (
+        {/* {courses.map((course) => (
           <CourseCard course={course} />
-        ))}
+        ))} */}
       </div>
     </div>
   );

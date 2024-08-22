@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setCourses } from "../../slices/coursesSlice";
+import { setCourses, setSingleCourse } from "../../slices/coursesSlice";
 import { CourseIdQuery, CoursesQuery, MyLearningIdQuery } from "../../services/queries";
 import { CoursesParams } from "../types/types";
 import Cookies from "js-cookie";
@@ -33,14 +33,20 @@ export const useCourseById = ({ id }: {id:string|undefined}) => {
   const token=Cookies.get('access_token')
   let resalt;
     if(token){
-      resalt=CourseIdQuery(id);
+      resalt= MyLearningIdQuery(id);
     } else{
-       resalt= MyLearningIdQuery(id);
+      resalt=CourseIdQuery(id);
     }
 
   const { isSuccess, data, isLoading, isError, error,refetch }=resalt;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (data) {
+      console.log(data?.data);
 
-  
+      dispatch(setSingleCourse(data.data.data));
+    }
+  }, [data]);
 
 
 

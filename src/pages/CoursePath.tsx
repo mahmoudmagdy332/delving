@@ -18,7 +18,8 @@ const CoursePath = () => {
     },[CourseId])
     console.log('datadatadatadata',data)
   return (
-    <div className="w-11/12 lg:w-3/4 mx-auto gap-10 flex flex-col lg:flex-row">
+   <div>
+     <div className="w-11/12 lg:w-3/4 mx-auto gap-10 flex flex-col lg:flex-row">
          <div className="w-full lg:w-2/5 relative">
            <ExploreCource/> 
          </div>
@@ -31,9 +32,19 @@ const CoursePath = () => {
    
     </div>
 
+        
+         </div>
+        
+    </div>
+    <div className="w-11/12 lg:w-3/4 mx-auto gap-10 flex flex-col lg:flex-row">
+         <div className="w-full lg:w-2/5 relative">
+        
+         </div>
+         <div className="lg:w-3/5 ">
          <CourseDiscrption/>
          </div>
-    </div>
+         </div>
+   </div>
   )
 }
 
