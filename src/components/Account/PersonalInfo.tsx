@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 // import CountrySelect from "./CountryInput";
 import JopInput from "../jop/JopInput";
-import { useUpdateProfile } from "../../app/services/mutation";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useUpdateUserMutation } from "../../app/services/mutation";
 
 export interface UpdateForm {
   fname: string;
@@ -15,7 +15,7 @@ export interface UpdateForm {
   Address: string;
 }
 function PersonalInfo() {
-  const { mutate, data } = useUpdateProfile();
+  const { mutate, data } = useUpdateUserMutation();
   console.log(data);
 
   const {

@@ -141,13 +141,13 @@ export const useChangePasswordMutation = () => {
   });
 };
 
-// export const useUpdateUserMutation = () => {
-//   return useMutation({
-//     mutationFn: (data: userData) => {
-//       return UpdateProfileAPI(data);
-//     },
-//   });
-// };
+export const useUpdateUserMutation = () => {
+  return useMutation({
+    mutationFn: (data: UpdateForm) => {
+      return UpdateProfileAPI(data);
+    },
+  });
+};
 export const useForgetPasswordMutation = () => {
   return useMutation({
     mutationFn: (data: forgetPassword) => {
@@ -188,13 +188,13 @@ export const useJopApplicationMutation = () => {
   });
 };
 
-export const useUpdateProfile = () => {
-  return useMutation({
-    mutationFn: (data: UpdateForm) => {
-      return UpdateProfileAPI(data);
-    },
-  });
-};
+// export const useUpdateProfile = () => {
+//   return useMutation({
+//     mutationFn: (data: UpdateForm) => {
+//       return UpdateProfileAPI(data);
+//     },
+//   });
+// };
 
 export const useCategoryCoursesMutation = () => {
   return useMutation({
