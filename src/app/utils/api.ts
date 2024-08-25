@@ -58,11 +58,12 @@ export const confrimPasswordAPI = (data: confrimPassword) =>
 
 export const CategoryCoursesAPI = (id: string) =>
   api.post("courses/filter/bycaregory", { category_id: id });
-export const coursesAPI = ({ name, id }: CoursesParams) =>
+export const coursesAPI = ({ name, id, currentPage }: CoursesParams) =>
   api.get(`courses`, {
     params: {
       category_id: id,
       search: name,
+      page: currentPage,
     },
   });
 export const ArticleCategoryAPI = ({ name }: { name: string | undefined }) =>

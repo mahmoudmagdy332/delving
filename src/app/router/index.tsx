@@ -37,6 +37,7 @@ import Loader from "../../components/common/Loader";
 import Intro from "../../pages/Intro";
 import CategoryArticles from "../../pages/CategoryArticles";
 import ArticleDetails from "../../pages/ArticleDetails";
+import AuthenticationRouter from "./guard/AuthenticationRouter";
 
 const Home = lazy(() => import("../../pages/Home"));
 
@@ -131,7 +132,9 @@ const routes = createHashRouter([
             path: "/jop-application/:id",
             element: (
               <Suspense fallback={<Loading />}>
-                <JopApplication />
+                <AuthenticationRouter>
+                  <JopApplication />
+                </AuthenticationRouter>
               </Suspense>
             ),
           },
@@ -212,7 +215,11 @@ const routes = createHashRouter([
           },
           {
             path: "account",
-            element: <AccountLayout />,
+            element: (
+              <AuthenticationRouter>
+                <AccountLayout />
+              </AuthenticationRouter>
+            ),
             children: [
               {
                 index: true,

@@ -10,14 +10,14 @@ import {
   useUpdateUserMutation,
 } from "../../services/mutation";
 
-
 import { useNavigate } from "react-router-dom";
 import { setUser, updateUser } from "../../slices/UserSlice";
 
 export const useLogin = () => {
   const navigator = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { mutate, isSuccess, data, isPending, isError, error, status } =useLoginMutation();
+  const { mutate, isSuccess, data, isPending, isError, error, status } =
+    useLoginMutation();
   const ErrorCheck = error?.response?.status === 422;
 
   useEffect(() => {
@@ -72,6 +72,8 @@ export const useConfirmSignupCode = () => {
 export const useProfile = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { isSuccess, data, isLoading, isError, refetch } = authUserQuery();
+  console.log(data?.data.data);
+
   useEffect(() => {
     if (isSuccess) dispatch(updateUser(data.data.data));
   }, [data, isSuccess]);

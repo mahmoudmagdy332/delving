@@ -148,6 +148,7 @@ export const useUpdateUserMutation = () => {
     },
   });
 };
+
 export const useForgetPasswordMutation = () => {
   return useMutation({
     mutationFn: (data: forgetPassword) => {

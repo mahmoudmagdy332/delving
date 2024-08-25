@@ -2,24 +2,31 @@ import { Typography } from "@mui/material";
 // import CountrySelect from "./CountryInput";
 import JopInput from "../jop/JopInput";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { useUpdateUserMutation } from "../../app/services/mutation";
+import { useUpdatedUser } from "../../app/utils/hooks/useAuth";
+import { toast } from "react-toastify";
+import { useUserSelector } from "../../app/slices/UserSlice";
 
 export interface UpdateForm {
-  fname: string;
-  lname: string;
-  zip: string;
-  city: string;
-  school: string;
-  region: string;
-  age: number;
-  Address: string;
+  fname?: string;
+  lname?: string;
+  zip?: string;
+  city?: string;
+  current_school?: string;
+  region?: string;
+  age?: string;
+  address?: string;
+  email?: string;
+  phone?: string;
+  image?: File;
 }
 function PersonalInfo() {
-  const { mutate, data } = useUpdateUserMutation();
-  console.log(data);
+  const user = useUserSelector((state) => state.UserReducer.user);
+
+  const { mutate, isPending } = useUpdatedUser();
 
   const {
     handleSubmit,
+    reset,
 
     formState: { errors },
     control,
@@ -27,7 +34,23 @@ function PersonalInfo() {
 
   const onSubmit: SubmitHandler<UpdateForm> = (data) => {
     if (data) {
-      mutate(data);
+      mutate(data, {
+        onSuccess: () => {
+          reset({
+            fname: "",
+            lname: "",
+            zip: "",
+            city: "",
+            current_school: "",
+            region: "",
+            age: "",
+            address: "",
+            email: "",
+            phone: "",
+          });
+          toast.success(` update is success`);
+        },
+      });
     }
   };
 
@@ -63,6 +86,7 @@ function PersonalInfo() {
                 required: " first Name is required",
               }}
               name="fname"
+              defaultValue={user?.fname || ""}
               control={control}
               render={({ field }) => (
                 <JopInput {...field} error={errors?.fname?.message} />
@@ -80,6 +104,7 @@ function PersonalInfo() {
               Last name <span className="ms-2 text-red-600">*</span>
             </Typography>
             <Controller
+              defaultValue={user?.lname || ""}
               rules={{
                 required: "Last Name is required",
               }}
@@ -98,14 +123,74 @@ function PersonalInfo() {
                 alignItems: "center",
               }}
             >
+              Email <span className="ms-2 text-red-600">*</span>
+            </Typography>
+            <Controller
+              defaultValue={user?.email || ""}
+              rules={{
+                required: "Email is required",
+              }}
+              name="email"
+              control={control}
+              render={({ field }) => (
+                <JopInput {...field} error={errors?.email?.message} />
+              )}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Typography
+              sx={{
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              Age <span className="ms-2 text-red-600">*</span>
+            </Typography>
+            <Controller
+              rules={{
+                required: " Age is required",
+              }}
+              defaultValue={user?.age || ""}
+              name="age"
+              control={control}
+              render={({ field }) => (
+                <JopInput {...field} error={errors?.age?.message} />
+              )}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Typography
+              sx={{
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              phone <span className="ms-2 text-red-600">*</span>
+            </Typography>
+            <Controller
+              name="phone"
+              defaultValue={user?.phone || ""}
+              control={control}
+              render={({ field }) => <JopInput {...field} />}
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Typography
+              sx={{
+                fontSize: "18px",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               Address <span className="ms-2 text-red-600">*</span>
             </Typography>
             <Controller
-              name="Address"
+              defaultValue={user?.address || ""}
+              name="address"
               control={control}
-              render={({ field }) => (
-                <JopInput {...field} error={errors?.Address?.message} />
-              )}
+              render={({ field }) => <JopInput {...field} />}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -120,6 +205,7 @@ function PersonalInfo() {
             </Typography>
             <Controller
               name="city"
+              defaultValue={user?.city || ""}
               control={control}
               render={({ field }) => (
                 <JopInput {...field} error={errors?.city?.message} />
@@ -139,6 +225,7 @@ function PersonalInfo() {
             </Typography>
             <Controller
               name="region"
+              defaultValue={user?.email || ""}
               control={control}
               render={({ field }) => (
                 <JopInput {...field} error={errors?.region?.message} />
@@ -159,6 +246,7 @@ function PersonalInfo() {
             <Controller
               name="zip"
               control={control}
+              defaultValue={user?.zip || ""}
               render={({ field }) => (
                 <JopInput {...field} error={errors?.zip?.message} />
               )}
@@ -180,24 +268,7 @@ function PersonalInfo() {
               render={({ field }) => <CountrySelect {...field} />}
             />
           </div> */}
-          <div className="flex flex-col gap-2">
-            <Typography
-              sx={{
-                fontSize: "18px",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              Age <span className="ms-2 text-red-600">*</span>
-            </Typography>
-            <Controller
-              name="age"
-              control={control}
-              render={({ field }) => (
-                <JopInput {...field} error={errors?.age?.message} />
-              )}
-            />
-          </div>
+
           <div className="flex flex-col gap-2">
             <Typography
               sx={{
@@ -210,10 +281,11 @@ function PersonalInfo() {
               <span className="ms-2 text-red-600">*</span>
             </Typography>{" "}
             <Controller
-              name="school"
+              defaultValue={user?.current_school || ""}
+              name="current_school"
               control={control}
               render={({ field }) => (
-                <JopInput {...field} error={errors?.school?.message} />
+                <JopInput {...field} error={errors?.current_school?.message} />
               )}
             />
           </div>
@@ -221,8 +293,12 @@ function PersonalInfo() {
 
         <div className="flex items-center gap-8 w-full">
           <div className="p-4 border-2 rounded-full">
-            <button className="w-full whitespace-nowrap">
-              Update personal info
+            <button disabled={isPending} className="w-full whitespace-nowrap">
+              {isPending ? (
+                <span> Loading....</span>
+              ) : (
+                <span>Update personal info</span>
+              )}
             </button>
           </div>
           <p>

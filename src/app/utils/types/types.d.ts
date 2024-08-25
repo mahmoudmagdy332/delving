@@ -68,40 +68,39 @@ export type course = {
   requirements: string;
 };
 export type lesson = {
-  level_id: number,
-  id: number,
-  course_id: number,
-  scorm_url: string,
-  started: boolean,
-  name: string,
-  short_description: string,
-  };
+  level_id: number;
+  id: number;
+  course_id: number;
+  scorm_url: string;
+  started: boolean;
+  name: string;
+  short_description: string;
+};
 export type level = {
-course_id:number,
-id:number,
-lessons:lesson[]
-lessons_count:number,
-name:string
+  course_id: number;
+  id: number;
+  lessons: lesson[];
+  lessons_count: number;
+  name: string;
 };
 
 export type singleCourse = {
-  id: number,
-  image: string,
-  free_video:string,
-  category_id: number,
-  meta_title: string,
-  meta_description: string,
-  meta_keywords: string,
-  meta_image: string,
-  subscribed: boolean,
-  progress: number,
-  name: string,
-  description: string,
-  will_learn:string,
-  requirements:string,
-  levels:level[]
+  id: number;
+  image: string;
+  free_video: string;
+  category_id: number;
+  meta_title: string;
+  meta_description: string;
+  meta_keywords: string;
+  meta_image: string;
+  subscribed: boolean;
+  progress: number;
+  name: string;
+  description: string;
+  will_learn: string;
+  requirements: string;
+  levels: level[];
 };
-
 
 export type singleInstructorSliceType = {
   id: number | null;
@@ -136,14 +135,15 @@ export type ApplyJop = {
   career_id: string | undefined;
 };
 export type userUpdateData = {
-  fname: string;
-  lname: string;
-  zip: string;
-  city: string;
-  school: string;
-  region: string;
-  age: number;
-  Address: string;
+  fname?: string;
+  lname?: string;
+  zip?: string;
+  city?: string;
+  school?: string;
+  region?: string;
+  age?: string;
+  Address?: string;
+  image?: File;
 };
 export type instructors = {
   id: number;
@@ -199,10 +199,12 @@ export type filterType = {
 };
 export type coursesSliceType = {
   courses: course[] | null;
-  singleCourse:singleCourse|null;
+  singleCourse: singleCourse | null;
   category_id: number | undefined;
   search: string | undefined;
-  level:number
+  level: number;
+  currentPage: number;
+  last_page: number;
 };
 
 export type ArticleCategory = {
@@ -227,7 +229,6 @@ export type Article = {
   title: string;
   description: string;
 };
-
 
 export type instructorSliceType = {
   instructors: instructors[] | null;
@@ -284,7 +285,6 @@ export type CourseDetailsType = {
   coursesDetails: course | null;
 };
 
-
 export interface IFormContuctInput {
   name: string;
   email: string;
@@ -292,11 +292,10 @@ export interface IFormContuctInput {
   message: string;
 }
 
-
-
 export type CoursesParams = {
   name: string | undefined;
   id: number | undefined;
+  currentPage: number;
 };
 
 export type Benefits = {

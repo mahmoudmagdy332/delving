@@ -134,10 +134,11 @@ export function logoutQuery() {
   });
 }
 
-export function CoursesQuery({ name, id }: CoursesParams) {
+export function CoursesQuery({ name, id, currentPage }: CoursesParams) {
   return useQuery({
-    queryKey: ["Courses", { name, id }],
-    queryFn: async () => await coursesAPI({ name, id }),
+    queryKey: ["Courses", { name, id, currentPage }],
+    queryFn: async () => await coursesAPI({ name, id, currentPage }),
+   
   });
 }
 export function ArticleCategoryQuery({ name }: { name: string | undefined }) {
@@ -171,11 +172,11 @@ export function packagesQuery() {
     queryFn: async () => await getPackagesAPI(),
   });
 }
-export function SubscribePackageQuery(id:number|undefined) {
+export function SubscribePackageQuery(id: number | undefined) {
   return useQuery({
-    queryKey: ["packages-subscription",id],
+    queryKey: ["packages-subscription", id],
     queryFn: async () => await SubscribePackageAPI(id),
-    enabled:false
+    enabled: false,
   });
 }
 export function AllInstructorQuery() {
@@ -192,17 +193,17 @@ export function UseBooksQuery() {
   });
 }
 
-export function CourseIdQuery(id:string|undefined){
+export function CourseIdQuery(id: string | undefined) {
   return useQuery({
     queryKey: ["CourseId"],
     queryFn: async () => await courseIdAPI(id),
-    enabled:false
+    enabled: false,
   });
 }
-export function MyLearningIdQuery(id:string|undefined){
+export function MyLearningIdQuery(id: string | undefined) {
   return useQuery({
     queryKey: ["MyLearningId"],
     queryFn: async () => await myLearningIdAPI(id),
-    enabled:false
+    enabled: false,
   });
 }
