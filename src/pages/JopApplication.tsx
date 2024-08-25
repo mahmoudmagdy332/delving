@@ -14,6 +14,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useJopApplicationMutation } from "../app/services/mutation";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 export interface FormValues {
   resume: File;
   email: string;
@@ -47,7 +48,14 @@ export const JopApplication = () => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     if (resumeName) {
-      mutate({ ...data, career_id: id, resume: resumeName });
+      mutate(
+        { ...data, career_id: id, resume: resumeName },
+        {
+          onSuccess: () => {
+            toast.success(` Apply job is success`);
+          },
+        }
+      );
     }
   };
 

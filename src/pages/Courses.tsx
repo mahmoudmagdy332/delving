@@ -16,15 +16,18 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useCategoriesSliceSelector } from "../app/slices/categoriesSlice";
 import CoursesLoading from "../components/common/CoursesLoading";
+import Pagination from "../components/common/Pagination";
 // import { useState } from "react";
 type FormValues = {
   search: string;
 };
 
 const Courses = () => {
-  const { courses, search, category_id } = useCoursesSliceSelector(
+  const { courses, search, category_id, currentPage } = useCoursesSliceSelector(
     (state) => state.CoursesReducer
   );
+  console.log("page", currentPage);
+
   const { categories } = useCategoriesSliceSelector(
     (state) => state.categoriesReducer
   );
@@ -49,15 +52,18 @@ const Courses = () => {
     dispatch(setSearch(undefined));
     reset();
   };
-  const { isLoading, isSuccess } = useCourses({
+  const { isLoading,refetch } = useCourses({
     name: search,
     id: category_id,
+    currentPage,
   });
 
   const handleSelectCategory = (id: number | undefined) => {
     dispatch(setCategory(id));
   };
-
+  useEffect(()=>{
+    refetch()
+  },[currentPage])
   return (
     <div className="py-10 w-10/12 mx-auto ">
       <div className="flex flex-col gap-10 ">
@@ -142,12 +148,11 @@ const Courses = () => {
         <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {isLoading ? (
             [...Array(6)].map(() => <CoursesLoading />)
-          ) : isSuccess ? (
-            courses && courses?.map((item) => <CourseCard course={item} />)
           ) : (
-            <div>Error</div>
+            courses && courses?.map((item) => <CourseCard course={item} />)
           )}
         </div>
+        <Pagination />
       </div>
     </div>
   );

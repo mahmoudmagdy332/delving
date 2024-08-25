@@ -1,4 +1,3 @@
-
 export type langInitialState = {
   lang: string;
   translations: { [key: string]: string };
@@ -16,12 +15,19 @@ export type User = {
   email: string;
   phone: string;
   image: string;
+  age: string;
+  address: string;
+  zip: string;
+  city: string;
+  country: string;
+  current_school: string;
+
   gender: string;
   status: string;
   wallet: number;
   points: number;
-  survey_submited:boolean;
-  is_premium:boolean;
+  survey_submited: boolean;
+  is_premium: boolean;
 };
 export type UserState = {
   user: User | null;
@@ -30,9 +36,9 @@ export type UserState = {
 export type userInitialState = {
   user: User | null;
 };
-export type answerType={survey_id:null|number,answer_id:null|number}
-export type quesions={
-id: number,
-title: string,
-answers:{id:number,image:string,title:string}[]
-}
+export type answerType = { survey_id: null | number; answer_id: null | number };
+export type quesions = {
+  id: number;
+  title: string;
+  answers: { id: number; image: string; title: string }[];
+};
