@@ -1,9 +1,10 @@
 import { Box, Button, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {  surveyQuery } from "../app/services/queries";
 import { answerType, quesions } from "../app/type";
 import { useSurveyMutation } from "../app/services/mutation";
+import { useUserSelector } from "../app/slices/UserSlice";
 
 
 const Welcome = () => {
@@ -12,7 +13,10 @@ const Welcome = () => {
   const {data}= surveyQuery()
   const { mutate, isSuccess, isPending } =useSurveyMutation();
   const [quesions,setQuesions]=useState<quesions[]>([]);
+  const { user } = useUserSelector((state) => state.UserReducer);
+  const location = useLocation();
 
+  const from = location.state?.from?.pathname || '/';
   console.log('data',data?.data.data)
  useEffect(()=>{
   setQuesions(data?.data.data)
@@ -39,9 +43,14 @@ const HandleContinue=()=>{
 }
 useEffect(()=>{
   if(isSuccess){
-    navigate("/");
+    navigate(from);
   }
 },[isSuccess])
+useEffect(()=>{
+  if(user?.survey_submited){
+    navigate("/");
+  }
+},[user])
   return (
     <div className="my-10 w-10/12 lg:w-3/4 xl:w-1/2 mx-auto flex flex-col gap-2 items-center">
         <img src="/images/LOGO/Logo (2) 1.png" className="mb-10 h-10"/>

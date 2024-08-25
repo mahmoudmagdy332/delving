@@ -5,9 +5,8 @@ import Categories from "../components/home/Categories"
 import Hero from "../components/home/Hero"
 import Cookies from "js-cookie";
 import Works from "../components/home/Works"
-import Achieving from "../components/Beginning/Achieving"
-import Learning from "../components/Beginning/Learning"
 import Engineering from "../components/Premium/Engineering"
+import MyLearning from "./MyLearning"
 
 const Home = () => {
   const { isLoading, isError, error } = useHome();
@@ -26,14 +25,7 @@ const Home = () => {
   return (
    <div>
     {Cookies.get('access_token')?(
-   <div className="w-10/12 lg:w-3/4 mx-auto md:grid lg:grid-cols-3 md:grid-cols-4">
-      <div className="lg:col-span-1 md:col-span-2 ">
-        <Achieving />
-      </div>
-      <div className="col-span-2 md:cols-span-2">
-        <Learning />
-      </div>
-    </div>
+      <MyLearning/>
     ):(
      <>
         <Seo title='Home' description='sadasdsa'/>

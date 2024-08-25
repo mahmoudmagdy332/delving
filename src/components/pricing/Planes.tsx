@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import PlaneCard from "./PlaneCard";
 import { usePackagesSliceSelector } from "../../app/slices/PackageSLice";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
@@ -41,7 +40,6 @@ const Planes = () => {
       >
         <Swiper
           modules={[Navigation, Pagination]}
-          slidesPerView={3}
           spaceBetween={40}
           navigation={{
             prevEl: ".custom-prev",
@@ -57,7 +55,7 @@ const Planes = () => {
               spaceBetween: 25,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 2,
               spaceBetween: 30,
             },
             1200: {
@@ -73,12 +71,12 @@ const Planes = () => {
           ))}
         </Swiper>
 
-        <button className="custom-prev">
+        {/* <button className="custom-prev">
           <ArrowBack sx={{ fontSize: 30, color: "dark.main" }} />
         </button>
         <button className="custom-next">
           <ArrowForward sx={{ fontSize: 30, color: "dark.main" }} />
-        </button>
+        </button> */}
       </Box>
     </div>
   );

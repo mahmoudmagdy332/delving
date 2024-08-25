@@ -1,12 +1,59 @@
 import { Link } from "react-router-dom";
 import { useHomeSliceSelector } from "../../app/slices/homeSlice";
 import Recomended from "./Recomended";
+import { useMylearningsSelector } from "../../app/slices/myLearningSlice";
+import Continue from "./Continue";
+import { useUserSelector } from "../../app/slices/UserSlice";
 
 function Learning() {
   const { newCourses } = useHomeSliceSelector((state) => state.homeReducer);
+  const { mylearnings } = useMylearningsSelector((state) => state.myLearningReducer);
+  const { user } = useUserSelector((state) => state.UserReducer);
 
   return (
     <div className="p-4 flex flex-col  gap-4">
+     {mylearnings.data.length>0?(
+       <div className="flex flex-col  gap-4">
+       <h1 className="text-2xl font-bold my-8">Jump back in</h1>
+       <div
+         className="flex flex-col border-2 border-gray-200 gap-4 rounded-xl  "
+         style={{
+           boxShadow: "5px 10px 5px #E5E5E5",
+         }}
+       >
+         <div className="bg-[#ECF0FF]  p-8 rounded-t-xl ">
+           <div className="flex items-center justify-center">
+             <img
+               width={96}
+               height={96}
+               src={
+                mylearnings.data[0].image
+                  
+               }
+               alt=""
+             />
+           </div>
+         </div>
+         <div className="flex flex-col gap-2 items-center">
+           <h3 className="text-2xl font-bold">
+             {" "}
+             {mylearnings.data[0].name}
+           </h3>
+ 
+           <div className="w-full p-8 text-center">
+             <Link
+               to={"/pricing"}
+               className=" py-2 w-full flex items-center justify-center  border-black bg-black border-2  rounded-full text-lg text-white"
+             >
+               <p> Continue Path</p>
+             </Link>
+           </div>
+         </div>
+       </div>
+       <Continue/>
+       </div>
+     ):(
+      <div className="flex flex-col  gap-4">
       <h1 className="text-2xl font-bold my-8">Start Learning</h1>
       <div
         className="flex flex-col border-2 border-gray-200 gap-4 rounded-xl  "
@@ -35,26 +82,31 @@ function Learning() {
           </h3>
 
           <div className="w-full p-8 text-center">
+            {user?.is_premium?(
+                  <Link
+                  to={`/courses/${newCourses &&newCourses[0]?.id}`}
+                  className=" py-2 w-full flex items-center justify-center  border-black bg-black border-2  rounded-full text-lg text-white"
+                >
+                  <p> Start now</p>
+                </Link>
+            ):(
             <Link
-              to={"/pricing"}
-              className=" py-4 w-full flex items-center justify-center  border-black bg-black border-2  rounded-full text-lg text-white"
-            >
-              <p> subscribe now</p>
-            </Link>
+            to={"/pricing"}
+            className=" py-2 w-full flex items-center justify-center  border-black bg-black border-2  rounded-full text-lg text-white"
+          >
+            <p> subscribe now</p>
+          </Link>
+            )}
+        
           </div>
         </div>
       </div>
-      {/* <div className="bg-[radial-gradient(168.03%_121.12%_at_11.01%_14.84%,_rgba(255,255,255,0)_0%,_rgba(238,167,31,0.2)_72.19%)] border-2 border-gray-200 lg:p-[24px] md:p-[20px] p-[10px]  flex items-center gap-4 rounded-xl">
-        <div>
-          <p className="lg:text-xl font-bold md:text-lg text-md mb-4">
-            Premium users are 6x more likely to reach their learning goals
-          </p>
-          <button className=" md:py-4  md:px-6 sm:py-3  py-2 px-4 border-black bg-[#29cc57] border-2  rounded-full text-sm md:text-lg  text-white">
-            Learn More
-          </button>
-        </div>
-        <img src="../../../public/images/PHOTOS/Award.svg" alt="" />
-      </div> */}
+  
+      </div>
+     )}
+     
+ 
+   
       <div>
         <Recomended />
       </div>

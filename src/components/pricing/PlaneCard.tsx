@@ -44,7 +44,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
         <Typography
           sx={{ fontSize: "60px", fontWeight: "600", color: "black.dark" }}
         >
-          $0
+          ${item.price} 
         </Typography>
         <Typography
           sx={{
@@ -80,12 +80,13 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
               >
                 <Box
                   sx={{
-                    width: "30px",
-                    height: "30px",
+                    width: "20px",
+                    height: "20px",
                     borderRadius: "5px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    fontSize:"10px",
                     bgcolor: feature.is_active ? "primary.dark" : "black.light",
                   }}
                 >
@@ -93,7 +94,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
                 </Box>
                 <Typography
                   sx={{
-                    fontSize: "18px",
+                    fontSize: "14px",
                     fontWeight: "400",
                     color: "black.dark",
                   }}

@@ -68,12 +68,12 @@ export default function Index(props: Props) {
         <img src={setting?.logo}/>
       </Box>
       <Divider />
-      <List>
+      <List sx={{m:'20px'}}>
         {navItems.map((item,idx) => (
           <ListItem key={idx} disablePadding>
             <NavLink to="/courses" >
-             
-              <ListItemText primary={item.name} />
+
+              <ListItemText sx={{color:'primary.light','&:hover':{color:"yellow.dark"}}} primary={item.name} />
 
             </NavLink>
           </ListItem>
@@ -98,20 +98,47 @@ export default function Index(props: Props) {
            </div>
            <Box sx={{display: { xs: 'none', lg: 'flex' },gap:"5px",justifyContent:'center',alignItems:'center'}}>
             {navItems.map((item)=>(
-              <NavLink to={item.link}>
-             <Typography  sx={{
-                color:'text.primary',
-                fontWeight:500,
-                px:'15px',py:"10px",
-                borderRadius:"5px",
-            '&:hover': {
-              bgcolor:'background.paper',     
-           },
-           
-          }} >
-            {item.name}
-          </Typography>
-             </NavLink>
+              item.name!=='Pricing'?(
+                <NavLink to={item.link} 
+                className={({ isActive }) =>
+                  ` ${
+                    isActive ? "bg-[#e3e3e364] rounded-md" : " "
+                  } `
+                }
+                >
+                <Typography  sx={{
+                   color:'text.primary',
+                   fontWeight:500,
+                   px:'15px',py:"10px",
+                   borderRadius:"5px",
+                   '&:hover': {
+                   bgcolor:'background.paper',     
+              },
+              
+             }} >
+               {item.name}
+             </Typography>
+                </NavLink>
+              ):(
+                !user?.is_premium&&(
+                  <NavLink to={item.link}>
+                  <Typography  sx={{
+                     color:'text.primary',
+                     fontWeight:500,
+                     px:'15px',py:"10px",
+                     borderRadius:"5px",
+                 '&:hover': {
+                   bgcolor:'background.paper',     
+                },
+                
+               }} >
+                 {item.name}
+               </Typography>
+                  </NavLink>
+                )
+               
+              )
+             
             ))}
            </Box>
           <div className='flex gap-4 items-center'>
@@ -143,7 +170,7 @@ export default function Index(props: Props) {
                   aria-label="open drawer"
                   edge="start"
                   onClick={handleDrawerToggle}
-                  sx={{  display: { lg: 'none' }, color:"text.primary",ml:'10px' }}
+                  sx={{  display: { sm: 'flex' ,lg:'none' }, color:"text.primary",ml:'10px' }}
                 >
                   <MenuIcon />
                 </IconButton>

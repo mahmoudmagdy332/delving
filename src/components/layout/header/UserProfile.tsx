@@ -88,7 +88,12 @@ const UserProfile = () => {
       >
         <MenuItem onClick={handleClose}>
           <Link to="/account" className="flex gap-2 items-center">
-            <Avatar />
+            {user?.image?(
+               <img src={user.image} className='w-10 rounded-full'/>
+            ):(
+              <Avatar />
+            )}
+           
             <div className="flex flex-col gap-1">
               <h3 className="text-lg font-semibold hover:text-Secondary transition-all ease-in-out">
                 {user?.fname}

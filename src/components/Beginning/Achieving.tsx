@@ -1,11 +1,13 @@
 import { MdRadioButtonChecked } from "react-icons/md";
 import { IoMdRadioButtonOff } from "react-icons/io";
+import { useUserSelector } from "../../app/slices/UserSlice";
 
 function Achieving() {
   const week: string[] = ["Su", "M", "T", "W", "Th"];
+  const { user } = useUserSelector((state) => state.UserReducer);
   return (
-    <div className=" flex flex-col gap-4">
-      <h1 className="text-2xl font-bold my-8">Welcome, sarah</h1>
+    <div className=" flex flex-col gap-4 mt-4">
+      <h1 className="text-2xl font-bold my-8">Welcome, {user?.fname}</h1>
       <div className="flex flex-col border-2 gap-4 rounded-xl">
         <div className="p-4">
           <div className="flex items-center ">
@@ -41,13 +43,7 @@ function Achieving() {
             START A LEARNING HABIT
           </p>
           <div className="flex items-center p-2">
-            <img
-              src="/images/ICONS/drowing.svg"
-              width={64}
-              height={64}
-              alt=""
-            />
-
+          
             <div className="p-4 bg-gray-100 rounded-lg">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="text-green-600">
@@ -78,7 +74,7 @@ function Achieving() {
           </div>
         </div>
       </div>
-      <div className="flex items-center  border-2 p-4 gap-4 rounded-xl">
+      {/* <div className="flex items-center  border-2 p-4 gap-4 rounded-xl">
         <img src="../../../public/images/PHOTOS/GoldenLock.svg" alt="" />
         <div className="flex flex-col gap-4">
           <h3 className="text-black text-[16px] font-semibold">
@@ -86,7 +82,7 @@ function Achieving() {
           </h3>
           <p className="text-gray-400">0 of 176 XP</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

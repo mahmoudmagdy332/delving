@@ -20,9 +20,11 @@ import {
   getPrivaciesAPI,
   getPackagesAPI,
   courseIdAPI,
+  getCareerAPI,
 } from "../utils/api";
 import {
   getLogoutAPI,
+  getMyLearningAPI,
   getStudentProfileAPI,
   getsurveyAPI,
   myLearningIdAPI,
@@ -55,6 +57,13 @@ export function TermsQuery() {
     queryFn: async () => await getTermsAPI(),
   });
 }
+export function careerQuery(id:string|undefined) {
+  return useQuery({
+    queryKey: ["Terms"],
+    queryFn: async () => await getCareerAPI(id),
+  });
+}
+
 export function surveyQuery() {
   return useQuery({
     queryKey: ["survey"],
@@ -107,6 +116,14 @@ export function homeQuery() {
     queryKey: ["home"],
     queryFn: async () => await getHomeAPI(),
     refetchOnMount: false,
+  });
+}
+export function myLearningQuery({currentPage}:{currentPage:number}) {
+  return useQuery({
+    queryKey: ["my-learning",currentPage],
+    queryFn: async () => await getMyLearningAPI(currentPage),
+    staleTime: 0,
+
   });
 }
 

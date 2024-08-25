@@ -10,6 +10,7 @@ import categoriesSlice from "./slices/categoriesSlice";
 import homeSlice from "./slices/homeSlice";
 import ArticleCatSlice from "./slices/ArticleCatSlice";
 import PackageSLice from "./slices/PackageSLice";
+import myLearningSlice from "./slices/myLearningSlice";
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
     CareersReducer: CareersSlice,
     categoriesReducer: categoriesSlice,
     homeReducer: homeSlice,
+    myLearningReducer:myLearningSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

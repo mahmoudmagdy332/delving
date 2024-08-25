@@ -44,7 +44,7 @@ if (isError)
     </div>
   );
   return (
-    <div className="my-10 w-10/12 lg:w-3/4 xl:w-1/2 mx-auto flex flex-col gap-2 items-center">
+    <div className="py-10 w-10/12 lg:w-3/4 xl:w-1/2 mx-auto flex flex-col gap-2 items-center justify-center h-screen">
         <img src="/images/LOGO/Logo (2) 1.png" className="mb-5 h-10"/>
         <div className="flex items-center">
           {intro?.map((_,idx)=>(
@@ -74,7 +74,7 @@ if (isError)
          <div className="my-5 text-xl font-semibold">{intro?.length>0&&intro[step].name}</div>
          <div className="flex flex-col  justify-center items-center w-full">
          <div >{intro?.length>0&&intro[step].description}</div>
-         <img src={intro?.length>0?intro[step].image:""} className="h-72"/> 
+         <img src={intro?.length>0?intro[step].image:""} className="max-h-72"/> 
            
             <div className="flex justify-center w-full">
             <Button onClick={HandleContinue} sx={{bgcolor:'primary.main',fontSize:'14px',"&:hover":{bgcolor:'black.dark',color:'black.light'},

@@ -7,7 +7,7 @@ interface careerProps {
 }
 const OpeningCard: React.FC<careerProps> = ({ item }) => {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-2 gap-10 py-5 border-b">
+    <div className="grid grid-cols-2 lg:grid-cols-2 gap-10 py-5 mt-2 border-t">
       <div className="flex flex-col gap-4">
         <Typography
           sx={{ fontFamily: "typography", fontSize: "24px", fontWeight: "400" }}

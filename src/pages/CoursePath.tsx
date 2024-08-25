@@ -1,22 +1,43 @@
 import CourseDiscrption from "../components/CoursePath/CourseDiscrption"
 import ExploreCource from "../components/CoursePath/ExploreCource"
 import Path from "../components/CoursePath/Path"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCourseById } from "../app/utils/hooks/useCourse";
 import { useEffect } from "react";
+import { useUserSelector } from "../app/slices/UserSlice";
+import Loader from "../components/common/Loader";
 
   
 const CoursePath = () => {
   const { CourseId } = useParams();
-    console.log('CourseIdCourseId',CourseId)
+  const navigator = useNavigate();
+   const { user } = useUserSelector((state) => state.UserReducer);
     
-    const { data ,refetch} = useCourseById({id:CourseId});   
+    const {refetch,isError,isLoading,error} = useCourseById({id:CourseId});   
     useEffect(()=>{
      if(CourseId){
       refetch()
      }
     },[CourseId])
-    console.log('datadatadatadata',data)
+    useEffect(()=>{
+      if(user){
+        if(!user.survey_submited){
+          navigator('/welcome',{ state:`courses/${CourseId}` })
+        }
+      }
+     },[user])
+     if (isLoading)
+      return (
+        <div className="flex h-screen justify-center items-center">
+          <Loader />
+        </div>
+      );
+    if (isError)
+      return (
+        <div className="h-screen flex justify-center items-center">
+          Error: {error?.message}
+        </div>
+      );
   return (
    <div>
      <div className="w-11/12 lg:w-3/4 mx-auto gap-10 flex flex-col lg:flex-row">

@@ -30,8 +30,11 @@ export const getSettingAPI = () => api.get("settings");
 export const getCategoriesQueryAPI = () => api.get("categories");
 
 export const getHomeAPI = () => api.get("home");
+
 export const getAboutAPI = () => api.get("about-us");
 export const getTermsAPI = () => api.get("terms");
+export const getCareerAPI = (id:string|undefined) => api.get(`career/${id}`);
+
 export const getFQsAPI = () => api.get("questions");
 export const getTestimonialsAPI = () => api.get("testimonials");
 export const getPrivaciesAPI = () => api.get("privacies");

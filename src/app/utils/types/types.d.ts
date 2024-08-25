@@ -27,6 +27,15 @@ export type setting = {
   location: string;
   points_price: number | null;
   footer_description: string;
+  contact:{
+    phone:string,
+    email: string,
+    facebook:string,
+    linkedin: string,
+    x:string,
+    instgram: string,
+    address: string,
+  }
 };
 
 export type categoryType = {
@@ -182,6 +191,14 @@ export type homeType = {
   course_count: number;
   lesson_count: number;
 };
+export type mylearningsType={
+  mylearnings: {
+    current_page: number,
+    data: course[],
+    last_page:number,
+},
+suggestions: course[]
+}
 export type filterType = {
   rating: number | undefined;
   user_ids: number[] | undefined;

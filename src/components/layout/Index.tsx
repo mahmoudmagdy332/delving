@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <Box  >
       <Header />
-       <Box>
+       <Box className="min-h-screen">
        <Toolbar className="h-20"/>
        <Outlet />
        </Box>

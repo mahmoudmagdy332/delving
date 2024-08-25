@@ -1,9 +1,24 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
+import { careerQuery } from "../app/services/queries";
+import Loader from "../components/common/Loader";
 
 const SingleJop = () => {
   const { id } = useParams<{ id: string }>();
+  const { isLoading, data ,isError,error} = careerQuery(id);
 
+  if (isLoading)
+    return (
+      <div className="flex h-96 justify-center items-center">
+        <Loader />
+      </div>
+    );
+  if (isError)
+    return (
+      <div className="h-96 flex justify-center items-center">
+        Error: {error?.message}
+      </div>
+    );
   return (
     <div>
       <div className="w-10/12 lg:w-3/5 mx-auto gap-10 items-start grid grid-cols-1 md:grid-cols-3 py-10">
@@ -17,15 +32,15 @@ const SingleJop = () => {
               lineHeight: "57.6px",
             }}
           >
-            Senior Producer (Machine Learning & Artificial Intelligence)
+           {data?.data.data.title}
           </Typography>
           <Typography
             sx={{ fontSize: "16px", fontWeight: "400", color: "gray.dark" }}
           >
-            Americas
+            {data?.data.data.level}
           </Typography>
 
-          <div className="">Content / Full-time / Remote</div>
+          <div className="">{data?.data.data.type} / {data?.data.data.work_type} / {data?.data.data.status} </div>
         </div>
         <Link to={`/jop-application/${id}`}>
           <Button
@@ -46,12 +61,7 @@ const SingleJop = () => {
       <Box sx={{ bgcolor: "background.paper" }}>
         <div className="w-10/12 lg:w-3/5 mx-auto gap-10 items-start grid grid-cols-1 md:grid-cols-4 py-10">
           <div className="col-span-3">
-            especially in math, data, and CS/AI – and deliver a best-in-class
-            interactive learning experience across web and apps. Our courses
-            teach you what you need to know, while skipping the stuff you don’t
-            – so expect more about solving equations, statistical analysis,
-            logical deduction, neural networks, and generative AI, and less
-            about abstract theorems and integrating complicated trig functions.
+          {<p dangerouslySetInnerHTML={{ __html: data?.data.data.description }} />}
             <div className="flex justify-center my-10">
               <Link to={`/jop-application/${id}`}>
                 <Button

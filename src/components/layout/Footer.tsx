@@ -11,7 +11,7 @@ const Footer = () => {
   const pages=[{name:'Home',link:"/"},
     {name:'Courses',link:"courses"},
     {name:'Pricing',link:"/pricing"},
-    {name:'Testimonials',link:"/testimonials"},
+    // {name:'Testimonials',link:"/testimonials"},
   ];
     const pages2=[
       {name:'About Us',link:"/about"},
@@ -20,7 +20,11 @@ const Footer = () => {
       {name:'Help',link:"/help"},
     ];
 
-  const sosials=[<FaFacebookF/>,<FaXTwitter />,<FaInstagram />, <FaLinkedinIn />]
+  const sosials=[{icon:<FaFacebookF/>,link:setting?.contact.facebook},
+                 {icon:<FaXTwitter />,link:setting?.contact.x},
+                 {icon: <FaInstagram />,link:setting?.contact.instgram},
+                 {icon:<FaLinkedinIn />,link:setting?.contact.linkedin},
+                  ]
   return (
     <Box sx={{backgroundColor:"#010203"}}>
       <div className="w-11/12 lg:w-10/12 mx-auto pt-16">
@@ -33,7 +37,7 @@ const Footer = () => {
               {setting?.footer_description}
               </Typography>
               </Box>
-            <div className="flex flex-col gap-3 items-center">
+            <div className="flex flex-col gap-3 items-center md:items-start">
               {pages.map((page)=>(
                <Link to={page.link}>
                   <Typography sx={{color:"#fcfcfd",'&:hover':{color:"#ffe266"}}}>
@@ -43,7 +47,7 @@ const Footer = () => {
               ))}
                
             </div> 
-            <div className="flex flex-col gap-3 items-center">
+            <div className="flex flex-col gap-3 items-center md:items-start">
               {pages2.map((page)=>(
                 <Link to={page.link}>
                   <Typography sx={{color:"#fcfcfd",'&:hover':{color:"#ffe266"}}}>
@@ -53,23 +57,47 @@ const Footer = () => {
               ))}
                
             </div>  
-            <div className="flex gap-4 col-span-2 lg:col-span-1  justify-center lg:justify-end ">
+
+           <div className="flex flex-col gap-6 items-start">
+            <Link to={setting?.contact.phone?setting?.contact.phone:""} className="flex gap-2 items-center">
+              <img src="/images/ICONS/telephone-white.svg" />
+              <div className="text-sm text-white">{setting?.contact.phone}</div>
+            </Link>
+            <Link to={setting?.contact.email?setting?.contact.email:""} className="flex gap-2 items-center">
+              <img src="/images/ICONS/email-white.svg" />
+              <div className="text-sm text-white">{setting?.contact.email}</div>
+            </Link>
+            <Link to={setting?.contact.address?setting?.contact.address:""} className="flex gap-2 items-center">
+              <img src="/images/ICONS/location-white.svg" />
+              <div className="text-sm text-white">
+                {setting?.contact.address}
+              </div>
+            </Link>
+      
+             <div className="flex gap-4 mt-5 col-span-2 lg:col-span-1  justify-center lg:justify-end ">
               {sosials.map((sosial)=>(
-                <Box sx={{color:"#fcfcfd",'&:hover':{color:"#ffe266"},fontSize:"18px"}} >
-                  {sosial}
+                <a href={sosial.link?sosial.link:""} target="_blank">
+                  <Box sx={{color:"#fcfcfd",'&:hover':{color:"#ffe266"},fontSize:"18px"}} >
+                  {sosial.icon}
               </Box>
+                  </a>
               ))}
             
            
-          </div>  
+          </div> 
+            </div> 
             </Box> 
             <Box className="mt-5 flex flex-col lg:flex-row gap-4 justify-between py-5 border-t">
                <div className="flex gap-4">
-               <Typography sx={{color:"gray.light"}}>Terms of Services</Typography>
+                <Link to="/Terms">
+                <Typography sx={{color:"gray.light"}}>Terms of Services</Typography>
+                </Link>
+                <Link to="/Privacy">
                <Typography sx={{color:"gray.light"}}>Privacy policy </Typography>           
+                </Link>
                </div>
                <div className="flex">
-               <Typography sx={{color:"gray.light"}}>© 2024 Brilliant Worldwide, Inc., Brilliant and the Brilliant Logo are trademarks of Brilliant Worldwide, Inc.</Typography>
+               <Typography sx={{color:"gray.light"}}>© 2024 Delve Worldwide, Inc., Delve and the Delve Logo are trademarks of Delve Worldwide, Inc.</Typography>
                </div>
             </Box> 
       </div>

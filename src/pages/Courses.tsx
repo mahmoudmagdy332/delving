@@ -59,8 +59,8 @@ const Courses = () => {
   };
 
   return (
-    <div className="py-10 w-10/12 mx-auto">
-      <div className="flex flex-col gap-10">
+    <div className="py-10 w-10/12 mx-auto ">
+      <div className="flex flex-col gap-10 ">
         <div className="flex justify-center">
           <HeaderLayout>
             <Typography
