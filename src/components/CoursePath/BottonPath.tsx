@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import { useUserSelector } from "../../app/slices/UserSlice";
-const BottonPath = ({ title, top, left }:{ title:string, top:number, left :number}) => {
+const BottonPath = ({ title, top, left,scorm_url,id}:{ id:number,scorm_url:string,title:string, top:number, left :number}) => {
     const [imageIndex, setImageIndex] = useState(0);
     const navigator = useNavigate();
     const {user}=useUserSelector(state=>state.UserReducer)
@@ -21,7 +21,9 @@ const BottonPath = ({ title, top, left }:{ title:string, top:number, left :numbe
             '/images/locked on.svg',
           ])
         }else{
-          navigator("/courses/3/dsa");
+          setImages([ '/images/default on.svg',
+            '',
+            '/images/pressed on.svg'])
         }
       }else{
         setImages([
@@ -40,7 +42,8 @@ const BottonPath = ({ title, top, left }:{ title:string, top:number, left :numbe
         }else if(!user.survey_submited){
           navigator("/welcome");
         }else{
-          navigator("/courses/3/dsa");
+          localStorage.setItem('scorm_url',scorm_url)
+          navigator(`/courses/${title}/${id}`);
         }
       }else{
         navigator("/login");

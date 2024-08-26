@@ -34,6 +34,11 @@ function Learning() {
              />
            </div>
          </div>
+         <div className="px-2">
+          <div className="w-full  bg-gray-200 rounded-full h-1 mb-4 dark:bg-gray-700">
+           <div className="bg-blue-900 h-1 rounded-full dark:bg-blue-500" style={{width: `${mylearnings.data[0].progress}%`}}></div>
+          </div>
+         </div>
          <div className="flex flex-col gap-2 items-center">
            <h3 className="text-2xl font-bold">
              {" "}
@@ -42,7 +47,7 @@ function Learning() {
  
            <div className="w-full p-8 text-center">
              <Link
-               to={"/pricing"}
+               to={`/courses/${mylearnings.data[0].id}`}
                className=" py-2 w-full flex items-center justify-center  border-black bg-black border-2  rounded-full text-lg text-white"
              >
                <p> Continue Path</p>

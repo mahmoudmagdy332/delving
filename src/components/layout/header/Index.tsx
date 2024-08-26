@@ -20,7 +20,7 @@ import Popup from '../../auth/Popup';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../app/store';
 import { changePopup, useUserSelector } from '../../../app/slices/UserSlice';
-
+import Cookies from "js-cookie";
 import { useSettingSliceSelector } from '../../../app/slices/settingSlice';
 import UserProfile from './UserProfile';
 interface Props {
@@ -43,14 +43,15 @@ export default function Index(props: Props) {
   const { user } = useUserSelector((state) => state.UserReducer);
 
   const [isLogin,setIsLogin]=React.useState(false)
+  const token=Cookies.get("access_token")
   React.useEffect(()=>{
-    if(user){
+    if(user&&token){
       setIsLogin(true)
     }else{
       setIsLogin(false)
     }
     
-  },[user])
+  },[user,token])
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -78,7 +79,34 @@ export default function Index(props: Props) {
             </NavLink>
           </ListItem>
         ))}
+      
       </List>
+      
+      {isLogin ? (
+                 <>
+                 
+                 </>
+              ):(
+                <div className='mt-4'>
+                <Link to="/intro">
+                <Button
+                        sx={{bgcolor:'transparent',color:'primary.main', 
+                          '&:hover': {
+                        backgroundColor:'transparent', 
+                        color:'primary.main' ,
+                        py:'10px'
+                     },
+                        }}
+                        > Sign up</Button></Link>
+                            <Button sx={{bgcolor:'primary.main',color:'white',py:'10px',px:'20px' ,borderRadius:'7px',
+                              '&:hover': {
+                            backgroundColor:'yellow.main', 
+                                           
+                         },
+                            }} onClick={handleClickOpen}>login</Button>
+                </div>
+              )}
+         
     </Box>
   );
 
@@ -165,17 +193,18 @@ export default function Index(props: Props) {
                  },
                     }} onClick={handleClickOpen}>login</Button>
                     
-                <IconButton
+               
+                </Box>
+              )}
+               <IconButton
                   color="inherit"
                   aria-label="open drawer"
                   edge="start"
                   onClick={handleDrawerToggle}
-                  sx={{  display: { sm: 'flex' ,lg:'none' }, color:"text.primary",ml:'10px' }}
+                  sx={{  display: {  lg: 'none' }, color:"text.primary",ml:'10px' }}
                 >
                   <MenuIcon />
                 </IconButton>
-                </Box>
-              )}
         <Typography onClick={colorMode.toggleColorMode} sx={{
                       color:'text.primary',
                   '&:hover': {

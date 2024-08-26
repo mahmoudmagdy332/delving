@@ -25,6 +25,7 @@ import {
 import {
   getLogoutAPI,
   getMyLearningAPI,
+  getStartLessonAPI,
   getStudentProfileAPI,
   getsurveyAPI,
   myLearningIdAPI,
@@ -126,7 +127,12 @@ export function myLearningQuery({currentPage}:{currentPage:number}) {
 
   });
 }
-
+export function startLessonQuery(lessonId:string|undefined) {
+  return useQuery({
+    queryKey: ["start-lesson",lessonId],
+    queryFn: async () => await getStartLessonAPI(lessonId),
+  });
+}
 export function authUserQuery() {
   return useQuery({
     queryKey: ["UserAuth"],

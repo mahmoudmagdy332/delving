@@ -16,6 +16,7 @@ function Pagination() {
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
+    console.log(event)
     dispatch(setCurrentPage(value));
   };
   return (

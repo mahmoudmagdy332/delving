@@ -35,7 +35,12 @@ export type setting = {
     x:string,
     instgram: string,
     address: string,
-  }
+  },
+  footer_description: string,
+  career_description: string,
+  pricing_description: string,
+  testimonials_description: string,
+  article_categories_description: string,
 };
 
 export type categoryType = {
@@ -71,6 +76,7 @@ export type course = {
   meta_image: string;
   subscribed: boolean;
   progress: number;
+  lessons_count:number;
   name: string;
   description: string;
   will_learn: string;

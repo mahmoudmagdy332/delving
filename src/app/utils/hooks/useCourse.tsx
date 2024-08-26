@@ -56,7 +56,7 @@ export const useCourseById = ({ id }: {id:string|undefined}) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (data) {
-      console.log(data?.data);
+      console.log('data?.data',data?.data);
 
       dispatch(setSingleCourse(data.data.data));
     }

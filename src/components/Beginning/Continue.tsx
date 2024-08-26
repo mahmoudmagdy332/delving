@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { useMylearningsSelector } from "../../app/slices/myLearningSlice";
 import CourseCard from "./CourseCard";
+import Pagination from "./Pagination";
 
 const Continue = () => {
     const {mylearnings} = useMylearningsSelector((state) => state.myLearningReducer);
@@ -16,11 +17,12 @@ const Continue = () => {
       >
         Continue learning
       </Typography>
-      <div className="grid  grid-cols-1  sm:grid-cols-2  gap-4">
+      <div className="grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3  gap-8">
         {mylearnings.data.map((course) => (
           <CourseCard course={course} />
         ))}
       </div>
+      <Pagination/>
     </div>
   )
 }
