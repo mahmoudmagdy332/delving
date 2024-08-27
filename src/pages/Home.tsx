@@ -27,11 +27,12 @@ const Home = () => {
     );
   return (
    <div>
+     <Seo title='Home' description='START A LEARNING HABIT'/>
     {Cookies.get('access_token')&&user?.is_premium?(
       <MyLearning/>
     ):(
      <>
-        <Seo title='Home' description='sadasdsa'/>
+       
         <Hero/>
         <Categories/>
         <Works/>

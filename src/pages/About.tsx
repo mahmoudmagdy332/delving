@@ -8,6 +8,7 @@ import Seo from "../components/common/Seo";
 const About = () => {
   const { isLoading ,isError,error} = UseAbout();
   const { About } = useAboutUsSliceSelector((store) => store.AboutAsReducer);
+
   if (isLoading)
     return (
       <div className="flex h-screen justify-center items-center">
@@ -22,13 +23,13 @@ const About = () => {
     );
   return (
     <div>
-      {About && (
+
         <Seo
-          title={About && About[0]?.meta_title}
-          description={About && About[0]?.meta_description}
-          keywords={About && About[0]?.meta_keywords}
+          title={About ? About[0].meta_title:""}
+          description={About ? About[0]?.meta_description:""}
+          keywords={About ? About[0]?.meta_keywords:""}
         />
-      )}
+
       <Hero />
       <Benefits />
     </div>

@@ -71,13 +71,22 @@ export default function Index(props: Props) {
       <Divider />
       <List sx={{m:'20px'}}>
         {navItems.map((item,idx) => (
-          <ListItem key={idx} disablePadding>
-            <NavLink to="/courses" >
-
+          item.name!=='Pricing'?(
+            <ListItem key={idx} disablePadding>    
+            <NavLink to={item.link}>
               <ListItemText sx={{color:'primary.light','&:hover':{color:"yellow.dark"}}} primary={item.name} />
-
             </NavLink>
           </ListItem>
+          ):(
+            !user?.is_premium&&(
+              <ListItem key={idx} disablePadding>    
+              <NavLink to={item.link}>
+                <ListItemText sx={{color:'primary.light','&:hover':{color:"yellow.dark"}}} primary={item.name} />
+              </NavLink>
+            </ListItem>
+            )
+          )
+         
         ))}
       
       </List>
@@ -116,13 +125,19 @@ export default function Index(props: Props) {
   return (
     <Box sx={{ display: 'flex', }}>
       <Popup/>
-      <AppBar component="nav" sx={{ bgcolor: 'background.default',py:'10px' }}>
+      
+      <AppBar component="nav" sx={{ bgcolor: 'background.default' }}>
+        {setting?.announce&&(
+      <Box sx={{bgcolor: 'primary.light'}} className='py-2'>
+        <Typography sx={{color:'primary.dark'}}>{setting?.announce}</Typography> 
+      </Box>
+    )}
         <Toolbar>
-         
-          <div className='w-11/12  mx-auto flex justify-between items-center'>
+     
+          <div className='w-11/12  mx-auto flex justify-between items-center py-2'>
            <div className='w-56 h-20'>
-          
-           {theme.palette.mode === 'dark' ?   <img src={setting?.footer_logo} className='w-56 h-20'/>:<img src={setting?.logo} className='w-56 h-20'/>}
+       
+           {theme.palette.mode === 'dark' ?   <img src={setting?.footer_logo} className=' h-20'/>:<img src={setting?.logo} className=' h-20'/>}
            </div>
            <Box sx={{display: { xs: 'none', lg: 'flex' },gap:"5px",justifyContent:'center',alignItems:'center'}}>
             {navItems.map((item)=>(

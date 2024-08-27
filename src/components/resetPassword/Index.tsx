@@ -15,7 +15,7 @@ const Index = () => {
    }
   
   return (
-    <div className="my-10  mx-auto max-w-[500px] px-2">
+    <div className="py-24  mx-auto max-w-[500px] px-2">
          {!isSuccess?(
         <EmailInput mutate={mutate} isPending={isPending} isError={isError} error={error}/>
          ):!isSuccessConfrim?(

@@ -7,12 +7,14 @@ import { Package } from "../../app/utils/types/types";
 import { useNavigate } from "react-router-dom";
 import { SubscribePackageQuery } from "../../app/services/queries";
 import { useState } from "react";
+import { useUserSelector } from "../../app/slices/UserSlice";
 
 interface PackageProp {
   item: Package;
 }
 
 const PlaneCard: React.FC<PackageProp> = ({ item }) => {
+  const { user } = useUserSelector((state) => state.UserReducer);
   const navigate = useNavigate();
   const [PackageId, setPackageId] = useState<number>();
   const { data, refetch } = SubscribePackageQuery(PackageId);
@@ -44,7 +46,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
         <Typography
           sx={{ fontSize: "60px", fontWeight: "600", color: "black.dark" }}
         >
-          ${item.price} 
+          {user?.country_id===1?"EGP":"$"}{user?.country_id===1?item.price:item.dollar_price} 
         </Typography>
         <Typography
           sx={{

@@ -52,7 +52,7 @@ export const useCourseById = ({ id }: {id:string|undefined}) => {
       resalt=CourseIdQuery(id);
     }
 
-  const { isSuccess, data, isLoading, isError, error, refetch } = resalt;
+  const { isSuccess, data, isLoading, isError, error } = resalt;
   const dispatch = useDispatch();
   useEffect(() => {
     if (data) {
@@ -66,5 +66,5 @@ export const useCourseById = ({ id }: {id:string|undefined}) => {
     console.error("Error fetching courses:", error);
   }
 
-  return { data, isSuccess, isLoading, isError, error, refetch };
+  return { data, isSuccess, isLoading, isError, error };
 };

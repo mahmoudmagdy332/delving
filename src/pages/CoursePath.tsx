@@ -13,12 +13,8 @@ const CoursePath = () => {
   const navigator = useNavigate();
    const { user } = useUserSelector((state) => state.UserReducer);
     
-    const {refetch,isError,isLoading,error} = useCourseById({id:CourseId});   
-    useEffect(()=>{
-     if(CourseId){
-      refetch()
-     }
-    },[CourseId])
+    const {isError,isLoading,error} = useCourseById({id:CourseId});   
+ 
     useEffect(()=>{
       if(user){
         if(!user.survey_submited){

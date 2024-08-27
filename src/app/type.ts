@@ -20,8 +20,8 @@ export type User = {
   zip: string;
   city: string;
   country: string;
+  country_id:number;
   current_school: string;
-
   gender: string;
   status: string;
   wallet: number;

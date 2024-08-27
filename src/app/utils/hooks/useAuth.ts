@@ -84,11 +84,12 @@ export const useProfile = () => {
 export const useUpdatedUser = () => {
   const { isSuccess, data, mutate, isError, isPending, error } =
     useUpdateUserMutation();
-  const profileQuery = useProfile();
-
+  // const {refetch,isLoading} = useProfile();
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    if (isSuccess && data) {
-      profileQuery.refetch();
+    if (data) {
+      
+      dispatch(updateUser(data.data.data))
     }
   }, [data, isSuccess]);
 

@@ -39,6 +39,8 @@ export const getFQsAPI = () => api.get("questions");
 export const getTestimonialsAPI = () => api.get("testimonials");
 export const getPrivaciesAPI = () => api.get("privacies");
 export const getPackagesAPI = () => api.get("packages");
+export const getCountriesAPI = () => api.get("countries");
+
 export const getIntroAPI = () => api.get("intro");
 export const courseIdAPI = (id: string | undefined) => api.get(`course/${id}`);
 

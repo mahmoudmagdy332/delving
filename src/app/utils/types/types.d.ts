@@ -41,6 +41,7 @@ export type setting = {
   pricing_description: string,
   testimonials_description: string,
   article_categories_description: string,
+  announce:string
 };
 
 export type categoryType = {
@@ -359,6 +360,7 @@ export type Package = {
   id: number;
   duration: number;
   price: number;
+  dollar_price:number;
   name: string;
   features: Features[] | null;
 };

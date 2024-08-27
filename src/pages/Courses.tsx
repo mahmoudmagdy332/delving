@@ -121,6 +121,8 @@ const Courses = () => {
                 borderColor: "primary.main",
                 bgcolor: "primary.dark",
               },
+              borderColor:!category_id?"primary.main":"",
+              bgcolor: !category_id?"primary.dark":""
             }}
           >
             All
@@ -138,6 +140,8 @@ const Courses = () => {
                   borderColor: "primary.main",
                   bgcolor: "primary.dark",
                 },
+                borderColor: item.id===category_id?"primary.main":"",
+                  bgcolor: item.id===category_id?"primary.dark":""
               }}
             >
               {item.title}

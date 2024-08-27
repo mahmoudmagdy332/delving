@@ -21,6 +21,7 @@ import {
   getPackagesAPI,
   courseIdAPI,
   getCareerAPI,
+  getCountriesAPI,
 } from "../utils/api";
 import {
   getLogoutAPI,
@@ -161,7 +162,8 @@ export function CoursesQuery({ name, id, currentPage }: CoursesParams) {
   return useQuery({
     queryKey: ["Courses", { name, id, currentPage }],
     queryFn: async () => await coursesAPI({ name, id, currentPage }),
-   
+    staleTime: 0,
+    refetchOnMount: false,
   });
 }
 export function ArticleCategoryQuery({ name }: { name: string | undefined }) {
@@ -220,13 +222,23 @@ export function CourseIdQuery(id: string | undefined) {
   return useQuery({
     queryKey: ["CourseId"],
     queryFn: async () => await courseIdAPI(id),
-    enabled: false,
+   
   });
 }
 export function MyLearningIdQuery(id: string | undefined) {
   return useQuery({
-    queryKey: ["MyLearningId"],
+    queryKey: ["MyLearningId",id],
     queryFn: async () => await myLearningIdAPI(id),
-    enabled: false,
+ 
+
+  });
+}
+
+export function getCountriesQuery() {
+  return useQuery({
+    queryKey: ["MyLearningId"],
+    queryFn: async () => await getCountriesAPI(),
+ 
+
   });
 }

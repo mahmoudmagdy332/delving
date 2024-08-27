@@ -5,6 +5,8 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useUpdatedUser } from "../../app/utils/hooks/useAuth";
 import { toast } from "react-toastify";
 import { useUserSelector } from "../../app/slices/UserSlice";
+import CountrySelect from "./CountryInput";
+import Loader from "../common/Loader";
 
 export interface UpdateForm {
   fname?: string;
@@ -18,6 +20,7 @@ export interface UpdateForm {
   email?: string;
   phone?: string;
   image?: File;
+  country_id?:number|null;
 }
 function PersonalInfo() {
   const user = useUserSelector((state) => state.UserReducer.user);
@@ -26,7 +29,6 @@ function PersonalInfo() {
 
   const {
     handleSubmit,
-    reset,
 
     formState: { errors },
     control,
@@ -36,24 +38,18 @@ function PersonalInfo() {
     if (data) {
       mutate(data, {
         onSuccess: () => {
-          reset({
-            fname: "",
-            lname: "",
-            zip: "",
-            city: "",
-            current_school: "",
-            region: "",
-            age: "",
-            address: "",
-            email: "",
-            phone: "",
-          });
+         
           toast.success(` update is success`);
         },
       });
     }
   };
-
+  if (isPending)
+    return (
+      <div className="flex h-screen justify-center items-center">
+        <Loader />
+      </div>
+    );
   return (
     <div className="w-11/12 lg:w-3/4 mx-auto my-4">
       <Typography
@@ -87,6 +83,7 @@ function PersonalInfo() {
               }}
               name="fname"
               defaultValue={user?.fname || ""}
+          
               control={control}
               render={({ field }) => (
                 <JopInput {...field} error={errors?.fname?.message} />
@@ -193,7 +190,7 @@ function PersonalInfo() {
               render={({ field }) => <JopInput {...field} />}
             />
           </div>
-          <div className="flex flex-col gap-2">
+          {/* <div className="flex flex-col gap-2">
             <Typography
               sx={{
                 fontSize: "18px",
@@ -211,7 +208,7 @@ function PersonalInfo() {
                 <JopInput {...field} error={errors?.city?.message} />
               )}
             />
-          </div>
+          </div> */}
           <div className="flex flex-col gap-2">
             <Typography
               sx={{
@@ -252,22 +249,25 @@ function PersonalInfo() {
               )}
             />{" "}
           </div>
-          {/* <div className="flex flex-col gap-2">
-            <Typography
-              sx={{
-                fontSize: "18px",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              Country <span className="ms-2 text-red-600">*</span>
-            </Typography>
-            <Controller
-              name="country"
-              control={control}
-              render={({ field }) => <CountrySelect {...field} />}
-            />
-          </div> */}
+          {!user?.country_id&&(
+          <div className="flex flex-col gap-2">
+          <Typography
+            sx={{
+              fontSize: "18px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            Country <span className="ms-2 text-red-600">*</span>
+          </Typography>
+          <Controller
+            name="country_id"
+            control={control}
+            render={({ field }) => <CountrySelect {...field} />}
+          />
+        </div>
+          )}
+        
 
           <div className="flex flex-col gap-2">
             <Typography
