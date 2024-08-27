@@ -10,6 +10,7 @@ import {
   ForgetPasswordAPI,
   postLoginUserAPI,
   postSignupUserApi,
+  postSocialLoginUserAPI,
   SearchInstructorAPI,
   SingleBookAPI,
   SingleInstructorAPI,
@@ -22,6 +23,7 @@ import {
   forgetPassword,
   IFormContuctInput,
   password,
+  socialLogin,
   userData,
 } from "../utils/types/types";
 import { AxiosError } from "axios";
@@ -95,6 +97,20 @@ export function useLoginMutation() {
   return useMutation({
     mutationFn: (data: userData) => {
       return postLoginUserAPI(data);
+    },
+
+    onError: (err: AxiosError<CustomError>) => {
+      console.error("Login error", err);
+
+      return err;
+    },
+  });
+}
+
+export function useSocialLoginMutation() {
+  return useMutation({
+    mutationFn: (data: socialLogin) => {
+      return postSocialLoginUserAPI(data);
     },
 
     onError: (err: AxiosError<CustomError>) => {

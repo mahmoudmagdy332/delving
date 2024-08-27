@@ -7,6 +7,7 @@ import {
   useConfirmSignupCodeMutation,
   useLoginMutation,
   useSignupMutation,
+  useSocialLoginMutation,
   useUpdateUserMutation,
 } from "../../services/mutation";
 
@@ -18,6 +19,37 @@ export const useLogin = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { mutate, isSuccess, data, isPending, isError, error, status } =
     useLoginMutation();
+  const ErrorCheck = error?.response?.status === 422;
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(setUser(data.data));
+      console.log("dataasdasdasdasdasd", data);
+    }
+    if (isError) {
+      console.log("error", error);
+      if (error?.response?.data?.status === 0) {
+        navigator("/signUp/confirm-Code");
+      }
+    }
+  }, [isSuccess, isError]);
+
+  return {
+    mutate,
+    isSuccess,
+    isPending,
+    isError,
+    error,
+    status,
+    data,
+    ErrorCheck,
+  };
+};
+export const useSocialLogin = () => {
+  const navigator = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const { mutate, isSuccess, data, isPending, isError, error, status } =
+  useSocialLoginMutation();
   const ErrorCheck = error?.response?.status === 422;
 
   useEffect(() => {

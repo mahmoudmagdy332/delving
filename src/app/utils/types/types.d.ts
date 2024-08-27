@@ -386,3 +386,8 @@ export type testimonial = {
   title: string;
   description: string;
 };
+
+export type socialLogin={
+  provider:string,
+  token:string
+}

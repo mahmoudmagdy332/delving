@@ -5,6 +5,7 @@ import {
   CoursesParams,
   filterType,
   IFormContuctInput,
+  socialLogin,
   userData,
 } from "./types/types";
 import { baseUrl } from "../config";
@@ -25,6 +26,7 @@ export const SingleBookAPI = (id: string) =>
 export const SingleInstructorAPI = (id: string) =>
   api.post("instructorById", { user_id: id });
 
+export const postSocialLoginUserAPI = (data: socialLogin) => api.post("social/login", data);
 export const postSignupUserApi = (data: userData) => api.post("signup", data);
 export const getSettingAPI = () => api.get("settings");
 export const getCategoriesQueryAPI = () => api.get("categories");

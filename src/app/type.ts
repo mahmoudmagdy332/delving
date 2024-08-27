@@ -28,6 +28,7 @@ export type User = {
   points: number;
   survey_submited: boolean;
   is_premium: boolean;
+
 };
 export type UserState = {
   user: User | null;
