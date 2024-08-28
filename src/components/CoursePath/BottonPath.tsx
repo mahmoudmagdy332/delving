@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import { useUserSelector } from "../../app/slices/UserSlice";
-const BottonPath = ({ title, top, left,scorm_url,id}:{ id:number,scorm_url:string,title:string, top:number, left :number}) => {
+const BottonPath = ({ title, top, left,scorm_url,id,started}:{ id:number,scorm_url:string,title:string, top:number,started:boolean, left :number}) => {
     const [imageIndex, setImageIndex] = useState(0);
     const navigator = useNavigate();
     const {user}=useUserSelector(state=>state.UserReducer)
@@ -59,6 +59,11 @@ const BottonPath = ({ title, top, left,scorm_url,id}:{ id:number,scorm_url:strin
             left: `${left}px`,
             textAlign: 'center',
         }} >
+          {started&&(
+            <div className="absolute -top-10 ">
+              <img  src="images/LOGO/gift-plan.svg.png" className="w-16 "/>
+            </div>
+          )}
           <motion.button
       onTapStart={handleTap} // Change the image on tap
       onTap={handleClick} // Reset the image when the tap is completed

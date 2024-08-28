@@ -190,10 +190,15 @@ export type content = {
   title: string;
   description: string;
 };
+export type partner = {
+  id: number;
+  image: string;
+};
 export type homeType = {
   newCourses: course[] | null;
   categories: categoryType[] | null;
   content: content[] | null;
+  partners:partner[]|null;
   student_count: number;
   course_count: number;
   lesson_count: number;

@@ -8,6 +8,7 @@ import Works from "../components/home/Works"
 import Engineering from "../components/Premium/Engineering"
 import MyLearning from "./MyLearning"
 import { useUserSelector } from "../app/slices/UserSlice"
+import Partners from "../components/home/Partners"
 
 const Home = () => {
   const { isLoading, isError, error } = useHome();
@@ -37,7 +38,8 @@ const Home = () => {
         <Categories/>
         <Works/>
         {/* <Departments/>   */}
-        <Engineering />   
+        <Engineering /> 
+        <Partners/>  
      </>
     )}
    </div>

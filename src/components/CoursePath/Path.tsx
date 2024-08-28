@@ -9,8 +9,8 @@ const Path = () => {
         (state) => state.CoursesReducer
       );
       const [inView, setInView] = useState(Array(singleCourse?.levels.length).fill(false)); // Initializing state for tracking visibility
-
-      
+      const [startState,setStartState]=useState(0)
+       
       const refs = useRef<(HTMLDivElement | null)[]>([]); // Array of refs
 
       const handleScroll = () => {
@@ -30,7 +30,33 @@ const Path = () => {
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };
+       
       }, []);
+      useEffect(()=>{
+        singleCourse?.levels.map((level)=>{
+          level.lessons.map((lesson)=>{
+            if(!lesson.started&&!startState){
+              setStartState(lesson.id)
+            }
+          })
+        })
+        if(singleCourse)
+       for(let i=0;i<singleCourse.levels.length;i++){
+        let check=false;
+        for(let j=0;j<singleCourse.levels[i].lessons.length;j++){
+           if(singleCourse.levels[i].lessons[j].started===false){
+            check=true;
+            setStartState(singleCourse.levels[i].lessons[j].id)
+            console.log('singleCourse.levels[i].lessons[j].id',singleCourse.levels[i].lessons[j].id)
+            break;
+           }
+        } 
+        if(check){
+          break
+        }
+       } 
+      },[singleCourse])
+      
       const dispatch = useDispatch<AppDispatch>();
       useEffect(() => {
          inView.map((req,idx)=>{
@@ -47,33 +73,33 @@ const Path = () => {
     <div className="w-full absolute top-0 left-0 h-full" style={{backgroundImage:'url("/images/PHOTOS/Mask Group.svg")',backgroundRepeat:'repeat',opacity:'.5',backgroundSize: 'cover'}}></div>
     <div style={{ position: 'relative',height:`${level.lessons_count*150}px`}}>
         {level.lessons_count>0&&(
-        <BottonPath title={level.lessons[0].name} id={level.lessons[0].id} scorm_url={level.lessons[0].scorm_url} top={90} left={310} />
+        <BottonPath title={level.lessons[0].name} started={level.lessons[0].id===startState} id={level.lessons[0].id} scorm_url={level.lessons[0].scorm_url} top={90} left={310} />
         )}
          {level.lessons_count>1&&(
-        <BottonPath title={level.lessons[1].name} id={level.lessons[0].id} scorm_url={level.lessons[1].scorm_url} top={210} left={166} />
+        <BottonPath title={level.lessons[1].name} started={level.lessons[1].id===startState} id={level.lessons[0].id} scorm_url={level.lessons[1].scorm_url} top={210} left={166} />
         )}
         { level.lessons.slice(2).map((lesson,index)=>( 
            <>
             {index%4===0&&(<>
-                <BottonPath key={index}  title={lesson.name} id={lesson.id} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+370} left={240} />
+                <BottonPath key={index}  title={lesson.name} started={lesson.id===startState} id={lesson.id} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+370} left={240} />
                 <img src="/images/ICONS/Vector(3).svg" className={`${level.lessons.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+400, left: 300, zIndex: -1 }} />
             </>
             )}
             {index%4===1&&(
                 <>
-                    <BottonPath key={index} id={lesson.id} title={lesson.name} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+490} left={350} />
+                    <BottonPath key={index} id={lesson.id} started={lesson.id===startState} title={lesson.name} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+490} left={350} />
                     <img src="/images/ICONS/Vector(4).svg" className={`${level.lessons.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+580, left: 220, zIndex: -1 }} />
                 </>
             )}
             {index%4===2&&(
                 <>
-                    <BottonPath key={index} id={lesson.id} title={lesson.name} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+650} left={250} />
+                    <BottonPath key={index} id={lesson.id} started={lesson.id===startState} title={lesson.name} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+650} left={250} />
                     <img src="/images/ICONS/Vector(5).svg" className={`${level.lessons.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+730, left: 200, zIndex: -1 }} />
                 </>
             )}
             {index%4===3&&(
                 <>
-                    <BottonPath key={index} id={lesson.id} title={lesson.name} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+780} left={150} />
+                    <BottonPath key={index} id={lesson.id} started={lesson.id===startState} title={lesson.name} scorm_url={lesson.scorm_url} top={(Math.floor(index/4)*540)+780} left={150} />
                     <img src="/images/ICONS/Vector(6).svg" className={`${level.lessons.length-3===index&&'hidden'}`} style={{ position: 'absolute', top: (Math.floor(index/4)*540)+850, left: 50, zIndex: -1 }} />
                 </>
             )}
