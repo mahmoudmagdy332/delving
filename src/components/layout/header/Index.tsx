@@ -129,7 +129,7 @@ export default function Index(props: Props) {
       <AppBar component="nav" sx={{ bgcolor: 'background.default' }}>
         {setting?.announce&&(
       <Box sx={{bgcolor: 'primary.light'}} className='py-2'>
-        <Typography sx={{color:'primary.dark'}}>{setting?.announce}</Typography> 
+        <Typography sx={{color:'primary.dark',textAlign:'center'}}>{setting?.announce}</Typography> 
       </Box>
     )}
         <Toolbar>

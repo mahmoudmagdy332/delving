@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  CircularProgress,
   MenuItem,
   // RadioGroup,
   Select,
@@ -35,7 +36,7 @@ export interface FormValues {
 }
 export const JopApplication = () => {
   const { id } = useParams<{ id: string }>();
-  const { mutate, data } = useJopApplicationMutation();
+  const { mutate, data,isPending,error } = useJopApplicationMutation();
   console.log(data);
 
   const {
@@ -54,6 +55,10 @@ export const JopApplication = () => {
           onSuccess: () => {
             toast.success(` Apply job is success`);
           },
+          onError:()=>{
+            toast.error(error?.response?.data.message); 
+            console.log('error',error)
+          }
         }
       );
     }
@@ -115,7 +120,7 @@ export const JopApplication = () => {
                 >
                   Resume/CV <span className="ms-2 text-red-600">*</span>
                 </Typography>
-
+                <div className="col-span-2">
                 <label
                   htmlFor="avatar-upload"
                   role="button"
@@ -126,7 +131,9 @@ export const JopApplication = () => {
                     {(resumeName?.name && resumeName?.name) ||
                       "ATTACH RESUME/CV"}
                   </Typography>
+                  
                 </label>
+                <p className="text-red-500">{errors.resume?.message}</p>
                 <input
                   type="file"
                   id="avatar-upload"
@@ -135,8 +142,13 @@ export const JopApplication = () => {
                   })}
                   className="hidden"
                   onChange={(e) => handleResumeChange(e)}
-                />
-
+                /> 
+                </div>
+               
+               
+             
+              
+              
                 <Typography
                   sx={{
                     fontSize: "18px",
@@ -479,7 +491,25 @@ export const JopApplication = () => {
               </RadioGroup>
             </div> */}
             <div className="flex justify-center my-20">
-              <Button
+              {isPending?(
+                  <Button
+                  sx={{
+                    bgcolor: "primary.main",
+                    "&:hover": { bgcolor: "black.dark" },
+                    color: "background.default",
+                    fontWeight: "600",
+                    px: "30px",
+                    py: "15px",
+                    borderRadius: "5px",
+                    display:'flex',
+                    gap:'10px'
+                  }}
+                >
+                   loading
+                  <CircularProgress size="1rem" variant="indeterminate" sx={{color:'background.default'}}/>
+                </Button>
+              ):(
+                <Button
                 type="submit"
                 sx={{
                   bgcolor: "primary.main",
@@ -493,6 +523,8 @@ export const JopApplication = () => {
               >
                 Submit application{" "}
               </Button>
+              )}
+           
             </div>
           </div>
         </form>

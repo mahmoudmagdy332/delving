@@ -202,6 +202,9 @@ export const useJopApplicationMutation = () => {
       console.log(data);
       return ApplyJopAPI(data);
     },
+    onError: (err: AxiosError<CustomError>) => {
+      return err;
+    },
   });
 };
 

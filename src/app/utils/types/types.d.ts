@@ -41,7 +41,10 @@ export type setting = {
   pricing_description: string,
   testimonials_description: string,
   article_categories_description: string,
-  announce:string
+  announce:string,
+  image_intro:string,
+  title_intro:string,
+  description_intro:string,
 };
 
 export type categoryType = {

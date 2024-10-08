@@ -76,7 +76,7 @@ const Path = () => {
         <BottonPath title={level.lessons[0].name} started={level.lessons[0].id===startState} id={level.lessons[0].id} scorm_url={level.lessons[0].scorm_url} top={90} left={310} />
         )}
          {level.lessons_count>1&&(
-        <BottonPath title={level.lessons[1].name} started={level.lessons[1].id===startState} id={level.lessons[0].id} scorm_url={level.lessons[1].scorm_url} top={210} left={166} />
+        <BottonPath title={level.lessons[1].name} started={level.lessons[1].id===startState} id={level.lessons[1].id} scorm_url={level.lessons[1].scorm_url} top={210} left={166} />
         )}
         { level.lessons.slice(2).map((lesson,index)=>( 
            <>

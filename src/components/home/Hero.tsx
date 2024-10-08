@@ -1,8 +1,12 @@
 import { Button, Typography } from "@mui/material"
 import HeaderLayout from "../common/HeaderLayout"
 import { useNavigate } from "react-router-dom"
+import { useSettingSliceSelector } from "../../app/slices/settingSlice";
 
 const Hero = () => {
+  const { setting } = useSettingSliceSelector((state) => state.settingReducer);
+  console.log('setting',setting);
+  
   const navigate=useNavigate();
   const HandleDelve=()=>{
     navigate('/intro')
@@ -13,11 +17,11 @@ const Hero = () => {
         
         <HeaderLayout>
         <Typography sx={{color:"dark.main",fontSize:'24px',fontWeight:"bold"}}>
-            Delve into Engineering
+            {setting?.title_intro}
             with <span style={{color:"#ffce00"}}>Delveng</span>
         </Typography>
         </HeaderLayout>
-        <Typography sx={{color:"gray.dark"}}>Where Engineering Meets Gamified Learning</Typography>
+        <Typography sx={{color:"gray.dark"}}>{setting?.description_intro}</Typography>
         <Button onClick={HandleDelve} sx={{bgcolor:'primary.light',color:'background.default',p:"10px",
                 '&:hover': {
               backgroundColor:'yellow.dark',        
@@ -25,7 +29,7 @@ const Hero = () => {
               }}>Delve Now</Button>
         </div>
         <div className="lg:w-1/2">
-             <img src="/images/PHOTOS/Visiting construction site.png" className="w-full"/>  
+             <img src={setting?.image_intro} alt={setting?.title_intro} className="w-full"/>  
         </div>
     </div>
   )
