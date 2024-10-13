@@ -23,6 +23,8 @@ import { changePopup, useUserSelector } from '../../../app/slices/UserSlice';
 import Cookies from "js-cookie";
 import { useSettingSliceSelector } from '../../../app/slices/settingSlice';
 import UserProfile from './UserProfile';
+import LanguageMenu from './LanguageMenu';
+import { useLanguageSelector } from '../../../app/slices/languageSlice';
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -32,13 +34,17 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = [{name:'Home',link:"/"},
-  {name:'Courses',link:"courses"},
-  {name:'About Us',link:"/about"},
-  {name:'Pricing',link:"/pricing"},
-  {name:'Careers',link:"/careers"}];
+
 
 export default function Index(props: Props) {
+  const { translations } = useLanguageSelector(
+    (state) => state.languageReducer
+  );
+  const navItems = [{name:translations.home,link:"/"},
+    {name:'Courses',link:"courses"},
+    {name:'About Us',link:"/about"},
+    {name:'Pricing',link:"/pricing"},
+    {name:'Careers',link:"/careers"}];
   const { setting } = useSettingSliceSelector((state) => state.settingReducer);
   const { user } = useUserSelector((state) => state.UserReducer);
 
@@ -183,7 +189,9 @@ export default function Index(props: Props) {
               )
              
             ))}
+           
            </Box>
+           
           <div className='flex gap-4 items-center'>
           {isLogin ? (
                  <>
@@ -208,7 +216,7 @@ export default function Index(props: Props) {
                  },
                     }} onClick={handleClickOpen}>login</Button>
                     
-               
+                    <LanguageMenu />
                 </Box>
               )}
                <IconButton

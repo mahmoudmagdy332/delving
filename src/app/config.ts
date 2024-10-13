@@ -1,4 +1,12 @@
-export const baseUrl:string="https://delveng-backend.spoortive.net/en/api/"
+
+export function baseUrl():string{
+  const lang=localStorage.getItem('lang');
+  let  base="https://delveng-backend.spoortive.net/en/api/";
+  if(lang){
+      base=`https://delveng-backend.spoortive.net/${lang}/api/`;
+  }
+  return base;
+}
 
 
 import { initializeApp } from "firebase/app";

@@ -3,11 +3,12 @@ import Footer from "./Footer"
 import Header from "./header/Index"
 import { Box, Toolbar } from "@mui/material"
 const Index = () => {
+
   return (
     <Box  >
       <Header />
        <Box className="min-h-screen">
-       <Toolbar className="h-20"/>
+       <Toolbar className="h-32"/>
        <Outlet />
        </Box>
       <Footer/>

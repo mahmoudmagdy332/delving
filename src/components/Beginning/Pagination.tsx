@@ -12,7 +12,7 @@ function Pagination() {
   };
   return (
    
-    <div className="flex justify-center my-10">
+    <div className="flex justify-center my-10 "  style={{ direction: "ltr" }}>
       {mylearnings.last_page>1&&(
          <MuiPagination
          count={mylearnings.last_page}

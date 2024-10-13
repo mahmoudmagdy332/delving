@@ -20,7 +20,7 @@ function Pagination() {
     dispatch(setCurrentPage(value));
   };
   return (
-    <div className="flex justify-center my-4">
+    <div className="flex justify-center my-4"  style={{ direction: "ltr" }}>
       {last_page >= 1 && (
         <MuiPagination
           count={last_page}
