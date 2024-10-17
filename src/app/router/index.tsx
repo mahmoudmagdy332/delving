@@ -20,7 +20,7 @@ import Avatar from "../../components/Account/Avatar";
 import PersonalInfo from "../../components/Account/PersonalInfo";
 import ChangePassword from "../../components/Account/ChangePassword";
 // import MyCourses from "../../components/Account/MyCourses";
-import Premium from "../../pages/Premium";
+// import Premium from "../../pages/Premium";
 
 import Beginning from "../../pages/Beginning";
 
@@ -72,14 +72,14 @@ const routes = createHashRouter([
               </Suspense>
             ),
           },
-          {
-            path: "/premium",
-            element: (
-              <Suspense fallback={<Loading />}>
-                <Premium />
-              </Suspense>
-            ),
-          },
+          // {
+          //   path: "/premium",
+          //   element: (
+          //     <Suspense fallback={<Loading />}>
+          //       <Premium />
+          //     </Suspense>
+          //   ),
+          // },
           {
             path: "/start",
             element: (

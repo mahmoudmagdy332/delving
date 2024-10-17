@@ -1,24 +1,30 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 function PricingTable() {
+  const { translations } = useLanguageSelector(
+    (state) => state.languageReducer
+  );
   return (
     <div className="relative flex flex-col my-4 w-11/12 sm:w-10/12 lg:w-3/4 mx-auto ">
       <h1 className="text-2xl text-center my-4 font-bold ">
-        No commitment, cancel anytime
+        {translations.NoCommitment}
       </h1>
       <p className="text-xl text-center mb-4 font-medium ">
-        Unlock it all with Premium
+        {translations.UnlockAll}
       </p>
       <table className="min-w-full shadow-md overflow-scroll sm:rounded-lg text-sm text-left text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
-            <th scope="col" className="px-6 py-3"></th>
             <th scope="col" className="px-6 py-3">
-              Free
+              {" "}
+            </th>
+            <th scope="col" className="px-6 py-3">
+              {translations.Free}
             </th>
             <th scope="col" className="px-6 py-3 bg-[#EAFAEE]">
-              Premium
+              {translations.Premium}
             </th>
           </tr>
         </thead>
@@ -28,12 +34,14 @@ function PricingTable() {
               scope="row"
               className="px-6 py-4 font-medium text-gray-900 bg-gray-50"
             >
-              Guided courses
+              {translations.sGuidedCourses}
               <p className="text-sm font-normal text-gray-500">
-                In math, science, programming, data analysis, and more
+                {translations.InMath}{" "}
               </p>
             </th>
-            <td className="px-6 py-4 text-center">Preview only</td>
+            <td className="px-6 py-4 text-center">
+              {translations.PreviewOnly}
+            </td>
             <td className="px-6 py-4 bg-[#EAFAEE]">
               <div className="flex justify-center items-center text-blue-600 h-full">
                 <FaCheckCircle className="text-xl sm:text-2xl" />
@@ -45,12 +53,14 @@ function PricingTable() {
               scope="row"
               className="px-6 py-4 font-medium text-gray-900 bg-gray-50"
             >
-              Bonus math, science, & CS puzzles
+              {translations.BonusMath}
               <p className="text-sm font-normal text-gray-500">
-                Hundreds of additional bite-sized challenges
+                {translations.Hundreds}
               </p>
             </th>
-            <td className="px-6 py-4 text-center">Preview only</td>
+            <td className="px-6 py-4 text-center">
+              {translations.PreviewOnly}
+            </td>
             <td className="px-6 py-4 bg-[#EAFAEE]">
               <div className="flex justify-center items-center text-blue-600 h-full">
                 <FaCheckCircle className="text-xl sm:text-2xl" />
@@ -62,9 +72,9 @@ function PricingTable() {
               scope="row"
               className="px-6 py-4 font-medium text-gray-900 bg-gray-50"
             >
-              No limits
+              {translations.NoLimits}
               <p className="text-sm font-normal text-gray-500">
-                Access our full library of content
+                {translations.Access}
               </p>
             </th>
             <td className="px-6 py-4 text-center text-gray-500">
@@ -83,10 +93,9 @@ function PricingTable() {
               scope="row"
               className="px-6 py-4 font-medium text-gray-900 bg-gray-50"
             >
-              Fully unlocked learning paths
+              {translations.FullyUnlock}
               <p className="text-sm font-normal text-gray-500">
-                Step-by-step pathways to develop your problem-solving skills in
-                math, science, data, and programming
+                {translations.StepBy}
               </p>
             </th>
             <td className="px-6 py-4 text-center text-gray-500">

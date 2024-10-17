@@ -1,11 +1,15 @@
 import { Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { career } from "../../app/utils/types/types";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 interface careerProps {
   item: career;
 }
 const OpeningCard: React.FC<careerProps> = ({ item }) => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   return (
     <div className="grid grid-cols-2 lg:grid-cols-2 gap-10 py-5 mt-2 border-t">
       <div className="flex flex-col gap-4">
@@ -14,9 +18,13 @@ const OpeningCard: React.FC<careerProps> = ({ item }) => {
         >
           {item.title}
         </Typography>
-        <Typography sx={{ fontSize: "18px", fontWeight: "400",color:'primary.light' }}>
+        <Typography
+          sx={{ fontSize: "18px", fontWeight: "400", color: "primary.light" }}
+        >
           {item.description && (
-            <Typography dangerouslySetInnerHTML={{ __html: item?.description }} />
+            <Typography
+              dangerouslySetInnerHTML={{ __html: item?.description }}
+            />
           )}
         </Typography>
         <Link to="/jop/1" className="flex justify-start">
@@ -31,7 +39,7 @@ const OpeningCard: React.FC<careerProps> = ({ item }) => {
               borderRadius: "5px",
             }}
           >
-            Learn More
+            {translations.LearnMore}
           </Button>
         </Link>
       </div>

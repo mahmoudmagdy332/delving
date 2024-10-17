@@ -8,12 +8,16 @@ import { useNavigate } from "react-router-dom";
 import { SubscribePackageQuery } from "../../app/services/queries";
 import { useState } from "react";
 import { useUserSelector } from "../../app/slices/UserSlice";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 interface PackageProp {
   item: Package;
 }
 
 const PlaneCard: React.FC<PackageProp> = ({ item }) => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const { user } = useUserSelector((state) => state.UserReducer);
   const navigate = useNavigate();
   const [PackageId, setPackageId] = useState<number>();
@@ -46,7 +50,8 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
         <Typography
           sx={{ fontSize: "60px", fontWeight: "600", color: "black.dark" }}
         >
-          {user?.country_id===1?"EGP":"$"}{user?.country_id===1?item.price:item.dollar_price} 
+          {user?.country_id === 1 ? "EGP" : "$"}
+          {user?.country_id === 1 ? item.price : item.dollar_price}
         </Typography>
         <Typography
           sx={{
@@ -56,7 +61,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
             opacity: 0.6,
           }}
         >
-          /{item.duration} month
+          /{item.duration} {translations.month}
         </Typography>
       </div>
       <Box
@@ -72,7 +77,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
           <Typography
             sx={{ fontSize: "20px", fontWeight: "600", color: "black.dark" }}
           >
-            Available Features
+            {translations.AvailableFeatures}
           </Typography>
           <div className="flex flex-col gap-4 w-full">
             {item.features?.map((feature) => (
@@ -88,7 +93,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    fontSize:"10px",
+                    fontSize: "10px",
                     bgcolor: feature.is_active ? "primary.dark" : "black.light",
                   }}
                 >
@@ -118,7 +123,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
             borderRadius: "0 0 20px 20px",
           }}
         >
-          Get Started
+          {translations.getStart}
         </Button>
       </Box>
     </div>

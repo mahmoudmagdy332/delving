@@ -5,8 +5,12 @@ import { TestimonialQuery } from "../app/services/queries";
 import { useEffect, useState } from "react";
 import { testimonial } from "../app/utils/types/types";
 import TestimonialLoader from "../components/common/TestimonialsLoader";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 
 const Testimonials = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const [Testimonials, setTestimonials] = useState<testimonial[] | null>();
   const { data, isLoading, isSuccess } = TestimonialQuery();
 
@@ -37,9 +41,9 @@ const Testimonials = () => {
                 fontWeight: "bold",
               }}
             >
-              Our{" "}
+              {translations.Our}{" "}
               <Box component="span" sx={{ color: "yellow.main" }}>
-                Testimonials
+                {translations.Testimonials}
               </Box>
             </Typography>
           </HeaderLayout>
@@ -55,13 +59,14 @@ const Testimonials = () => {
               fontWeight: "400",
             }}
           >
-            Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget
-            elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum
-            eget habitasse in velit fringilla feugiat senectus in.
+            {translations.TestimonialsDetails}
           </Typography>
         </div>
         <div className="flex justify-center mb-10">
-          <img src="/images/PHOTOS/shutterstock_663157873 [Converted] 1.png" />
+          <img
+            alt=""
+            src="/images/PHOTOS/shutterstock_663157873 [Converted] 1.png"
+          />
         </div>
         <div className="flex justify-center">
           <div className="flex flex-wrap lg:justify-between  gap-4 xl:w-3/4 ">

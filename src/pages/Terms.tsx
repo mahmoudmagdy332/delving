@@ -1,8 +1,12 @@
 import { TermsQuery } from "../app/services/queries";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 import Loader from "../components/common/Loader";
 
 const Terms = () => {
-  const { isLoading, data ,isError,error} = TermsQuery();
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
+  const { isLoading, data, isError, error } = TermsQuery();
 
   if (isLoading)
     return (
@@ -13,7 +17,7 @@ const Terms = () => {
   if (isError)
     return (
       <div className="h-96 flex justify-center items-center">
-        Error: {error?.message}
+        {translations.Error}: {error?.message}
       </div>
     );
   return (

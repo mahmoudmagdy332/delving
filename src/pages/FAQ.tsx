@@ -2,13 +2,20 @@ import { Box, Typography } from "@mui/material";
 import HeaderLayout from "../components/common/HeaderLayout";
 import Quetions from "../components/common/Quetions";
 import { UseFQs } from "../app/utils/hooks/UsFQs";
+import Loader from "../components/common/Loader";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 
 const FAQ = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const { isLoading } = UseFQs();
   // const listItems=['All',"STUDENTS","TEACHERS","LIFE-LONG LEARNERS","LIPROFESSIONALS","PARENTS"]
 
   if (isLoading) {
-    return <div>Loading........</div>;
+    <div className="flex h-screen justify-center items-center">
+      <Loader />
+    </div>;
   }
   return (
     <div className="py-10 w-10/12 mx-auto">
@@ -22,9 +29,9 @@ const FAQ = () => {
                 fontWeight: "bold",
               }}
             >
-              Frequently Asked{" "}
+              {translations.FrequentlyAsked}
               <Box component="span" sx={{ color: "yellow.main" }}>
-                Questions
+                {translations.Questions}
               </Box>
             </Typography>
           </HeaderLayout>

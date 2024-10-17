@@ -1,12 +1,17 @@
 import React from "react";
 import { ArticleCategory } from "../../app/utils/types/types";
 import { Link } from "react-router-dom";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 interface DelveProps {
   item: ArticleCategory;
 }
 
 const DelveCard: React.FC<DelveProps> = ({ item }) => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
+
   return (
     <Link
       to={`/article/${item.id}`}
@@ -25,7 +30,7 @@ const DelveCard: React.FC<DelveProps> = ({ item }) => {
           </div>
           <p className="text-sm text-gray-400 ">.</p>
           <p className="text-sm text-gray-400 ">
-            {item.articles_count} article
+            {item.articles_count} {translations.article}
           </p>
         </div>
       </div>

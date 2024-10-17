@@ -2,16 +2,20 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { course } from "../../app/utils/types/types";
 import React from "react";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 interface courseProps {
   course: course;
 }
 
 const CourseCard: React.FC<courseProps> = ({ course }) => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   return (
     <div className="w-full flex flex-col gap-5 border rounded-md p-4 h-full">
       <div className="flex justify-center mb-3">
-        <img src={course?.image} className="w-3/4 h-[140px]" />
+        <img alt="" src={course?.image} className="w-3/4 h-[140px]" />
       </div>
       <h3 className="font-semibold text-xl">{course?.name}</h3>
       <div className="text-sm ">
@@ -36,7 +40,7 @@ const CourseCard: React.FC<courseProps> = ({ course }) => {
               },
             }}
           >
-            View path
+            {translations.ViewPath}
           </Button>
         </Link>
       </div>

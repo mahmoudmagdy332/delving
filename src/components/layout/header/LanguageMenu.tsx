@@ -18,6 +18,9 @@ import {
 import { Logout, PersonAdd } from "@mui/icons-material";
 
 const LanguageMenu = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const [isLogin] = useState(false);
   const { lang } = useLanguageSelector((state) => state.languageReducer);
   const dispatch = useDispatch();
@@ -93,24 +96,24 @@ const LanguageMenu = () => {
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
             <MenuItem onClick={handleClose}>
-              <Avatar /> Profile
+              <Avatar /> {translations.Profile}
             </MenuItem>
             <MenuItem onClick={handleClose}>
-              <Avatar /> My account
+              <Avatar /> {translations.Myaccount}
             </MenuItem>
             <Divider />
             <MenuItem onClick={handleClose}>
               <ListItemIcon>
                 <PersonAdd fontSize="small" />
               </ListItemIcon>
-              Add another account
+              {translations.AddAccount}
             </MenuItem>
 
             <MenuItem onClick={handleClose}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
-              Logout
+              {translations.Logout}
             </MenuItem>
           </Menu>
         ) : (

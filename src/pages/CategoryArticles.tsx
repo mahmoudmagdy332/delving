@@ -2,9 +2,14 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import { Articles } from "../app/services/queries";
 import { Article } from "../app/utils/types/types";
+import Loader from "../components/common/Loader";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 
 function CategoryArticles() {
   const { id } = useParams();
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
 
   const { data, isLoading, isSuccess } = Articles(id);
 
@@ -15,7 +20,9 @@ function CategoryArticles() {
   }
 
   if (isLoading) {
-    <div className="flex h-96 justify-center items-center">loading.....</div>;
+    <div className="flex h-screen justify-center items-center">
+      <Loader />
+    </div>;
   }
   if (isSuccess) {
     return (
@@ -38,7 +45,8 @@ function CategoryArticles() {
           </div>
           <p className="text-sm text-gray-400 ">.</p>
           <p className="text-sm text-gray-400 ">
-            {data?.data.categoryArticles[0].articles_count} article
+            {data?.data.categoryArticles[0].articles_count}{" "}
+            {translations.article}
           </p>
         </div>
 

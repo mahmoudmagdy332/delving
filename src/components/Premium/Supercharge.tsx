@@ -1,8 +1,13 @@
+import { useLanguageSelector } from "../../app/slices/languageSlice";
+
 type supercharging = {
   icon: string;
   describe: string;
 };
 function Supercharge() {
+  const { translations } = useLanguageSelector(
+    (state) => state.languageReducer
+  );
   const supercharge: supercharging[] = [
     {
       icon: "../../../public/images/ICONS/Frame.svg",
@@ -26,7 +31,7 @@ function Supercharge() {
     <div className="flex flex-col-reverse my-4 md:flex-row items-center lg:w-3/4 w-10/12 mx-auto">
       <div className="flex flex-col gap-6">
         <h1 className="text-[18px] font-bold text-black">
-          Supercharge your learning
+          {translations.superCharge}
         </h1>
 
         <div className="flex-col gap-2">
@@ -38,7 +43,7 @@ function Supercharge() {
           ))}
         </div>
         <button className="bg-[#0b51ff] py-4 text-white  rounded-full text-lg">
-          subscribe now
+          {translations.SubscribeNow}
         </button>
       </div>
 

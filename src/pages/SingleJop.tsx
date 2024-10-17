@@ -2,8 +2,12 @@ import { Box, Button, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import { careerQuery } from "../app/services/queries";
 import Loader from "../components/common/Loader";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 
 const SingleJop = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const { id } = useParams<{ id: string }>();
   const { isLoading, data ,isError,error} = careerQuery(id);
 
@@ -16,7 +20,7 @@ const SingleJop = () => {
   if (isError)
     return (
       <div className="h-96 flex justify-center items-center">
-        Error: {error?.message}
+        {translations.Error}: {error?.message}
       </div>
     );
   return (
@@ -54,7 +58,7 @@ const SingleJop = () => {
               borderRadius: "5px",
             }}
           >
-            Apply for this job
+            {translations.ApplyJob}
           </Button>
         </Link>
       </div>
@@ -75,7 +79,7 @@ const SingleJop = () => {
                     borderRadius: "5px",
                   }}
                 >
-                  Apply for this job
+                  {translations.ApplyJob}
                 </Button>
               </Link>
             </div>

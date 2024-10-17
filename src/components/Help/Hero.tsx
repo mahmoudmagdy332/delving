@@ -5,10 +5,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../app/slices/ArticleCatSlice";
 import { IoMdClose } from "react-icons/io";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 interface FormValues {
   name: string;
 }
 function Hero() {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const dispatch = useDispatch();
 
   const { register, handleSubmit, reset } = useForm<FormValues>();
@@ -44,7 +48,7 @@ function Hero() {
               fontWeight: "bold",
             }}
           >
-            Advice and answers from the DELVENG Team
+            {translations.HelpTitle}
           </Typography>
           <form className="flex grow" onSubmit={handleSubmit(onSubmit)}>
             <div className="relative flex grow">

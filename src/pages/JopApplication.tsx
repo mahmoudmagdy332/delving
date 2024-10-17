@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useJopApplicationMutation } from "../app/services/mutation";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 export interface FormValues {
   resume: File;
   email: string;
@@ -35,8 +36,11 @@ export interface FormValues {
   career_id: string | undefined;
 }
 export const JopApplication = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const { id } = useParams<{ id: string }>();
-  const { mutate, data,isPending,error } = useJopApplicationMutation();
+  const { mutate, data, isPending, error } = useJopApplicationMutation();
   console.log(data);
 
   const {
@@ -55,10 +59,10 @@ export const JopApplication = () => {
           onSuccess: () => {
             toast.success(` Apply job is success`);
           },
-          onError:()=>{
-            toast.error(error?.response?.data.message); 
-            console.log('error',error)
-          }
+          onError: () => {
+            toast.error(error?.response?.data.message);
+            console.log("error", error);
+          },
         }
       );
     }
@@ -83,15 +87,15 @@ export const JopApplication = () => {
               lineHeight: "57.6px",
             }}
           >
-            Senior Producer (Machine Learning & Artificial Intelligence)
+            {translations.jobApp}{" "}
           </Typography>
           <Typography
             sx={{ fontSize: "16px", fontWeight: "400", color: "gray.dark" }}
           >
-            Americas
+            {translations.Americas}
           </Typography>
 
-          <div className="">Content / Full-time / Remote</div>
+          <div className="">{translations.Content}</div>
         </div>
       </div>
       <Box sx={{ bgcolor: "background.paper" }}>
@@ -108,7 +112,7 @@ export const JopApplication = () => {
                   fontWeight: "500",
                 }}
               >
-                Submit Your Application
+                {translations.submitApp}
               </Typography>
               <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-start gap-y-8 gap-x-4">
                 <Typography
@@ -118,37 +122,33 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Resume/CV <span className="ms-2 text-red-600">*</span>
+                  {translations.Resume}{" "}
+                  <span className="ms-2 text-red-600">*</span>
                 </Typography>
                 <div className="col-span-2">
-                <label
-                  htmlFor="avatar-upload"
-                  role="button"
-                  className="flex gap-6 p-4 col-span-2 max-w-64 items-start bg-gray-200 justify-center border rounded-sm border-gray-300"
-                >
-                  <img src="/images/ICONS/ATTACH.svg" alt="Attach Icon" />
-                  <Typography sx={{ color: "black.main" }}>
-                    {(resumeName?.name && resumeName?.name) ||
-                      "ATTACH RESUME/CV"}
-                  </Typography>
-                  
-                </label>
-                <p className="text-red-500">{errors.resume?.message}</p>
-                <input
-                  type="file"
-                  id="avatar-upload"
-                  {...register("resume", {
-                    required: "Resume is required",
-                  })}
-                  className="hidden"
-                  onChange={(e) => handleResumeChange(e)}
-                /> 
+                  <label
+                    htmlFor="avatar-upload"
+                    role="button"
+                    className="flex gap-6 p-4 col-span-2 max-w-64 items-start bg-gray-200 justify-center border rounded-sm border-gray-300"
+                  >
+                    <img src="/images/ICONS/ATTACH.svg" alt="Attach Icon" />
+                    <Typography sx={{ color: "black.main" }}>
+                      {(resumeName?.name && resumeName?.name) ||
+                        "ATTACH RESUME/CV"}
+                    </Typography>
+                  </label>
+                  <p className="text-red-500">{errors.resume?.message}</p>
+                  <input
+                    type="file"
+                    id="avatar-upload"
+                    {...register("resume", {
+                      required: "Resume is required",
+                    })}
+                    className="hidden"
+                    onChange={(e) => handleResumeChange(e)}
+                  />
                 </div>
-               
-               
-             
-              
-              
+
                 <Typography
                   sx={{
                     fontSize: "18px",
@@ -156,7 +156,8 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Full name <span className="ms-2 text-red-600">*</span>
+                  {translations.Fullname}{" "}
+                  <span className="ms-2 text-red-600">*</span>
                 </Typography>
                 <Controller
                   rules={{
@@ -176,7 +177,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Pronouns
+                  {translations.Pronouns}
                 </Typography>
                 <Controller
                   name="pronouns"
@@ -210,8 +211,8 @@ export const JopApplication = () => {
                       {...field}
                       label="Gender"
                     >
-                      <MenuItem value="Male">Male</MenuItem>
-                      <MenuItem value="Female">Female</MenuItem>
+                      <MenuItem value="Male">{translations.Male}</MenuItem>
+                      <MenuItem value="Female">{translations.Female}</MenuItem>
                     </Select>
                   )}
                 />
@@ -223,7 +224,8 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Email <span className="ms-2 text-red-600">*</span>
+                  {translations.Email}{" "}
+                  <span className="ms-2 text-red-600">*</span>
                 </Typography>
                 <Controller
                   rules={{
@@ -243,7 +245,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Phone{" "}
+                  {translations.Phone}{" "}
                 </Typography>
                 <Controller
                   name="phone"
@@ -258,7 +260,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Current location{" "}
+                  {translations.Currentlocation}{" "}
                 </Typography>
                 <Controller
                   name="current_location"
@@ -272,7 +274,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Current company{" "}
+                  {translations.Currentcompany}{" "}
                 </Typography>
                 <Controller
                   name="current_company"
@@ -287,7 +289,7 @@ export const JopApplication = () => {
                   fontWeight: "500",
                 }}
               >
-                Links
+                {translations.Links}
               </Typography>
               <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-start gap-y-8">
                 <Typography
@@ -297,7 +299,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  LinkedIn URL{" "}
+                  {translations.LinkedInURL}{" "}
                 </Typography>
                 <Controller
                   name="linkedin_url"
@@ -311,7 +313,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  GitHub URL{" "}
+                  {translations.GitHubURL}{" "}
                 </Typography>
                 <Controller
                   name="github_url"
@@ -326,7 +328,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Portfolio URL{" "}
+                  {translations.PortfolioURL}{" "}
                 </Typography>
                 <Controller
                   name="portfolio_url"
@@ -340,7 +342,7 @@ export const JopApplication = () => {
                     alignItems: "center",
                   }}
                 >
-                  Other website{" "}
+                  {translations.Otherwebsite}{" "}
                 </Typography>
                 <Controller
                   name="other_website"
@@ -355,12 +357,12 @@ export const JopApplication = () => {
                   fontWeight: "500",
                 }}
               >
-                Why are you interested in Brilliant?
+                {translations.WhyDelveng}
               </Typography>
               <div className="grid grid-cols-1  items-center justify-start gap-y-8">
                 <Typography sx={{ display: "flex", alignItems: "center" }}>
-                  Please leave a note that expresses your interest in the
-                  position/company. <span className="ms-2 text-red-600">*</span>
+                  {translations.LeaveAnote}
+                  <span className="ms-2 text-red-600">*</span>
                 </Typography>
                 <Controller
                   name="interest_note"
@@ -376,14 +378,11 @@ export const JopApplication = () => {
                   fontWeight: "500",
                 }}
               >
-                Teaching sample
+                {translations.Teachingsample}
               </Typography>
               <div className="grid grid-cols-1  items-center justify-start gap-y-8">
                 <Typography sx={{ display: "flex", alignItems: "center" }}>
-                  If you’re the right fit for this role, you probably have a
-                  blog, have designed some lessons, or have some amazing past
-                  projects; please share links to one or more artifacts you'd
-                  like to highlight, we’d love to check them out!
+                  {translations.TeachingsampleDetails}
                 </Typography>
                 <Controller
                   name="teaching_sample"
@@ -399,13 +398,11 @@ export const JopApplication = () => {
                   fontWeight: "500",
                 }}
               >
-                Teaching experience (ML)
+                {translations.Teachingexperience}{" "}
               </Typography>
               <div className="grid grid-cols-1  items-center justify-start gap-y-8">
                 <Typography sx={{ display: "flex", alignItems: "center" }}>
-                  Please summarize your teaching experience. We're particularly
-                  interested in hearing about your experiences teaching machine
-                  learning, AI, and data science topics!{" "}
+                  {translations.TeachingexperienceDetails}{" "}
                 </Typography>
                 <Controller
                   name="teaching_experience"
@@ -415,7 +412,7 @@ export const JopApplication = () => {
               </div>
               <div className="grid grid-cols-1  items-center justify-start gap-y-8">
                 <Typography sx={{ display: "flex", alignItems: "center" }}>
-                  Addition information
+                  {translations.Additioninformation}
                 </Typography>
                 <Controller
                   name="additional_information"
@@ -491,8 +488,8 @@ export const JopApplication = () => {
               </RadioGroup>
             </div> */}
             <div className="flex justify-center my-20">
-              {isPending?(
-                  <Button
+              {isPending ? (
+                <Button
                   sx={{
                     bgcolor: "primary.main",
                     "&:hover": { bgcolor: "black.dark" },
@@ -501,30 +498,33 @@ export const JopApplication = () => {
                     px: "30px",
                     py: "15px",
                     borderRadius: "5px",
-                    display:'flex',
-                    gap:'10px'
+                    display: "flex",
+                    gap: "10px",
                   }}
                 >
-                   loading
-                  <CircularProgress size="1rem" variant="indeterminate" sx={{color:'background.default'}}/>
+                  {translations.loading}
+                  <CircularProgress
+                    size="1rem"
+                    variant="indeterminate"
+                    sx={{ color: "background.default" }}
+                  />
                 </Button>
-              ):(
+              ) : (
                 <Button
-                type="submit"
-                sx={{
-                  bgcolor: "primary.main",
-                  "&:hover": { bgcolor: "black.dark" },
-                  color: "background.default",
-                  fontWeight: "600",
-                  px: "30px",
-                  py: "15px",
-                  borderRadius: "5px",
-                }}
-              >
-                Submit application{" "}
-              </Button>
+                  type="submit"
+                  sx={{
+                    bgcolor: "primary.main",
+                    "&:hover": { bgcolor: "black.dark" },
+                    color: "background.default",
+                    fontWeight: "600",
+                    px: "30px",
+                    py: "15px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  {translations.Submitapplication}{" "}
+                </Button>
               )}
-           
             </div>
           </div>
         </form>

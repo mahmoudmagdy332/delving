@@ -5,9 +5,13 @@ import {  surveyQuery } from "../app/services/queries";
 import { answerType, quesions } from "../app/type";
 import { useSurveyMutation } from "../app/services/mutation";
 import { useUserSelector } from "../app/slices/UserSlice";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 
 
 const Welcome = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const navigate = useNavigate();
   const [step,setStep]=useState(0);
   const {data}= surveyQuery()
@@ -53,7 +57,7 @@ useEffect(()=>{
 },[user])
   return (
     <div className="my-10 w-10/12 lg:w-3/4 xl:w-1/2 mx-auto flex flex-col gap-2 items-center">
-        <img src="/images/LOGO/Logo (2) 1.png" className="mb-10 h-10"/>
+        <img alt="" src="/images/LOGO/Logo (2) 1.png" className="mb-10 h-10"/>
         <div className="flex items-center">
           {quesions?.length>0&&quesions.map((_,idx)=>(
            <>
@@ -85,7 +89,7 @@ useEffect(()=>{
           {quesions[step].answers.map((choose)=>(
             <Box onClick={()=>setAnswerSelected({  survey_id :quesions[step].id,
               answer_id :choose.id})} sx={{borderColor:answerSelected.answer_id===choose.id?'primary.main':'gray.main',bgcolor:answerSelected.answer_id===choose.id?'primary.dark':""}}className="border w-full cursor-pointer rounded-lg  py-2 px-4 flex gap-4 items-center transition-all easy-in-out">
-            <img src={choose.image} className="w-8"/>
+            <img alt="" src={choose.image} className="w-8"/>
             <Typography sx={{fontWeight:'500',fontSize:'16px'}}>{choose.title}</Typography>
           </Box>
           ))}
@@ -99,7 +103,7 @@ useEffect(()=>{
           <Button  sx={{bgcolor:'primary.main',fontSize:'14px',"&:hover":{bgcolor:'black.dark',color:'black.light'},
           color:'white',fontWeight:'600',
           px:'30px',py:"10px",borderRadius:'10px',mt:"10px",width:'400px'}}  >
-            Loading ...
+            {translations.Loading}
           </Button>
           ):(
             <Button onClick={HandleContinue} sx={{bgcolor:'primary.main',fontSize:'14px',"&:hover":{bgcolor:'black.dark',color:'black.light'},

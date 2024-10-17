@@ -3,6 +3,7 @@ import OpeningCard from "./OpeningCard";
 import { useCareerSliceSelector } from "../../app/slices/CareersSlice";
 import React from "react";
 import CareerLoader from "../common/CareerLoader";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 interface opening {
   loading: boolean;
@@ -10,6 +11,9 @@ interface opening {
 }
 const Openings: React.FC<opening> = ({ loading, success }) => {
   const { careers } = useCareerSliceSelector((state) => state.CareersReducer);
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
 
   // const { categories } = useCategoriesSliceSelector(
   //   (store) => store.categoriesReducer
@@ -20,7 +24,7 @@ const Openings: React.FC<opening> = ({ loading, success }) => {
       <Typography
         sx={{ fontFamily: "typography", fontSize: "32px", fontWeight: "500" }}
       >
-        Career Openings
+        {translations.CareerOpenings}
       </Typography>
 
       {/* <div className="flex flex-wrap gap-4 my-10">

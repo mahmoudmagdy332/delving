@@ -1,8 +1,12 @@
 import { Box } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useMode } from "../../Theme";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 const AccountSide = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const [theme] = useMode();
   console.log(theme.palette);
 
@@ -21,7 +25,7 @@ const AccountSide = () => {
           isActive ? "text-blue-500" : "text-gray-500"
         }
       >
-        Avatar
+        {translations.Avatar}
       </NavLink>
       <NavLink
         to="/account/personal"
@@ -29,7 +33,7 @@ const AccountSide = () => {
            isActive ? "text-blue-500" : "text-gray-500"
         }
       >
-        Personal Info
+        {translations.PersonalInfo}
       </NavLink>
       <NavLink
         to="/account/password"
@@ -37,7 +41,7 @@ const AccountSide = () => {
          isActive ? "text-blue-500" : "text-gray-500"
         }
       >
-        Password
+        {translations.Password}
       </NavLink>
       {/* <NavLink
         to="/account/myCourses"

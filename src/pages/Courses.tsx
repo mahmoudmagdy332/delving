@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { useCategoriesSliceSelector } from "../app/slices/categoriesSlice";
 import CoursesLoading from "../components/common/CoursesLoading";
 import Pagination from "../components/common/Pagination";
+import { useLanguageSelector } from "../app/slices/languageSlice";
 // import { useState } from "react";
 type FormValues = {
   search: string;
@@ -30,6 +31,9 @@ const Courses = () => {
 
   const { categories } = useCategoriesSliceSelector(
     (state) => state.categoriesReducer
+  );
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -52,7 +56,7 @@ const Courses = () => {
     dispatch(setSearch(undefined));
     reset();
   };
-  const { isLoading,refetch } = useCourses({
+  const { isLoading, refetch } = useCourses({
     name: search,
     id: category_id,
     currentPage,
@@ -61,9 +65,9 @@ const Courses = () => {
   const handleSelectCategory = (id: number | undefined) => {
     dispatch(setCategory(id));
   };
-  useEffect(()=>{
-    refetch()
-  },[currentPage])
+  useEffect(() => {
+    refetch();
+  }, [currentPage]);
   return (
     <div className="py-10 w-10/12 mx-auto ">
       <div className="flex flex-col gap-10 ">
@@ -76,9 +80,9 @@ const Courses = () => {
                 fontWeight: "bold",
               }}
             >
-              Browse all 70+{" "}
+              {translations.BrowseAll}
               <Box component="span" sx={{ color: "yellow.main" }}>
-                courses
+                {translations.Course}
               </Box>
             </Typography>
           </HeaderLayout>
@@ -121,11 +125,11 @@ const Courses = () => {
                 borderColor: "primary.main",
                 bgcolor: "primary.dark",
               },
-              borderColor:!category_id?"primary.main":"",
-              bgcolor: !category_id?"primary.dark":""
+              borderColor: !category_id ? "primary.main" : "",
+              bgcolor: !category_id ? "primary.dark" : "",
             }}
           >
-            All
+            {translations.All}
           </Button>
           {categories?.map((item) => (
             <Button
@@ -140,8 +144,8 @@ const Courses = () => {
                   borderColor: "primary.main",
                   bgcolor: "primary.dark",
                 },
-                borderColor: item.id===category_id?"primary.main":"",
-                  bgcolor: item.id===category_id?"primary.dark":""
+                borderColor: item.id === category_id ? "primary.main" : "",
+                bgcolor: item.id === category_id ? "primary.dark" : "",
               }}
             >
               {item.title}
@@ -150,11 +154,9 @@ const Courses = () => {
         </div>
 
         <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {isLoading ? (
-            [...Array(6)].map(() => <CoursesLoading />)
-          ) : (
-            courses && courses?.map((item) => <CourseCard course={item} />)
-          )}
+          {isLoading
+            ? [...Array(6)].map(() => <CoursesLoading />)
+            : courses && courses?.map((item) => <CourseCard course={item} />)}
         </div>
         <Pagination />
       </div>

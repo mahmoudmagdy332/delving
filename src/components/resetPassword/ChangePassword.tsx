@@ -79,7 +79,7 @@ const ChangePassword = ({
            </Button>
           ) : (
              <Button   type="submit" sx={{backgroundColor:'gray.dark',color:'gray.light',borderRadius:'100px',borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark',py:'12px', mt:'30px',"&:hover":{color:'gray.dark'}}}  className='transition-all ease-in-out  font-semibold hover:shadow-lg flex   w-full '>
-             Submit
+             {translations.Submit}
            </Button>
           )}
         </button>

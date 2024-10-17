@@ -1,8 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import HeaderLayout from "../common/HeaderLayout";
 import { useAboutUsSliceSelector } from "../../app/slices/AboutusSlice";
+import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 const Hero = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
   const { About } = useAboutUsSliceSelector((state) => state.AboutAsReducer);
 
   const about: string | null = About && About?.[0]?.title;
@@ -29,14 +33,10 @@ const Hero = () => {
           {About && About[0]?.description}
         </Typography>
         <Typography sx={{ textAlign: "center", fontSize: "18px" }}>
-          We help people learn quantitative and technical skills, especially in
-          math, data, and computer science / AI. On Brilliant, you’re learning
-          by doing – there are no videos, and everything is interactive. Our
-          courses are a delightful experience of guided discovery, designed to
-          improve your ability to think and reason from first principles.
+          {translations.AboutHero}
         </Typography>
         {/* <img src="/images/PHOTOS/Frame 2608236.png" /> */}
-        {About && <img src={About&& About[0].meta_image} />}
+        {About && <img alt="" src={About && About[0].meta_image} />}
       </div>
     </div>
   );

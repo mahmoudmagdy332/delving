@@ -8,6 +8,7 @@ import { useLogout } from '../../../app/utils/hooks/useAuth';
 import { Link } from 'react-router-dom';
 import { stringAvatar } from '../../../app/utils/hooks/stringAvatar';
 import { useUserSelector } from '../../../app/slices/UserSlice';
+import { useLanguageSelector } from '../../../app/slices/languageSlice';
 
 
 
@@ -16,6 +17,9 @@ import { useUserSelector } from '../../../app/slices/UserSlice';
 
 
 const UserProfile = () => {
+  const { translations } = useLanguageSelector(
+    (store) => store.languageReducer
+  );
  
   const { user } = useUserSelector((state: RootState) => state.UserReducer);
     const {refetch}=useLogout()
@@ -89,7 +93,7 @@ const UserProfile = () => {
         <MenuItem onClick={handleClose}>
           <Link to="/account" className="flex gap-2 items-center">
             {user?.image?(
-               <img src={user.image} className='w-10 rounded-full'/>
+               <img alt='' src={user.image} className='w-10 rounded-full'/>
             ):(
               <Avatar />
             )}
@@ -120,7 +124,7 @@ const UserProfile = () => {
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+          {translations.Logout}
         </MenuItem>
       </Menu>
     </React.Fragment>

@@ -38,7 +38,7 @@ const Categories = () => {
             {categories?.map((item, idx) => (
               <SwiperSlide key={idx}>
                  <div className={`flex gap-2 items-center justify-center ${idx!==0&&"lg:border-s"}`}>
-                <img src={item.image} className="h-12"/>
+                <img alt="" src={item.image} className="h-12"/>
                 <Typography sx={{color:"dark.main"}}>{item.title}</Typography>
             </div>
               </SwiperSlide>
