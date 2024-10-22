@@ -1,9 +1,10 @@
 
 export function baseUrl():string{
   const lang=localStorage.getItem('lang');
-  let  base="https://delveng-backend.spoortive.net/en/api/";
+
+  let  base="https://dashboard.delveng.com/en/api/";
   if(lang){
-      base=`https://delveng-backend.spoortive.net/${lang}/api/`;
+      base=`https://dashboard.delveng.com/${lang}/api/`;
   }
   return base;
 }
