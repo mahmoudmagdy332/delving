@@ -276,8 +276,8 @@ const Signup = () => {
                 rules={{ required: translations.genderRequired }}
                 render={({ field }) => (
                   <Select {...field} label={translations.gender}>
-                    <MenuItem value="male">{translations.male}</MenuItem>
-                    <MenuItem value="female">{translations.female}</MenuItem>
+                    <MenuItem value="male">{translations.Male}</MenuItem>
+                    <MenuItem value="female">{translations.Female}</MenuItem>
                   </Select>
                 )}
               />

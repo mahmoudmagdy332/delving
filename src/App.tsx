@@ -14,6 +14,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 
 function App() {
   const [theme, colorMode] = useMode();
+  console.log(import.meta.env);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
