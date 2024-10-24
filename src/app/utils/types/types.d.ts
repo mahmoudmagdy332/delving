@@ -20,7 +20,12 @@ export type confrimPassword = {
 export type forgetPassword = {
   email: string;
 };
-
+export type page={
+  id:number;
+  slug:string;
+  title:string;
+  description:string;
+}
 export type setting = {
   logo: string;
   footer_logo: string;
@@ -45,6 +50,7 @@ export type setting = {
   image_intro:string,
   title_intro:string,
   description_intro:string,
+  pages:page[],
 };
 
 export type categoryType = {

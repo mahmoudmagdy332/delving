@@ -1,15 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import HeaderLayout from "../common/HeaderLayout";
 import { useAboutUsSliceSelector } from "../../app/slices/AboutusSlice";
-import { useLanguageSelector } from "../../app/slices/languageSlice";
+// import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 const Hero = () => {
-  const { translations } = useLanguageSelector(
-    (store) => store.languageReducer
-  );
+  // const { translations } = useLanguageSelector(
+  //   (store) => store.languageReducer
+  // );
   const { About } = useAboutUsSliceSelector((state) => state.AboutAsReducer);
-
+ 
+  
   const about: string | null = About && About?.[0]?.title;
+  const about_des: string | null = About && About?.[0]?.description;
+  console.log('About',About);
   const [firstWord, secondWord]: string[] = about ? about.split(" ") : ["", ""];
   return (
     <div className="w-10/12 lg:w-3/4 mx-auto my-20 ">
@@ -29,11 +32,17 @@ const Hero = () => {
             </Box>
           </Typography>
         </HeaderLayout>
+     
+          {about_des &&(
+            <div
+          dangerouslySetInnerHTML={{ __html: about_des }}
+          className=" text-center"
+          
+        />
+          ) }
+     
         <Typography sx={{ textAlign: "center", fontSize: "18px" }}>
-          {About && About[0]?.description}
-        </Typography>
-        <Typography sx={{ textAlign: "center", fontSize: "18px" }}>
-          {translations.AboutHero}
+          {/* {translations.AboutHero} */}
         </Typography>
         {/* <img src="/images/PHOTOS/Frame 2608236.png" /> */}
         {About && <img alt="" src={About && About[0].meta_image} />}

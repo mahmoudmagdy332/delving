@@ -91,7 +91,11 @@ const Intro = () => {
         {intro?.length > 0 && intro[step].name}
       </div>
       <div className="flex flex-col  justify-center items-center w-full">
-        <div>{intro?.length > 0 && intro[step].description}</div>
+        <div
+          dangerouslySetInnerHTML={{ __html: intro?.length > 0 && intro[step].description }}
+          className=" text-center"
+          
+        />
         <img
           alt=""
           src={intro?.length > 0 ? intro[step].image : ""}

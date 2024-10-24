@@ -1,5 +1,5 @@
 import {
-  Box,
+
   Button,
   FormControl,
   InputLabel,
@@ -15,6 +15,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useSignUp } from "../app/utils/hooks/useAuth";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useLanguageSelector } from "../app/slices/languageSlice";
+import GoogleLogin from "../components/auth/login/GoogleLogin";
 
 const inputStyle = {
   bgcolor: "gray.light",
@@ -85,17 +86,9 @@ const Signup = () => {
           </div>
 
           <div className="flex gap-5 w-full">
-            <Box
-              sx={{
-                borderWidth: "1px 1px 3px 1px",
-                borderStyle: "solid",
-                borderColor: "black.dark",
-              }}
-              className="cursor-pointer w-1/2 transition-all ease-in-out rounded-full py-3 font-semibold hover:shadow-lg flex justify-center items-center gap-2"
-            >
-              <img alt="" src="/images/ICONS/google.svg" />
-            </Box>
-            <Box
+            
+            <GoogleLogin/>
+            {/* <Box
               sx={{
                 borderWidth: "1px 1px 3px 1px",
                 borderStyle: "solid",
@@ -104,7 +97,7 @@ const Signup = () => {
               className="cursor-pointer w-1/2 transition-all ease-in-out rounded-full py-3 font-semibold hover:shadow-lg flex justify-center items-center gap-2"
             >
               <img alt="" src="/images/ICONS/facebook.svg" />
-            </Box>
+            </Box> */}
           </div>
 
           <div className="flex gap-2 items-center justify-center w-full">

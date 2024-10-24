@@ -38,6 +38,7 @@ import Intro from "../../pages/Intro";
 import CategoryArticles from "../../pages/CategoryArticles";
 import ArticleDetails from "../../pages/ArticleDetails";
 import AuthenticationRouter from "./guard/AuthenticationRouter";
+import Page from "../../pages/Page";
 
 const Home = lazy(() => import("../../pages/Home"));
 
@@ -117,6 +118,14 @@ const routes = createHashRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <SingleJop />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/page/:id",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Page />
               </Suspense>
             ),
           },

@@ -4,6 +4,8 @@ import { useSocialLogin } from "../../../app/utils/hooks/useAuth";
 import { useLanguageSelector } from "../../../app/slices/languageSlice";
 
 const GoogleLogin = () => {
+
+
   const { translations } = useLanguageSelector(
     (store) => store.languageReducer
   );
@@ -22,7 +24,9 @@ const GoogleLogin = () => {
   });
 
   return (
-    <Box
+    <>
+  
+       <Box
       onClick={() => login()}
       sx={{
         borderWidth: "1px 1px 3px 1px",
@@ -33,7 +37,12 @@ const GoogleLogin = () => {
     >
       <img alt="Google Icon" src="/images/ICONS/google.svg" />
       {translations.LogGoogle}
+      <div>
+  
+    </div>
     </Box>
+    </>
+ 
   );
 };
 

@@ -22,6 +22,7 @@ import {
   courseIdAPI,
   getCareerAPI,
   getCountriesAPI,
+  getPageAPI,
 } from "../utils/api";
 import {
   getLogoutAPI,
@@ -63,6 +64,13 @@ export function careerQuery(id:string|undefined) {
   return useQuery({
     queryKey: ["Terms"],
     queryFn: async () => await getCareerAPI(id),
+  });
+}
+
+export function pageQuery(id:string|undefined) {
+  return useQuery({
+    queryKey: ["page"],
+    queryFn: async () => await getPageAPI(id),
   });
 }
 

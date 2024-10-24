@@ -5,12 +5,12 @@ const CourseCard = ({ course }: { course: course }) => {
   return (
     <Link
       to={`courses/${course.id}`}
-      className="flex hover:shadow-md flex-col gap-5 items-center border rounded-2xl px-4 py-3"
+      className="flex hover:shadow-md flex-col gap-5 items-center border rounded-2xl px-4 py-3 justify-between" 
     >
       <img
         alt=""
         src={course.image}
-        className="object-cover  w-full h-auto max-w-xs max-h-sm"
+        className="object-cover h-32  w-full  max-w-xs max-h-sm"
       />
 
       <h3 className="font-semibold text-lg text-center">{course.name}</h3>

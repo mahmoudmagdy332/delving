@@ -37,9 +37,9 @@ export default function Popup() {
          <img src="/images/LOGO/icon (1).png" className='w-30 lg:w-40'/>
          <Typography sx={{color:'black.dark',textAlign:'center',fontSize:'25px',fontFamily:'Typography'}}>Delve into Engineering with Delveng</Typography>
          <GoogleLogin/>
-          <Box sx={{borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark'}}  className='cursor-pointer transition-all ease-in-out rounded-full py-3 font-semibold hover:shadow-lg flex justify-center items-center gap-2 w-full '>
+          {/* <Box sx={{borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark'}}  className='cursor-pointer transition-all ease-in-out rounded-full py-3 font-semibold hover:shadow-lg flex justify-center items-center gap-2 w-full '>
           <img src='/images/ICONS/facebook.svg'/>Log in with Facebook
-          </Box>
+          </Box> */}
           {/* <Box sx={{borderWidth:'1px 1px 3px 1px',borderStyle:'solid',borderColor:'black.dark'}}  className='cursor-pointer  transition-all ease-in-out rounded-full py-3 font-semibold hover:shadow-lg flex justify-center items-center gap-2 w-full '>
           <img src='/images/ICONS/apple.svg'/>Log in with Apple
           </Box> */}

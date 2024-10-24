@@ -13,12 +13,12 @@ const Footer = () => {
     (state) => state.languageReducer
   );
 
-  const pages = [
-    { name: translations.home, link: "/" },
-    { name: translations.Courses, link: "courses" },
-    { name: translations.Pricing, link: "/pricing" },
-    // {name:'Testimonials',link:"/testimonials"},
-  ];
+  // const pages = [
+  //   { name: translations.home, link: "/" },
+  //   { name: translations.Courses, link: "courses" },
+  //   { name: translations.Pricing, link: "/pricing" },
+  //   // {name:'Testimonials',link:"/testimonials"},
+  // ];
   const pages2 = [
     { name: translations.AboutUs, link: "/about" },
     { name: translations.Careers, link: "/careers" },
@@ -45,12 +45,12 @@ const Footer = () => {
             </Typography>
           </Box>
           <div className="flex flex-col gap-3 items-center md:items-start">
-            {pages.map((page) => (
-              <Link to={page.link}>
+            {setting?.pages.map((page) => (
+              <Link to={`page/${page.slug}`}>
                 <Typography
                   sx={{ color: "#fcfcfd", "&:hover": { color: "#ffe266" } }}
                 >
-                  {page.name}
+                  {page.title}
                 </Typography>
               </Link>
             ))}

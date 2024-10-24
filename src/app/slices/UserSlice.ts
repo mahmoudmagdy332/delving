@@ -15,11 +15,11 @@ const UserSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       console.log(action.payload);
-      const { Student, data } = action.payload;
-      if (data.token) {
-        state.user = Student;
-        Cookies.set("access_token", data.token);
-        localStorage.setItem("student", JSON.stringify(Student));
+      const { user, token } = action.payload;
+      if (token) {
+        state.user = user;
+        Cookies.set("access_token", token);
+        localStorage.setItem("student", JSON.stringify(user));
       }
     },
     changeImage: (state, action) => {

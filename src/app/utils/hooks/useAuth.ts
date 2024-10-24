@@ -12,7 +12,7 @@ import {
 } from "../../services/mutation";
 
 import { useNavigate } from "react-router-dom";
-import { setUser, updateUser } from "../../slices/UserSlice";
+import { changePopup, setUser, updateUser } from "../../slices/UserSlice";
 
 export const useLogin = () => {
   const navigator = useNavigate();
@@ -23,7 +23,7 @@ export const useLogin = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setUser(data.data));
+      dispatch(setUser(data.data.data));
       console.log("dataasdasdasdasdasd", data);
     }
     if (isError) {
@@ -54,8 +54,10 @@ export const useSocialLogin = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setUser(data.data));
-      console.log("dataasdasdasdasdasd", data);
+      dispatch(setUser(data.data.data));
+      // console.log("dataasdasdasdasdasd", );
+      dispatch(changePopup(false));
+      navigator("/");
     }
     if (isError) {
       console.log("error", error);

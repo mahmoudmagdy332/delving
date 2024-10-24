@@ -185,15 +185,16 @@ export default function Index(props: Props) {
                   <NavLink
                     to={item.link}
                     className={({ isActive }) =>
-                      ` ${isActive ? "bg-[#e3e3e364] rounded-md" : " "} `
+                      ` ${isActive ? "bg-[#e3e3e364] rounded-md "  : " "} `
                     }
                   >
                     <Typography
                       sx={{
                         color: "text.primary",
-                        fontWeight: 500,
+                        fontWeight: 700,
                         px: "15px",
                         py: "10px",
+                        fontSize:'16px',
                         borderRadius: "5px",
                         "&:hover": {
                           bgcolor: "background.paper",
@@ -209,7 +210,8 @@ export default function Index(props: Props) {
                       <Typography
                         sx={{
                           color: "text.primary",
-                          fontWeight: 500,
+                          fontWeight: 700,
+                          fontSize:'16px',
                           px: "15px",
                           py: "10px",
                           borderRadius: "5px",

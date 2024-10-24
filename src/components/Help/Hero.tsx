@@ -5,14 +5,17 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../app/slices/ArticleCatSlice";
 import { IoMdClose } from "react-icons/io";
-import { useLanguageSelector } from "../../app/slices/languageSlice";
+// import { useLanguageSelector } from "../../app/slices/languageSlice";
+import { useSettingSliceSelector } from "../../app/slices/settingSlice";
 interface FormValues {
   name: string;
 }
 function Hero() {
-  const { translations } = useLanguageSelector(
-    (store) => store.languageReducer
-  );
+  // const { translations } = useLanguageSelector(
+  //   (store) => store.languageReducer
+  // );
+  const { setting } = useSettingSliceSelector((state) => state.settingReducer);
+
   const dispatch = useDispatch();
 
   const { register, handleSubmit, reset } = useForm<FormValues>();
@@ -48,7 +51,7 @@ function Hero() {
               fontWeight: "bold",
             }}
           >
-            {translations.HelpTitle}
+            {setting?.article_categories_description}
           </Typography>
           <form className="flex grow" onSubmit={handleSubmit(onSubmit)}>
             <div className="relative flex grow">

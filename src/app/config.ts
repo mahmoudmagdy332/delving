@@ -29,4 +29,4 @@ const provider = new GoogleAuthProvider();
 export { auth, provider };
 
 export const clientId: string =
-  "1028548564650-2hjelrt1j3opjkkstmolfe7sndj2qvpn.apps.googleusercontent.com";
+  "1031889430059-g0ktupm2ufcrflp12kvemou4vqrlggil.apps.googleusercontent.com";

@@ -1,11 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import HeaderLayout from "../common/HeaderLayout";
 import { useLanguageSelector } from "../../app/slices/languageSlice";
+import { useSettingSliceSelector } from "../../app/slices/settingSlice";
 
 const Hero = () => {
   const { translations } = useLanguageSelector(
     (store) => store.languageReducer
   );
+  const { setting } = useSettingSliceSelector((state) => state.settingReducer);
+
   return (
     <div className="w-10/12 lg:w-3/4 mx-auto my-20 ">
       <div className="flex flex-col gap-5 items-center">
@@ -20,7 +23,8 @@ const Hero = () => {
           >
             {translations.Delveng}{" "}
             <Box component="span" sx={{ color: "yellow.main" }}>
-              Careers
+          
+              {translations.Careers}
             </Box>
           </Typography>
         </HeaderLayout>
@@ -28,7 +32,8 @@ const Hero = () => {
           sx={{ textAlign: "center", fontSize: "20px" }}
           className="lg:w-3/4"
         >
-          {translations.CareersHero}
+         
+          {setting?.career_description}
         </Typography>
       </div>
     </div>

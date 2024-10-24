@@ -7,7 +7,7 @@ import { clientId } from "./app/config.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId={clientId}>
+    <GoogleOAuthProvider clientId={clientId} >
       <App />
     </GoogleOAuthProvider>
   </React.StrictMode>
