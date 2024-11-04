@@ -33,11 +33,11 @@ const Hero = () => {
         <Button
           onClick={HandleDelve}
           sx={{
-            bgcolor: "primary.light",
-            color: "background.default",
+            bgcolor: "primary.main",
+            color: "white",
             p: "10px",
             "&:hover": {
-              backgroundColor: "yellow.dark",
+              backgroundColor: "yellow.main",
             },
           }}
         >

@@ -165,11 +165,11 @@ export default function Index(props: Props) {
         )}
         <Toolbar>
           <div className="w-11/12  mx-auto flex justify-between items-center py-2">
-            <div className="w-56 h-20">
+            <div className="w-56 h-30">
               {theme.palette.mode === "dark" ? (
-                <img alt="" src={setting?.footer_logo} className=" h-20" />
+                <img alt="" src={setting?.footer_logo} className=" h-30" />
               ) : (
-                <img alt="" src={setting?.logo} className=" h-20" />
+                <img alt="" src={setting?.logo} className=" h-30" />
               )}
             </div>
             <Box
@@ -185,7 +185,7 @@ export default function Index(props: Props) {
                   <NavLink
                     to={item.link}
                     className={({ isActive }) =>
-                      ` ${isActive ? "bg-[#e3e3e364] rounded-md "  : " "} `
+                      ` ${isActive ? "bg-[#e3e3e364] rounded-md " : " "} `
                     }
                   >
                     <Typography
@@ -194,7 +194,7 @@ export default function Index(props: Props) {
                         fontWeight: 700,
                         px: "15px",
                         py: "10px",
-                        fontSize:'16px',
+                        fontSize: "16px",
                         borderRadius: "5px",
                         "&:hover": {
                           bgcolor: "background.paper",
@@ -211,7 +211,7 @@ export default function Index(props: Props) {
                         sx={{
                           color: "text.primary",
                           fontWeight: 700,
-                          fontSize:'16px',
+                          fontSize: "16px",
                           px: "15px",
                           py: "10px",
                           borderRadius: "5px",
@@ -254,7 +254,7 @@ export default function Index(props: Props) {
                       }}
                     >
                       {" "}
-                  {translations.signup}
+                      {translations.signup}
                     </Button>
                   </Link>
                   <Button
@@ -272,10 +272,9 @@ export default function Index(props: Props) {
                   >
                     {translations.login}
                   </Button>
-
-                  <LanguageMenu />
                 </Box>
               )}
+              <LanguageMenu />
               <IconButton
                 color="inherit"
                 aria-label="open drawer"

@@ -68,7 +68,13 @@ export default function Quetions() {
             <Typography className="rounded-2xl">{Question.title}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{Question.description}</Typography>
+            {Question.description && (
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: Question?.description,
+                }}
+              />
+            )}
           </AccordionDetails>
         </Accordion>
       ))}
