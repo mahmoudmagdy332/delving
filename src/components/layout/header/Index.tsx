@@ -72,7 +72,9 @@ export default function Index(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Box sx={{ my: 2, width: "90%", mx: "auto" }}>
+        <Link to='/'>
         <img alt="" src={setting?.logo} />
+        </Link>
       </Box>
       <Divider />
       <List sx={{ m: "20px" }}>
@@ -166,11 +168,13 @@ export default function Index(props: Props) {
         <Toolbar>
           <div className="w-11/12  mx-auto flex justify-between items-center py-2">
             <div className="w-56 h-30">
+            <Link to='/'>
               {theme.palette.mode === "dark" ? (
                 <img alt="" src={setting?.footer_logo} className=" h-30" />
               ) : (
                 <img alt="" src={setting?.logo} className=" h-30" />
               )}
+              </Link>
             </div>
             <Box
               sx={{

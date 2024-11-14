@@ -375,6 +375,7 @@ export type Package = {
   duration: number;
   price: number;
   dollar_price:number;
+  currency:string;
   name: string;
   features: Features[] | null;
 };

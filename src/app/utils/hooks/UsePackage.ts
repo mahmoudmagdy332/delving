@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { packagesQuery } from "../../services/queries";
 import { setPackages } from "../../slices/PackageSLice";
 
-export const UsePackages = () => {
+export const UsePackages = (ip:string) => {
   const dispatch = useDispatch();
-  const { isSuccess, data, isLoading, isError, error } = packagesQuery();
+  const { isSuccess, data, isLoading, isError, error } = packagesQuery(ip);
 
   useEffect(() => {
     if (data) {

@@ -50,7 +50,7 @@ const MainLayout = () => {
         Error: {error.message}
       </div>
     );
-  return <Outlet />;
+  return <Outlet/>;
 };
 
 export default MainLayout;

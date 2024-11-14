@@ -41,7 +41,7 @@ export const getPageAPI = (id:string|undefined) => api.get(`page/${id}`);
 export const getFQsAPI = () => api.get("questions");
 export const getTestimonialsAPI = () => api.get("testimonials");
 export const getPrivaciesAPI = () => api.get("privacies");
-export const getPackagesAPI = () => api.get("packages");
+export const getPackagesAPI = (ip:string) => api.get(`packages/${ip}`);
 export const getCountriesAPI = () => api.get("countries");
 
 export const getIntroAPI = () => api.get("intro");

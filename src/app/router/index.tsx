@@ -1,4 +1,4 @@
-import { createHashRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import Layout from "../../components/layout/Index";
@@ -48,7 +48,7 @@ const Loading = () => (
   </div>
 );
 
-const routes = createHashRouter([
+const routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,

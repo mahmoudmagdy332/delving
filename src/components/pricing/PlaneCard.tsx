@@ -7,7 +7,7 @@ import { Package } from "../../app/utils/types/types";
 import { useNavigate } from "react-router-dom";
 import { SubscribePackageQuery } from "../../app/services/queries";
 import { useState } from "react";
-import { useUserSelector } from "../../app/slices/UserSlice";
+// import { useUserSelector } from "../../app/slices/UserSlice";
 import { useLanguageSelector } from "../../app/slices/languageSlice";
 
 interface PackageProp {
@@ -18,7 +18,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
   const { translations } = useLanguageSelector(
     (store) => store.languageReducer
   );
-  const { user } = useUserSelector((state) => state.UserReducer);
+  // const { user } = useUserSelector((state) => state.UserReducer);
   const navigate = useNavigate();
   const [PackageId, setPackageId] = useState<number>();
   const { data, refetch } = SubscribePackageQuery(PackageId);
@@ -47,11 +47,13 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
         {item.name}
       </Box>
       <div className="flex justify-center items-end">
-        <Typography
+      <Typography
           sx={{ fontSize: "60px", fontWeight: "600", color: "black.dark" }}
         >
-          {user?.country_id === 1 ? "EGP" : "$"}
-          {user?.country_id === 1 ? item.price : item.dollar_price}
+          {/* {user?.country_id === 1 ? "EGP" : "$"}
+          {user?.country_id === 1 ? item.price : item.dollar_price} */}
+           <Box component="span"  sx={{ fontSize: "16px", fontWeight: "400", color: "primary.light" }}>{item.currency}</Box>
+          {item.price}
         </Typography>
         <Typography
           sx={{
@@ -64,6 +66,7 @@ const PlaneCard: React.FC<PackageProp> = ({ item }) => {
           /{item.duration} {translations.month}
         </Typography>
       </div>
+      <div className="bg-[#000]"></div>
       <Box
         sx={{
           bgcolor: "background.default",

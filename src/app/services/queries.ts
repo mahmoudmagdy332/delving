@@ -199,10 +199,10 @@ export function privaciesQuery() {
     queryFn: async () => await getPrivaciesAPI(),
   });
 }
-export function packagesQuery() {
+export function packagesQuery(ip:string) {
   return useQuery({
     queryKey: ["packages"],
-    queryFn: async () => await getPackagesAPI(),
+    queryFn: async () => await getPackagesAPI(ip),
   });
 }
 export function SubscribePackageQuery(id: number | undefined) {
